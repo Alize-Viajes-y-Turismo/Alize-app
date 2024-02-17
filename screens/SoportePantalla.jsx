@@ -1,8 +1,7 @@
 import { Image, Platform, ScrollView, StatusBar, StyleSheet, Text, View, } from 'react-native';
 import Boton from '../Components/BotonPrimario';
-import Accordion from '../Components/AccordionComponent';
 
-const soportePantalla = () => {
+const SoportePantalla = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -27,11 +26,7 @@ const soportePantalla = () => {
             Preguntas Frecuentes
           </Text>
         </View>
-        <View>
-          <Text style={styles.titulo}>
-            <Accordion />
-          </Text>
-        </View>
+     
       </View>
     </ScrollView>
   );
@@ -75,4 +70,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default soportePantalla;
+export default SoportePantalla;

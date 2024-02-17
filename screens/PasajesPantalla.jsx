@@ -1,24 +1,11 @@
-import { Platform, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { TextInput } from 'react-native-paper';
+import { Platform, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useState } from 'react';
-import BasicUsage from '../Components/DatePicker';
 
-const sacaTuPasaje = () => {
+const SacaTuPasaje = () => {
 
   const [origen, setOrigen] = useState('');
   const [destino, setDestino] = useState('');
-  const [date, setDate] = useState(new Date());
-  const [calendarVisible, setCalendarVisible] = useState(false);
-
-  const openCalendar = () => {
-    setCalendarVisible(true);
-  };
-
   
-  const closeCalendar = () => {
-    setCalendarVisible(false);
-  };
-
   return (
     <View style={styles.container}>
     <View style={styles.titleContainer}>
@@ -39,29 +26,6 @@ const sacaTuPasaje = () => {
         value={destino}
         onChangeText={setDestino}
       />
-      <View style={styles.containerIdaVuelta}>
-        <Text style={styles.text}>Ida</Text>
-        <View style={styles.containerCalendar}>
-          {!calendarVisible && (
-            <TouchableOpacity onPress={openCalendar} style={styles.calendarButton}>
-              <Text style={styles.calendarButtonText}>Abrir Calendario</Text>
-            </TouchableOpacity>
-          )}
-          {calendarVisible && (
-            <TouchableOpacity onPress={closeCalendar} style={styles.calendarButton}>
-              <Text style={styles.calendarButtonText}>X</Text>
-            </TouchableOpacity>
-          )}
-          {calendarVisible && (
-            <BasicUsage
-              date={date}
-              setDate={setDate}
-              visible={calendarVisible}
-              setVisible={setCalendarVisible}
-            />
-          )}
-        </View>
-      </View>
     </View>
   </View>
   );
@@ -129,4 +93,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default sacaTuPasaje;
+export default SacaTuPasaje;
