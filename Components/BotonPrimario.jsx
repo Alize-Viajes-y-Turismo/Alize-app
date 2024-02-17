@@ -1,11 +1,11 @@
 import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 
-export default function Boton({ onPress, text }) {
+export default function Boton({ onPress }) {
 
   return (
     <TouchableOpacity style={styles.btnText} onPress={onPress} >
       <Text style={styles.textBtn}>
-        {text}
+        Iniciar Sesion
       </Text>
     </TouchableOpacity>
   )
@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     paddingVertical:10,
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom:20,
   },
   textBtn: {
     color: 'white',
