@@ -1,9 +1,9 @@
-import { View, Text, ScrollView, StyleSheet, TextInput } from 'react-native'
+import { View, Text, ScrollView, StyleSheet, TextInput, Button } from 'react-native'
 import React, { useState } from 'react'
 import Boton from '../Components/BotonPrimario';
 import BotonAtras from '../Components/BotonSecundario';
 
-export default function recuperarContraseñaPantalla() {
+export default function RecuperarContraseñaPantalla({ navigation }) {
 
   const sendEmail = () => {
     alert("Se envio el mensaje")
@@ -33,10 +33,12 @@ export default function recuperarContraseñaPantalla() {
             onChangeText={setEmail} />
         </View>
         <View style={styles.containerBtn}>
-          <Boton text='Enviar' onPress={sendEmail}></Boton>
+          <Boton text='Enviar' onPress={()=>alert('Mostrar algun modal que informe al usuario que su email se envio correctamente')}></Boton>
         </View>
         <View style={styles.containerBtn}>
-          <BotonAtras text='Atras'></BotonAtras>
+          <BotonAtras 
+          onPress={()=>{navigation.goBack()}}
+          text='Atras'></BotonAtras>
         </View>
       </View>
     </ScrollView>
@@ -47,8 +49,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    borderWidth: 2,
-    borderColor: 'pink',
     padding: 20,
     backgroundColor: 'white'
   },
