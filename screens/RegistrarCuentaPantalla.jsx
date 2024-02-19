@@ -1,12 +1,11 @@
-import { View, Text, StyleSheet, ScrollView, TextInput } from 'react-native'
-import React, { useState } from 'react'
+import { View, Text, StyleSheet, ScrollView, TextInput } from 'react-native';
+import React, { useState } from 'react';
 import BotonAtras from '../Components/BotonSecundario';
 import Boton from '../Components/BotonPrimario';
-import { Checkbox } from 'react-native-paper';
+import Checkbox from 'expo-checkbox';
 
 
-export default function registrarCuentaPantalla() {
-
+export default function RegistrarCuentaPantalla({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -16,7 +15,7 @@ export default function registrarCuentaPantalla() {
     <ScrollView>
       <View style={styles.container}>
         <View style={styles.boxTitleContainer}>
-          <Text style={styles.title}>¿Todavia no te registraste?</Text>
+          <Text style={styles.title}>¿Todavía no te registraste?</Text>
         </View>
         <View style={styles.boxTitleContainer}>
           <Text style={styles.paragraph}>Para poder comprar tus pasajes debes tener una cuenta registrada.</Text>
@@ -24,45 +23,53 @@ export default function registrarCuentaPantalla() {
         <View style={styles.boxTitleContainer}>
           <Text style={styles.subtitle}>Registrarme</Text>
         </View>
-        <View >
+        <View>
           <TextInput
             style={styles.input}
             placeholder="Email"
             placeholderTextColor={'gray'}
             value={email}
-            onChangeText={setEmail} />
+            onChangeText={setEmail}
+          />
         </View>
-        <View >
+        <View>
           <TextInput
             style={styles.input}
             placeholder="Contraseña"
             placeholderTextColor={'gray'}
             value={password}
-            onChangeText={setPassword} />
+            onChangeText={setPassword}
+          />
         </View>
-        <View >
+        <View>
           <TextInput
             style={styles.input}
             placeholder="Confirmar Contraseña"
             placeholderTextColor={'gray'}
             value={confirmPassword}
-            onChangeText={setConfirmPassword} />
+            onChangeText={setConfirmPassword}
+          />
         </View>
         <View style={styles.containerCheck}>
-          <Checkbox color="#F46262" status={isChecked ? 'checked' : 'unchecked'} onPress={() => setChecked(!isChecked)} label="He leído y acepto las condiciones" />
-          <Text>
-            He leido y acepto las condiciones
+          <Checkbox
+            style={styles.checkbox}
+            value={isChecked}
+            onValueChange={setChecked}
+            color={isChecked ? '#FC3232' : undefined}
+          />
+          <Text style={styles.checkBoxText}>
+            He leído y acepto las condiciones 
           </Text>
         </View>
         <View style={styles.containerBtn}>
-          <Boton text='Registrarme'></Boton>
+          <Boton text='Registrarme' onPress={() => { alert('Esto tiene que llevar a una peticion hacia el back para validar informacion de si el usuario se registro correctamente') }} />
         </View>
         <View style={styles.containerBtn}>
-          <BotonAtras text='Atras'></BotonAtras>
+          <BotonAtras text='Atras' onPress={() => navigation.goBack()} />
         </View>
       </View>
     </ScrollView>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -78,8 +85,6 @@ const styles = StyleSheet.create({
     color: '#F46262',
     fontSize: 24,
     fontWeight: '400',
-    justifyContent: 'center',
-    alignItems: 'center',
     textAlign: 'center',
     width: 300,
     margin: 10,
@@ -88,8 +93,6 @@ const styles = StyleSheet.create({
     color: '#1E1E1E',
     fontSize: 24,
     fontWeight: '400',
-    justifyContent: 'center',
-    alignItems: 'center',
     textAlign: 'center',
     margin: 10,
   },
@@ -121,4 +124,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     flexDirection: 'row',
   },
-})
+  checkBoxText: {
+    marginLeft: 10,
+  },
+});
