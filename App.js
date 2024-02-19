@@ -14,6 +14,8 @@ import SoportePantalla from './screens/SoportePantalla';
 import SacaTuPasaje from './screens/PasajesPantalla';
 import IniciarSesion from './screens/IniciarSesionPantalla';
 
+import { AuthProvider } from './auth/AuthContext.js';
+
 export default function App() {
 
   const Tab = createBottomTabNavigator();
@@ -58,15 +60,17 @@ export default function App() {
   );
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="TabNavigator" screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="TabNavigator" component={TabNavigator} />
-        <Stack.Screen name="IniciarSesion" component={IniciarSesion} />
-        <Stack.Screen name="InicioPantalla" component={InicioPantalla} />
-        <Stack.Screen name="RecuperarContraseñaPantalla" component={RecuperarContraseñaPantalla} />
-        <Stack.Screen name="RegistrarCuentaPantalla" component={RegistrarCuentaPantalla} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <AuthProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="TabNavigator" screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="TabNavigator" component={TabNavigator} />
+          <Stack.Screen name="IniciarSesion" component={IniciarSesion} />
+          <Stack.Screen name="InicioPantalla" component={InicioPantalla} />
+          <Stack.Screen name="RecuperarContraseñaPantalla" component={RecuperarContraseñaPantalla} />
+          <Stack.Screen name="RegistrarCuentaPantalla" component={RegistrarCuentaPantalla} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </AuthProvider>
   );
 };
 

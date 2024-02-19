@@ -1,11 +1,20 @@
+//componentes
 import { View, Text, StyleSheet, ScrollView, TextInput } from 'react-native';
-import React, { useState } from 'react';
 import BotonAtras from '../Components/BotonSecundario';
 import Boton from '../Components/BotonPrimario';
 import Checkbox from 'expo-checkbox';
 
+//hooks
+import React, { useState } from 'react';
+import { useAuth } from '../auth/AuthContext.js';
+
+
 
 export default function RegistrarCuentaPantalla({ navigation }) {
+  const {login} = useAuth()
+
+
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -14,20 +23,20 @@ export default function RegistrarCuentaPantalla({ navigation }) {
   const [passwordWarning, setPasswordWarning] = useState(false);
   const [termsWarning, setTermsWarning] = useState(false);
 
-  //ENVIAR FORMULARIO----------------------
+
+
+
+  //FUNCION PARA ENVIRA FORMULARIO
   const enviarFormulario = async () => {
     setEmailWarning(false)
     setPasswordWarning(false)
     setTermsWarning(false)
 
     if (password !== confirmPassword) {
-      //validar contrasena
       setPasswordWarning(true)
     } else if (!isChecked) {
-      //validarCondiciones
       setTermsWarning(true)
     } else {
-      //enviar datos
       const res = await fetch('http://backend/api/users/register', {
         method: 'POST',
         headers: {
@@ -38,17 +47,15 @@ export default function RegistrarCuentaPantalla({ navigation }) {
           password: password
         })
       })
-
-      //chequar si el usuario ya esta registrado
-      const usuarioRegistrado = false;
-      if (usuarioRegistrado) {
-        //advertir que ya existe un usuario con ese correo
+      res.json()
+      if (res.ok) {
+        login(res.body.token)
       } else {
-        //redirigir
+        setEmailWarning(true)
       }
     }
   }
-//ENVIAR FORMULARIO----------------------
+
 
 
 
