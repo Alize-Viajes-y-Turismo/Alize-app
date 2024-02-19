@@ -1,8 +1,16 @@
-import { Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, } from 'react-native';
+//componentes
+import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, } from 'react-native';
 import Boton from '../Components/BotonPrimario';
 import BotonAtras from '../Components/BotonSecundario';
+
+//hooks
 import { useState } from 'react';
+
+//otros
 import { Entypo } from '@expo/vector-icons';
+
+
+
 
 const IniciarSesion = ({ navigation }) => {
 
