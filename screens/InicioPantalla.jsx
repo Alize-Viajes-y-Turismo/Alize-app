@@ -2,7 +2,8 @@ import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 import Boton from '../Components/BotonPrimario'
 
-const InicioPantalla = () => {
+
+const InicioPantalla = ({ navigation }) => {
   return (
     <View style={style.container}>
       <Text style={style.title}>Bienvenido/a</Text>
@@ -14,8 +15,10 @@ const InicioPantalla = () => {
           resizeMode="cover"
         />
         <Text style={style.subtitle}>Inicia sesion si ya tenes una cuenta para poder viajar con nosotros, caso contrario create una cuenta</Text>
-        <Boton />
-        <Text style={style.paragraph}>¿No tenes un usuario? Create una cuenta</Text>
+        <Boton
+          text='Iniciar Sesion'
+          onPress={() => navigation.navigate('IniciarSesion')} />
+        <Text onPress={() => navigation.navigate('RegistrarCuentaPantalla')} style={style.paragraph}>¿No tenes un usuario? Create una cuenta</Text>
       </View>
     </View>
   )
@@ -24,31 +27,23 @@ const InicioPantalla = () => {
 const style = StyleSheet.create({
   container: {
     justifyContent: 'center',
-    borderWidth: 2,
-    borderColor: 'pink',
     backgroundColor: 'white',
   },
   title: {
     fontSize: 36,
-    borderWidth: 2,
-    borderColor: 'pink',
-    padding: 20,
+    padding: 40,
     textAlign: 'center',
   },
   subtitle: {
     fontSize: 24,
     textAlign: 'center',
-    borderWidth: 2,
-    borderColor: 'pink',
-    marginBottom:20,
-
+    marginBottom: 40,
   },
   paragraph: {
     textAlign: 'center',
     fontSize: 16,
-    borderWidth: 2,
-    borderColor: 'pink',
-    marginBottom:20,
+    marginTop: 40,
+    marginBottom: 40,
     color: 'gray'
   },
   imageContainer: {
@@ -59,7 +54,8 @@ const style = StyleSheet.create({
   image: {
     width: 200,
     height: 200,
-  }
+  },
+
 })
 
 
