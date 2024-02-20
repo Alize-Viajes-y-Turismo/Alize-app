@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, StyleSheet, TextInput, Button } from 'react-native'
+import { View, Text, ScrollView, StyleSheet, TextInput, Button, SafeAreaView } from 'react-native'
 import React, { useState } from 'react'
 import Boton from '../Components/BotonPrimario';
 import BotonAtras from '../Components/BotonSecundario';
@@ -14,53 +14,58 @@ export default function RecuperarContraseñaPantalla({ navigation }) {
 
   return (
     <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.boxTitleContainer}>
-          <Text style={styles.title}>¿Olvidaste la contraseña?</Text>
+      <SafeAreaView>
+        <View style={styles.container}>
+          <View style={styles.boxTitleContainer}>
+            <Text style={styles.title}>¿Olvidaste la contraseña?</Text>
+          </View>
+          <View style={styles.boxTitleContainer}>
+            <Text style={styles.paragraph}>Las instrucciones necesarias a llevar a cabo para recuperar tu constraseña se enviaran al correo electronico ingresado</Text>
+          </View>
+          <View style={styles.boxTitleContainer}>
+            <Text style={styles.subtitle}>Recuperar Contraseña</Text>
+          </View>
+          <View >
+            <TextInput
+              style={styles.input}
+              placeholder="Correo Electronico"
+              placeholderTextColor={'gray'}
+              value={email}
+              onChangeText={setEmail} />
+          </View>
+          <View style={styles.containerBtn}>
+            <Boton text='Enviar' onPress={() => alert('Mostrar algun modal que informe al usuario que su email se envio correctamente')}></Boton>
+          </View>
+          <View style={styles.containerBtn}>
+            <BotonAtras
+              onPress={() => { navigation.goBack() }}
+              text='Atras'></BotonAtras>
+          </View>
         </View>
-        <View style={styles.boxTitleContainer}>
-          <Text style={styles.paragraph}>Las instrucciones necesarias a llevar a cabo para recuperar tu constraseña se enviaran al correo electronico ingresado</Text>
-        </View>
-        <View style={styles.boxTitleContainer}>
-          <Text style={styles.subtitle}>Recuperar Contraseña</Text>
-        </View>
-        <View >
-          <TextInput
-            style={styles.input}
-            placeholder="Correo Electronico"
-            placeholderTextColor={'gray'}
-            value={email}
-            onChangeText={setEmail} />
-        </View>
-        <View style={styles.containerBtn}>
-          <Boton text='Enviar' onPress={()=>alert('Mostrar algun modal que informe al usuario que su email se envio correctamente')}></Boton>
-        </View>
-        <View style={styles.containerBtn}>
-          <BotonAtras 
-          onPress={()=>{navigation.goBack()}}
-          text='Atras'></BotonAtras>
-        </View>
-      </View>
+      </SafeAreaView>
     </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
+    borderWidth:20,
+    borderColor:'red',
     flex: 1,
+    position:'relative',
+    top:50,
     justifyContent: 'center',
     padding: 20,
-    backgroundColor: 'white'
+    marginTop: 40,
   },
   title: {
-    color: '#F46262',
+    color: '#1E1E1E',
     fontSize: 24,
     fontWeight: '400',
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
-    width: 300,
-    margin: 10,
+    marginBottom: 20
   },
   subtitle: {
     color: '#1E1E1E',
@@ -69,11 +74,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
-    margin: 10,
+    marginBottom: 20
   },
   paragraph: {
     fontSize: 16,
     textAlign: 'center',
+    marginBottom: 20
   },
   boxTitleContainer: {
     justifyContent: 'center',
@@ -81,12 +87,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   input: {
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 5,
+    padding: 10,
     marginBottom: 20,
-    fontSize: 20,
-    padding: 15,
-    shadowColor: '#5B5662', // Cambia a color deseado
-    elevation: 5, // Solo para Android
-    borderRadius: 2,
+    paddingHorizontal: 10
   },
   containerBtn: {
     justifyContent: 'center',
