@@ -14,9 +14,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   tab: {
-    container: {
-      flex: 1,
-      backgroundColor: 'blue'
-    },
+    backgroundColor: 'red',
   }
 });
