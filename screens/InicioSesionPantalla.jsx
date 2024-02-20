@@ -1,18 +1,10 @@
-//componentes
-import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, } from 'react-native';
+import { Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, } from 'react-native';
 import Boton from '../Components/BotonPrimario';
 import BotonAtras from '../Components/BotonSecundario';
-
-//hooks
 import { useState } from 'react';
-
-//otros
 import { Entypo } from '@expo/vector-icons';
 
-
-
-
-const IniciarSesion = ({ navigation }) => {
+const InicioSesionPantalla = ({ navigation }) => {
 
   const [showPassword, setShowPassword] = useState(false); // Estado para controlar si la contraseña se muestra o no
 
@@ -76,6 +68,9 @@ const IniciarSesion = ({ navigation }) => {
 
 };
 
+export default InicioSesionPantalla;
+
+//OPCIONES --------------------------------------------------------------
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -139,4 +134,3 @@ const styles = StyleSheet.create({
   }
 })
 
-export default IniciarSesion;
