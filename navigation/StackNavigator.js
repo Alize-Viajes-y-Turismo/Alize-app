@@ -3,22 +3,20 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StyleSheet, Platform, StatusBar} from 'react-native';
 
 //screens
-import TabNavigator from './TabNavigatior';
-import InicioSesionPantalla from '../screens/InicioSesionPantalla';
-import RecuperarContraseñaPantalla from '../screens/RecuperarContraseñaPantalla';
-import RegistroPantalla from '../screens/RegistroPantalla';
+
+
+import { useAuth } from '../auth/authentication';
+import AppStack from './AppStack';
+import AuthStack from './AuthStack';
 
 const Stack = createNativeStackNavigator();
 
 function StackNavigator() {
+    const authData = useAuth()
+
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="TabNavigator" screenOptions={{ headerShown: false }}>
-                <Stack.Screen name="TabNavigator" component={TabNavigator} />
-                <Stack.Screen name="InicioSesion" component={InicioSesionPantalla} />
-                <Stack.Screen name="RecuperarContraseñaPantalla" component={RecuperarContraseñaPantalla} />
-                <Stack.Screen name="RegistroPantalla" component={RegistroPantalla} />
-            </Stack.Navigator>
+          {authData ? <AppStack/> : <AuthStack/>}
         </NavigationContainer>
     )
 }

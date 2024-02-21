@@ -13,7 +13,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   async function loadStorageData() {
-      const authDataSerialized = await AsyncStorage.getItem('@AuthData');
+      const authDataSerialized = await AsyncStorage.getItem('authData');
       if (authDataSerialized) {
         const data = JSON.parse(authDataSerialized);
         setAuthData(data);
@@ -22,17 +22,17 @@ export function AuthProvider({ children }) {
   }
 
   async function login(email, password) {
-    const res = apiLogin(email, password)
-    if (res.status === 200) {
-      const data = res.data
-      setAuthData(data);
-      AsyncStorage.setItem('@AuthData', JSON.stringify(data));
-    }
+    // const res = apiLogin(email, password)
+    // if (res.status === 200) {
+    //   const data = res.data
+    //   setAuthData(data);
+    //   AsyncStorage.setItem('authData', JSON.stringify(data));
+    setAuthData(true);
   };
 
   async function logout() {
     setAuthData(undefined)
-    await AsyncStorage.removeItem('@AuthData');
+    await AsyncStorage.removeItem('authData');
   };
 
   return (
@@ -43,6 +43,5 @@ export function AuthProvider({ children }) {
 };
 
 export function useAuth() {
-  const context = useContext(AuthContext)
-  return context
+  return useContext(AuthContext)
 }

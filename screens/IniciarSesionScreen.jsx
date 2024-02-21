@@ -1,11 +1,19 @@
-import { Platform, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, } from 'react-native';
 import Boton from '../Components/BotonPrimario';
 import BotonAtras from '../Components/BotonSecundario';
 import { useState } from 'react';
 import { Entypo } from '@expo/vector-icons';
+import { useAuth } from '../auth/authentication';
 
-const IniciarSesion = ({ navigation }) => {
 
+
+
+function InicioSesionPantalla({ navigation }) {
+
+  const {login} = useAuth()
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false); // Estado para controlar si la contraseña se muestra o no
 
   // Función para alternar entre mostrar y ocultar la contraseña
@@ -30,6 +38,7 @@ const IniciarSesion = ({ navigation }) => {
               style={styles.input}
               placeholder="Correo Electronico"
               placeholderTextColor={'gray'}
+              onChange={setEmail}
             />
             <View style={styles.inputContainer}>
               <View style={styles.passwordInputContainer}>
@@ -38,6 +47,7 @@ const IniciarSesion = ({ navigation }) => {
                   placeholder="Contraseña"
                   placeholderTextColor="gray"
                   secureTextEntry={!showPassword} // Mostrar u ocultar la contraseña según el estado
+                  onChange={setPassword}
                 />
                 <TouchableOpacity onPress={toggleShowPassword} style={styles.passwordVisibilityButton}>
                   <Entypo name={showPassword ? 'eye' : 'eye-with-line'} size={24} color="gray" />
@@ -48,10 +58,13 @@ const IniciarSesion = ({ navigation }) => {
           <View style={styles.boxTitleContainer}>
             <Text
               onPress={() => { navigation.navigate('RecuperarContraseñaPantalla') }}
-              style={styles.paragraph}>¿Olvidaste tu Contraseña?</Text>
+              style={styles.paragraph}
+            >
+              ¿Olvidaste tu Contraseña?
+            </Text>
           </View>
           <View style={styles.btnContainer}>
-            <Boton onPress={() => alert('Este boton debe dejarme navegar como usuario dentro de la app')} text='Iniciar Sesion'></Boton>
+            <Boton onPress={()=> {login(email,password)}} text='Iniciar Sesion'></Boton>
           </View>
           <View style={styles.btnContainer}>
             <BotonAtras
@@ -69,6 +82,11 @@ const IniciarSesion = ({ navigation }) => {
   );
 
 };
+
+export default InicioSesionPantalla;
+
+
+//OPCIONES ----------------------------------------------------------------
 
 const styles = StyleSheet.create({
   container: {
@@ -138,4 +156,3 @@ const styles = StyleSheet.create({
   }
 })
 
-export default IniciarSesion;

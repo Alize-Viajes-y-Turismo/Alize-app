@@ -5,7 +5,7 @@ async function apiLogin(email, password) {
         email,
         password
     }
-    const res = await axios.post("endpoint", body)
+    const res = await axios.post("http://localhost:4000/login", body)
     return res
 }
 
