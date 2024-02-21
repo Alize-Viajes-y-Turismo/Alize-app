@@ -1,14 +1,21 @@
-import { AuthProvider } from "./auth/AuthContext"
-import StackNavigator from "./navigation/StackNavigator"
+import { StyleSheet} from 'react-native';
+import StackNavigator from './Stack-Navigation/StackNavigator';
+
+
+export default function App() {
+
 
 function App() {
   return (
-    <AuthProvider>
-      <StackNavigator/>
-    </AuthProvider>
-  )
+    <>
+        <StackNavigator />
+    </>
+  );
 };
 
-
-
-export default App
+const styles = StyleSheet.create({
+  tab: {
+    backgroundColor: 'red',
+  }
+});
+}

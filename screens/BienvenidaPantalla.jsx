@@ -1,45 +1,47 @@
 import React from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import Boton from '../Components/BotonPrimario'
 
 
 const BienvenidaPantalla = ({ navigation }) => {
   return (
-    <View style={style.container}>
-      <Text style={style.title}>Bienvenido/a</Text>
-      <Text style={style.subtitle}>Gracias por elegir alize</Text>
-      <View style={style.imageContainer}>
-        <Image
-          source={require('../assets/bienvenido.png')}
-          style={style.image}
-          resizeMode="cover"
-        />
-        <Text style={style.subtitle}>Inicia sesion si ya tenes una cuenta para poder viajar con nosotros, caso contrario create una cuenta</Text>
-        <Boton
-          text='Iniciar Sesion'
-          onPress={() => navigation.navigate('IniciarSesion')} />
-        <Text onPress={() => navigation.navigate('RegistrarCuentaPantalla')} style={style.paragraph}>¿No tenes un usuario? Create una cuenta</Text>
-      </View>
-    </View>
+    <ScrollView>
+      <SafeAreaView >
+        <View style={style.container}>
+          <Text style={style.title}>Bienvenido/a</Text>
+          <Text style={style.subtitle}>Gracias por elegir alize</Text>
+          <View style={style.imageContainer}>
+            <Image
+              source={require('../assets/bienvenido.png')}
+              style={style.image}
+              resizeMode="cover"
+            />
+            <Text style={style.subtitle}>Inicia sesion si ya tenes una cuenta para poder viajar con nosotros, caso contrario create una cuenta</Text>
+            <Boton
+              text='Iniciar Sesion'
+              onPress={() => navigation.navigate('IniciarSesion')} />
+            <Text onPress={() => navigation.navigate('RegistroPantalla')} style={style.paragraph}>¿No tenes un usuario? Create una cuenta</Text>
+          </View>
+        </View>
+      </SafeAreaView>
+    </ScrollView>
   )
 }
 
-export default BienvenidaPantalla
-
-//OPCIONES ---------------------------------------
-
 const style = StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    backgroundColor: 'white',
+    flex:1,
+    backgroundColor:'white'
   },
   title: {
+    color: '#1E1E1E',
     fontSize: 36,
     padding: 40,
     textAlign: 'center',
   },
   subtitle: {
-    fontSize: 24,
+    color: '#1E1E1E',
+    fontSize: 20,
     textAlign: 'center',
     marginBottom: 40,
   },
@@ -63,3 +65,4 @@ const style = StyleSheet.create({
 })
 
 
+export default BienvenidaPantalla

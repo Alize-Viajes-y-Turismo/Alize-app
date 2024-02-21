@@ -1,7 +1,7 @@
 import { Platform, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useState } from 'react';
 
-const PasajesPantalla = () => {
+const PasajePantalla = () => {
 
   const [origen, setOrigen] = useState('');
   const [destino, setDestino] = useState('');
@@ -96,3 +96,4 @@ const styles = StyleSheet.create({
   },
 });
 
+export default PasajePantalla;

@@ -3,13 +3,16 @@ import React, { useState } from 'react';
 import BotonAtras from '../Components/BotonSecundario';
 import Boton from '../Components/BotonPrimario';
 import Checkbox from 'expo-checkbox';
+import axios from '../axiosConfig'
 
 
-function RegistroPantalla({ navigation }) {
+export default function RegistroPantalla({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isChecked, setChecked] = useState(false);
+
+  
 
   return (
     <ScrollView>
@@ -58,7 +61,7 @@ function RegistroPantalla({ navigation }) {
             color={isChecked ? '#FC3232' : undefined}
           />
           <Text style={styles.checkBoxText}>
-            He leído y acepto las condiciones 
+            He leído y acepto las condiciones
           </Text>
         </View>
         <View style={styles.containerBtn}>
@@ -71,10 +74,6 @@ function RegistroPantalla({ navigation }) {
     </ScrollView>
   );
 }
-
-export default RegistroPantalla
-
-//OPCIONES -------------------------------------------------------------------
 
 const styles = StyleSheet.create({
   container: {
@@ -110,12 +109,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   input: {
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 5,
+    padding: 10,
     marginBottom: 20,
-    fontSize: 20,
-    padding: 15,
-    shadowColor: '#5B5662', // Cambia a color deseado
-    elevation: 5, // Solo para Android
-    borderRadius: 2,
+    paddingHorizontal: 10
   },
   containerBtn: {
     justifyContent: 'center',

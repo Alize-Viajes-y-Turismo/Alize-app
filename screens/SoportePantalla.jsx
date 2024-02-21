@@ -42,7 +42,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: 'pink',
     padding: 20,
-    backgroundColor: 'white'
   },
   title: {
     color: '#F46262',

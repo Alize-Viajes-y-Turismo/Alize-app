@@ -1,10 +1,10 @@
-import { Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, } from 'react-native';
+import { Platform, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, } from 'react-native';
 import Boton from '../Components/BotonPrimario';
 import BotonAtras from '../Components/BotonSecundario';
 import { useState } from 'react';
 import { Entypo } from '@expo/vector-icons';
 
-const InicioSesionPantalla = ({ navigation }) => {
+const IniciarSesion = ({ navigation }) => {
 
   const [showPassword, setShowPassword] = useState(false); // Estado para controlar si la contraseña se muestra o no
 
@@ -16,108 +16,110 @@ const InicioSesionPantalla = ({ navigation }) => {
 
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View >
-          <Text style={styles.title}>Sumate a la familia de alize, inicia sesion si ya tenes una cuenta registrada con nosotros</Text>
-        </View>
-        <View >
-          <Text style={styles.subtitle}>Ingresar</Text>
-        </View>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            placeholder="Correo Electronico"
-            placeholderTextColor={'gray'}
-          />
+    <SafeAreaView>
+      <ScrollView >
+        <View style={styles.container}>
+          <View >
+            <Text style={styles.title}>Sumate a la familia de alize, inicia sesion si ya tenes una cuenta registrada con nosotros</Text>
+          </View>
+          <View >
+            <Text style={styles.subtitle}>Ingresar</Text>
+          </View>
           <View style={styles.inputContainer}>
-            <View style={styles.passwordInputContainer}>
-              <TextInput
-                style={styles.passwordInput}
-                placeholder="Contraseña"
-                placeholderTextColor="gray"
-                secureTextEntry={!showPassword} // Mostrar u ocultar la contraseña según el estado
-              />
-              <TouchableOpacity onPress={toggleShowPassword} style={styles.passwordVisibilityButton}>
-                <Entypo name={showPassword ? 'eye' : 'eye-with-line'} size={24} color="gray" />
-              </TouchableOpacity>
+            <TextInput
+              style={styles.input}
+              placeholder="Correo Electronico"
+              placeholderTextColor={'gray'}
+            />
+            <View style={styles.inputContainer}>
+              <View style={styles.passwordInputContainer}>
+                <TextInput
+                  style={styles.passwordInput}
+                  placeholder="Contraseña"
+                  placeholderTextColor="gray"
+                  secureTextEntry={!showPassword} // Mostrar u ocultar la contraseña según el estado
+                />
+                <TouchableOpacity onPress={toggleShowPassword} style={styles.passwordVisibilityButton}>
+                  <Entypo name={showPassword ? 'eye' : 'eye-with-line'} size={24} color="gray" />
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
+          <View style={styles.boxTitleContainer}>
+            <Text
+              onPress={() => { navigation.navigate('RecuperarContraseñaPantalla') }}
+              style={styles.paragraph}>¿Olvidaste tu Contraseña?</Text>
+          </View>
+          <View style={styles.btnContainer}>
+            <Boton onPress={() => alert('Este boton debe dejarme navegar como usuario dentro de la app')} text='Iniciar Sesion'></Boton>
+          </View>
+          <View style={styles.btnContainer}>
+            <BotonAtras
+              onPress={() => { navigation.goBack() }}
+              text='Atras'></BotonAtras>
+          </View>
+          <View >
+            <Text
+              onPress={() => { navigation.navigate('RegistroPantalla') }}
+              style={styles.paragraph}>¿No tenes un usuario? Create una cuenta</Text>
+          </View>
         </View>
-        <View style={styles.boxTitleContainer}>
-          <Text
-            onPress={() => { navigation.navigate('RecuperarContraseñaPantalla') }}
-            style={styles.paragraph}>¿Olvidaste tu Contraseña?</Text>
-        </View>
-        <View >
-          <Boton onPress={() => alert('Este boton debe dejarme navegar como usuario dentro de la app')} text='Iniciar Sesion'></Boton>
-        </View>
-        <View style={styles.paragraph}>
-          <BotonAtras
-            onPress={() => { navigation.goBack() }}
-            text='Atras'></BotonAtras>
-        </View>
-        <View >
-          <Text
-            onPress={() => { navigation.navigate('RegistrarCuentaPantalla') }}
-            style={styles.paragraph}>¿No tenes un usuario? Create una cuenta</Text>
-        </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 
 };
 
-export default InicioSesionPantalla;
-
-//OPCIONES --------------------------------------------------------------
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    borderWidth: 2,
-    borderColor: 'pink',
     padding: 20,
-    backgroundColor: 'white',
     marginTop: 20
   },
   title: {
-    color: '#FC3232',
-    fontSize: 40,
+    color: '#1E1E1E',
+    fontSize: 24,
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
     marginBottom: 40
   },
+  boxTitleContainer: {
+    marginBottom: 20
+  },
   subtitle: {
-    fontSize: 36,
+    fontSize: 24,
+    color: '#1E1E1E',
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
     marginBottom: 40
   },
   input: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 5,
+    padding: 10,
     marginBottom: 20,
-    fontSize: 20,
-    padding: 20,
-    shadowColor: '#5B5662', // Cambia a color deseado
-    elevation: 5, // Solo para Android
-    borderRadius: 2,
+    paddingHorizontal: 10
+
   },
   inputContainer: {
-    marginBottom: 40,
+    marginBottom: 20,
   },
   passwordInputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 5,
+    paddingHorizontal: 10
   },
   passwordInput: {
     flex: 1,
-    fontSize: 20,
-    padding: 20,
-    shadowColor: '#5B5662', // Cambia a color deseado
-    elevation: 5, // Solo para Android
-    borderRadius: 2,
   },
   passwordVisibilityButton: {
     padding: 10,
@@ -126,11 +128,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
     color: 'gray',
-    marginBottom: 40,
   },
-  btnAtras: {
-    marginBottom: 40,
-
+  btnContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    marginBottom: 20
   }
 })
 
+export default IniciarSesion;
