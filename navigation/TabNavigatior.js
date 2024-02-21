@@ -2,28 +2,26 @@ import { FontAwesome6 } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useContext } from 'react';
 
 //screens
 import BienvenidaPantalla from '../screens/BienvenidaPantalla';
 import SoportePantalla from '../screens/SoportePantalla';
 import PasajesPantalla from '../screens/PasajesPantalla';
 
-import { AuthContext } from '../auth/AuthContext';
-
+import { useAuth } from '../auth/authentication';
 
 const Tab = createBottomTabNavigator();
 
 
 function TabNavigator() {
 
-    const {auth} = useContext(AuthContext)
+    const {authData} = useAuth()
 
     return (
         <Tab.Navigator screenOptions={screenOptions}>
             <Tab.Screen 
-                name= {auth ? "Perfil" : "Bienvenida"}
-                component={auth ? PerfilPantalla : BienvenidaPantalla} 
+                name= {authData ? "Perfil" : "Bienvenida"}
+                component={authData ? PerfilPantalla : BienvenidaPantalla} 
                 options={options.bienvenida} 
             />
             <Tab.Screen 

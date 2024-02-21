@@ -31,7 +31,7 @@ const PasajePantalla = () => {
   );
 };
 
-export default PasajesPantalla;
+export default PasajePantalla;
 
 //OPCIONES --------------------------------------------------------------
 const styles = StyleSheet.create({
@@ -96,4 +96,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PasajePantalla;
