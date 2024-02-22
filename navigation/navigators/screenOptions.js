@@ -22,15 +22,15 @@ const screenOptions = {
     },
 
     NotAuthHome: {
-        tabBarIcon: <FontAwesome6 name="user" size={30} color={"#FA323"} />,
+        tabBarIcon: ({color, size}) => (<FontAwesome6 name="user" size={size} color={color} />),
         tabBarLabel: ''
     },
     Ayuda: {
-        tabBarIcon: <AntDesign name="message1" size={30} color={"#FA323"} />,
+        tabBarIcon: ({color, size}) => (<AntDesign name="message1" size={30} color={"#FA323"} />),
         tabBarLabel: ''
     },
     Viaje: {
-        tabBarIcon: <FontAwesome name="search" size={30} color={"#FA323"} />,
+        tabBarIcon: ({color, size}) => (<FontAwesome name="search" size={30} color={"#FA323"} />),
         tabBarLabel: ''
     }
 
