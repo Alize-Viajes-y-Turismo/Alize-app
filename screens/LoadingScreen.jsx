@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PantallaRefrescar = () => {
+function LoadingScreen() {
 
   navigation.setOptions({ tabBarVisible: false });
 
@@ -11,4 +11,4 @@ const PantallaRefrescar = () => {
   )
 }
 
-export default PantallaRefrescar
+export default LoadingScreen

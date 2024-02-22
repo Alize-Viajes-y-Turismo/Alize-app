@@ -3,7 +3,7 @@ import { Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-n
 import Boton from '../Components/BotonPrimario'
 
 
-const BienvenidaPantalla = ({ navigation }) => {
+function NotAuthHomeScreen({ navigation }) {
   return (
     <ScrollView>
       <SafeAreaView >
@@ -65,4 +65,4 @@ const style = StyleSheet.create({
 })
 
 
-export default BienvenidaPantalla
+export default NotAuthHomeScreen

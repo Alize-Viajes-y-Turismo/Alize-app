@@ -7,7 +7,7 @@ const PerfilPantalla = () => {
     <Text>PerfilPantalla</Text>
 =======
 
-const PerfilPantalla = () => {
+function HomeScreen() {
   return (
     <>
     </>
@@ -15,4 +15,4 @@ const PerfilPantalla = () => {
   )
 }
 
-export default PerfilPantalla
+export default HomeScreen

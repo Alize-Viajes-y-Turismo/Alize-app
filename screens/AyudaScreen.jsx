@@ -1,7 +1,7 @@
 import { Image, ScrollView, StatusBar, StyleSheet, Text, View, } from 'react-native';
 import Boton from '../Components/BotonPrimario';
 
-const SoportePantalla = () => {
+function AyudaScreen() {
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -32,7 +32,7 @@ const SoportePantalla = () => {
   );
 };
 
-export default SoportePantalla;
+export default AyudaScreen;
 
 //OPCIONES ----------------------------------------------------
 const styles = StyleSheet.create({

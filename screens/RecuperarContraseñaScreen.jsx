@@ -3,14 +3,9 @@ import React, { useState } from 'react'
 import Boton from '../Components/BotonPrimario';
 import BotonAtras from '../Components/BotonSecundario';
 
-function RecuperarContraseñaPantalla({ navigation }) {
+function RecuperarContraseñaScreen({ navigation }) {
 
   navigation.setOptions({ tabBarVisible: false });
-
-
-  const sendEmail = () => {
-    alert("Se envio el mensaje")
-  }
 
   const [email, setEmail] = useState('');
 
@@ -50,7 +45,7 @@ function RecuperarContraseñaPantalla({ navigation }) {
   )
 }
 
-export default RecuperarContraseñaPantalla;
+export default RecuperarContraseñaScreen;
 
 //OPCIONES ---------------------------------------------------------
 const styles = StyleSheet.create({

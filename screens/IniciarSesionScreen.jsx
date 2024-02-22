@@ -6,8 +6,12 @@ import { Entypo } from '@expo/vector-icons';
 import { useAuth } from '../auth/authentication';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 function IniciarSesion({ navigation }) {
+=======
+function IniciarSesionScreen({ navigation }) {
+>>>>>>> 3292bd0 (debugging)
 
   navigation.setOptions({ tabBarVisible: false });
 >>>>>>> 037f718 (agregando navigation.setOptions({ tabBarVisible: false }) en pantallas: CodigoVerificacion, IniciarSesion, Loading, Registro)
@@ -162,3 +166,7 @@ const styles = StyleSheet.create({
   }
 })
 
+<<<<<<< HEAD
+=======
+export default IniciarSesionScreen;
+>>>>>>> 3292bd0 (debugging)

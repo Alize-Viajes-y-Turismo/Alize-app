@@ -1,10 +1,10 @@
 import React from 'react'
 import { View } from 'react-native'
 
-const UsuarioSesionPantalla = () => {
+function UsuarioSesionScreen() {
   return (
     <View>UsuarioSesionPantalla</View>
   )
 }
 
-export default UsuarioSesionPantalla
+export default UsuarioSesionScreen

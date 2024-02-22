@@ -3,7 +3,10 @@ import React, { useState } from 'react';
 import BotonAtras from '../Components/BotonSecundario';
 import Boton from '../Components/BotonPrimario';
 import Checkbox from 'expo-checkbox';
+<<<<<<< HEAD
 import axios from 'axios'
+=======
+>>>>>>> 3292bd0 (debugging)
 
 
 export default function RegistroPantalla({ navigation }) {

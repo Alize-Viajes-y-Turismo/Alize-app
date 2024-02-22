@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CodigoVerificacionPantalla = () => {
+function CodigoVerificacionScreen() {
 
   navigation.setOptions({ tabBarVisible: false });
 
@@ -11,4 +11,4 @@ const CodigoVerificacionPantalla = () => {
   )
 }
 
-export default CodigoVerificacionPantalla
+export default CodigoVerificacionScreen
