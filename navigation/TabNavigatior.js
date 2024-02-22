@@ -27,12 +27,16 @@ function TabNavigator() {
 
     return (
 <<<<<<< HEAD
+<<<<<<< HEAD
         <>
             {authData ? <AppTab /> : <AuthTab />}
         </>
 
 =======
         <Tab.Navigator screenOptions={screenOptions}>
+=======
+        <Tab.Navigator screenOptions={screenOptions} initialRouteName='NotAuthHome'>
+>>>>>>> 30c8cdc (agregando initialRoute al Tab.Navigator)
             <Tab.Screen 
                 name = "NotAuthHomeScreen"
                 component = {NotAuthHomeScreen}
