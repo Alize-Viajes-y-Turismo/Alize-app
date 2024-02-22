@@ -1,7 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useContext } from 'react';
 import options from '../options/tabScreenOptions';
-import { AuthContext } from '../auth/AuthContext';
 import tabNavigatorOptions from '../options/tabNavigatorOptions';
 
 
@@ -16,8 +14,6 @@ import RegistroScreen from '../../screens/RegistroScreen';
 const Tab = createBottomTabNavigator();
 
 function AuthTabNavigator() {
-
-    const {auth} = useContext(AuthContext)
 
     return (
         <Tab.Navigator screenOptions={tabNavigatorOptions.screenOptions} initialRouteName='NotAuthHomeScreen'>

@@ -4,12 +4,15 @@ import AppTab from './AppTab.js';
 import { useAuth } from '../auth/authentication';
 =======
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+<<<<<<< HEAD
 import { useContext } from 'react';
 <<<<<<< HEAD:navigation/AppTabNavigator.js
 import tabNavigatorOptions from './tabNavigatorOptions';
 import tabScreenOptions from './tabScreenOptions';
 >>>>>>> 4c587ba (trasladando las opciones del tabNavigator y sus screens a dos archivos aparte)
 =======
+=======
+>>>>>>> 783abfe (eliminando el hook useContext de los archivos AppTabNavigator y AuthTabNavigator)
 import tabNavigatorOptions from '../options/tabNavigatorOptions';
 import tabScreenOptions from '../options/tabScreenOptions';
 >>>>>>> 074968d (agregando carpetas: navigators y options adentro de carpeta navigation):navigation/navigators/AppTabNavigator.js
@@ -22,18 +25,17 @@ import ViajeScreen from '../../screens/ViajeScreen';
 import HomeScreen from '../../screens/HomeScreen';
 
 
-
-import { AuthContext } from '../auth/AuthContext';
-
-
 const Tab = createBottomTabNavigator();
 >>>>>>> 19f2289 (Mudando las screens del stack al tab navigator)
 
 
 function AppTabNAvigator() {
 
+<<<<<<< HEAD
     const { authData } = useAuth()
 
+=======
+>>>>>>> 783abfe (eliminando el hook useContext de los archivos AppTabNavigator y AuthTabNavigator)
     return (
 <<<<<<< HEAD
 <<<<<<< HEAD
