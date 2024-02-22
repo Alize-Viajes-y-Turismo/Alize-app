@@ -1,4 +1,4 @@
-import axios from "./axios"
+import axios from "axios"
 
 export async function loginRequest(user) {
     const res = await axios.post("/users/login", user);
