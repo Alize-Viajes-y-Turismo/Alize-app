@@ -13,11 +13,9 @@ import IniciarSesionScreen from "../screens/IniciarSesionScreen"
 import RegistroScreen from '../screens/RegistroScreen';
 
 
-
 const Tab = createBottomTabNavigator();
 
-
-function TabNavigator() {
+function AuthTabNavigator() {
 
     const {auth} = useContext(AuthContext)
 
@@ -50,4 +48,4 @@ function TabNavigator() {
     )
 };
 
-export default TabNavigator;
+export default AuthTabNavigator;

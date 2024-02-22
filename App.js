@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { StyleSheet} from 'react-native';
 import StackNavigator from "./navigation/StackNavigator"
 import { AuthProvider } from './auth/authentication';
@@ -30,3 +31,16 @@ const styles = StyleSheet.create({
   
 }
 >>>>>>> a865144 (eliminando antiguos tab-navigation y stack-navigation, y eliminando StyleSheet de App)
+=======
+import Router from "./navigation/Router"
+
+function App() {
+
+  return (
+    <Router />
+  )
+
+}
+
+export default App
+>>>>>>> aee487f (creando el archivo Router.js y arreglando nombre a las funciones AppTabNavigator y AuthTabNavigatot (ambas tenian el nombre TabNavigator))

@@ -25,7 +25,7 @@ const Tab = createBottomTabNavigator();
 >>>>>>> 19f2289 (Mudando las screens del stack al tab navigator)
 
 
-function TabNavigator() {
+function AppTabNAvigator() {
 
     const { authData } = useAuth()
 
@@ -70,8 +70,12 @@ function TabNavigator() {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default TabNavigator;
 
 =======
 export default TabNavigator;
 >>>>>>> 4c587ba (trasladando las opciones del tabNavigator y sus screens a dos archivos aparte)
+=======
+export default AppTabNAvigator;
+>>>>>>> aee487f (creando el archivo Router.js y arreglando nombre a las funciones AppTabNavigator y AuthTabNavigatot (ambas tenian el nombre TabNavigator))
