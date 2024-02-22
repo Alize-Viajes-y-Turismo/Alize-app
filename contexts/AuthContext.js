@@ -69,18 +69,6 @@ export function AuthProvider({ children }) {
   }
 };
 
-export async function useAuthprovider() {
-
-  const context = await useContext(AuthContext);
-
-  if (!context) {
-
-    res.status(400).json({ message: error.error })
-
-  } else {
-
-    return context;
-
-  }
-
+export function useAuthContext() {
+  return useContext(AuthContext);
 };
