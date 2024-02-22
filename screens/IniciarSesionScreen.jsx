@@ -1,10 +1,16 @@
 import { SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, } from 'react-native';
 import Boton from '../Components/BotonPrimario';
 import BotonAtras from '../Components/BotonSecundario';
-import { useState } from 'react';
+import { useState, useLayoutEffect } from 'react';
 import { Entypo } from '@expo/vector-icons';
 import { useAuth } from '../auth/authentication';
 
+<<<<<<< HEAD
+=======
+function IniciarSesion({ navigation }) {
+
+  navigation.setOptions({ tabBarVisible: false });
+>>>>>>> 037f718 (agregando navigation.setOptions({ tabBarVisible: false }) en pantallas: CodigoVerificacion, IniciarSesion, Loading, Registro)
 
 
 

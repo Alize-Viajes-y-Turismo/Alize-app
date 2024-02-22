@@ -5,6 +5,9 @@ import BotonAtras from '../Components/BotonSecundario';
 
 function RecuperarContraseñaPantalla({ navigation }) {
 
+  navigation.setOptions({ tabBarVisible: false });
+
+
   const sendEmail = () => {
     alert("Se envio el mensaje")
   }
