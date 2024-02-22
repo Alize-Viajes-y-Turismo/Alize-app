@@ -6,6 +6,10 @@ import RecuperarContraseñaScreenStyles from '../styles/RecuperarContraseñaScre
 
 function RecuperarContraseñaScreen({ navigation }) {
 
+  function sentMailHandler() {
+    //enviar correo de verificacion
+  }
+
   const [email, setEmail] = useState('');
 
   return (
@@ -37,7 +41,7 @@ function RecuperarContraseñaScreen({ navigation }) {
           <View style={RecuperarContraseñaScreenStyles.containerBtn}>
             <BotonPrimario 
               text='Enviar' 
-              onPress={() => alert("Se ha enviado un correo de verificacion a " + email)}>
+              onPress={sentMailHandler}>
             </BotonPrimario>
           </View>
           <View style={RecuperarContraseñaScreenStyles.containerBtn}>
