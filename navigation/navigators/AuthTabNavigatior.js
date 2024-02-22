@@ -26,7 +26,7 @@ function AuthTabNavigator() {
             <Tab.Screen 
                 name="AyudaScreen" 
                 component={AyudaScreen} 
-                options={screenOptions.Ayda} 
+                options={screenOptions.Ayuda} 
             />
             <Tab.Screen 
                 name="ViajeScreen" 
@@ -36,10 +36,12 @@ function AuthTabNavigator() {
             <Tab.Screen 
                 name="IniciarSesionScreen" 
                 component={IniciarSesionScreen} 
+                options = {screenOptions.IniciarSesion}
             />
             <Tab.Screen 
                 name="RegistroScreen" 
                 component={RegistroScreen} 
+                options={screenOptions.Registro}
             />
         </Tab.Navigator>
     )

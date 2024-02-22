@@ -12,8 +12,6 @@ function IniciarSesionScreen({ navigation }) {
 
   const {login} = useAuthContext()
 
-  navigation.setOptions({ tabBarVisible: false });
-
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false); // Estado para controlar si la contraseña se muestra o no
@@ -25,8 +23,9 @@ function IniciarSesionScreen({ navigation }) {
 
   async function loginHandler() {
     try {
+      const prueba = 409;
       const res = loginRequest(email, password)
-      switch (res.status) {
+      switch (prueba) {
         case 200:
           login();
           break;
@@ -70,7 +69,7 @@ function IniciarSesionScreen({ navigation }) {
                   secureTextEntry={!showPassword} // Mostrar u ocultar la contraseña según el estado
                   onChange={setPassword}
                 />
-                <TouchableOpacity onPress={toggleShowPassword} style={styles.passwordVisibilityButton}>
+                <TouchableOpacity onPress={toggleShowPassword}>
                   <Entypo name={showPassword ? 'eye' : 'eye-with-line'} size={24} color="gray" />
                 </TouchableOpacity>
               </View>

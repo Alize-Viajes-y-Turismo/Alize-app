@@ -2,7 +2,6 @@ import { FontAwesome6 } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 
-
 const screenOptions = {
 
     global: {
@@ -23,18 +22,25 @@ const screenOptions = {
 
     NotAuthHome: {
         tabBarIcon: ({color, size}) => (<FontAwesome6 name="user" size={size} color={color} />),
-        tabBarLabel: ''
+        tabBarLabel: 'Home'
     },
     Ayuda: {
         tabBarIcon: ({color, size}) => (<AntDesign name="message1" size={30} color={"#FA323"} />),
-        tabBarLabel: ''
+        tabBarLabel: 'Ayuda'
     },
     Viaje: {
         tabBarIcon: ({color, size}) => (<FontAwesome name="search" size={30} color={"#FA323"} />),
-        tabBarLabel: ''
+        tabBarLabel: 'Viaje'
+    },
+
+    IniciarSesion: {
+        tabBarButton: () => null,
+    },
+
+    Registro: {
+        tabBarButton: () => null,
     }
 
 }
 
 export default screenOptions
-

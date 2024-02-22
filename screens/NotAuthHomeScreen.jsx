@@ -20,7 +20,8 @@ function NotAuthHomeScreen({ navigation }) {
             <Text style={NotAuthHomeScreenStyles.subtitle}>Inicia sesion si ya tenes una cuenta para poder viajar con nosotros, caso contrario create una cuenta</Text>
             <Boton
               text='Iniciar Sesion'
-              onPress={() => navigation.navigate('IniciarSesion')} />
+              onPress={() => navigation.navigate('IniciarSesionScreen')} 
+            />
             <Text onPress={() => navigation.navigate('RegistroPantalla')} style={NotAuthHomeScreenStyles.paragraph}>¿No tenes un usuario? Create una cuenta</Text>
           </View>
         </View>
