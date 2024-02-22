@@ -1,16 +1,16 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useContext } from 'react';
-import options from './tabScreenOptions';
+import options from '../options/tabScreenOptions';
 import { AuthContext } from '../auth/AuthContext';
-import tabNavigatorOptions from './tabNavigatorOptions';
+import tabNavigatorOptions from '../options/tabNavigatorOptions';
 
 
 //screens
-import NotAuthHomeScreen from '../screens/NotAuthHomeScreen';
-import AyudaScreen from '../screens/AyudaScreen';
-import ViajeScreen from '../screens/ViajeScreen';
-import IniciarSesionScreen from "../screens/IniciarSesionScreen"
-import RegistroScreen from '../screens/RegistroScreen';
+import NotAuthHomeScreen from '../../screens/NotAuthHomeScreen';
+import AyudaScreen from '../../screens/AyudaScreen';
+import ViajeScreen from '../../screens/ViajeScreen';
+import IniciarSesionScreen from "../../screens/IniciarSesionScreen"
+import RegistroScreen from '../../screens/RegistroScreen';
 
 
 const Tab = createBottomTabNavigator();
