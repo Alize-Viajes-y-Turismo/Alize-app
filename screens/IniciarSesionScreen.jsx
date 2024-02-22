@@ -1,11 +1,16 @@
 import { SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View, } from 'react-native';
 import Boton from '../Components/BotonPrimario';
 import BotonAtras from '../Components/BotonSecundario';
-import { useState } from 'react';
 import { Entypo } from '@expo/vector-icons';
 import IniciarSesionScreenStyles from '../styles/IniciarSesionScreenStyles';
+import { useState } from 'react';
+import { useAuthContext } from '../contexts/AuthContext';
+import {loginRequest} from "../api/authRequests"
+
 
 function IniciarSesionScreen({ navigation }) {
+
+  const {login} = useAuthContext()
 
   navigation.setOptions({ tabBarVisible: false });
 
@@ -17,6 +22,26 @@ function IniciarSesionScreen({ navigation }) {
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
+
+  async function loginHandler() {
+    try {
+      const res = loginRequest(email, password)
+      switch (res.status) {
+        case 200:
+          login();
+          break;
+        case 409: 
+          alert("El email que ingresaste ya pertenece a una cuenta")
+          break;
+        case 500: 
+          alert("Error interno del servidor")
+        default: 
+          alert("No hemos podido logearte")
+      }
+    } catch(err) {
+      alert(err.message)
+    }
+  }
 
 
   return (
@@ -57,7 +82,7 @@ function IniciarSesionScreen({ navigation }) {
               style={IniciarSesionScreenStyles.paragraph}>¿Olvidaste tu Contraseña?</Text>
           </View>
           <View style={IniciarSesionScreenStyles.btnContainer}>
-            <Boton onPress={() => alert('Este boton debe dejarme navegar como usuario dentro de la app')} text='Iniciar Sesion'></Boton>
+            <Boton onPress={loginHandler} text='Iniciar Sesion'></Boton>
           </View>
           <View style={IniciarSesionScreenStyles.btnContainer}>
             <BotonAtras
@@ -77,3 +102,5 @@ function IniciarSesionScreen({ navigation }) {
 };
 
 export default IniciarSesionScreen;
+
+
