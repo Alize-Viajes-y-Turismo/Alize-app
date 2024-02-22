@@ -1,4 +1,4 @@
-import { Image, ScrollView, StatusBar, StyleSheet, Text, View, } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View, } from 'react-native';
 import Boton from '../Components/BotonPrimario';
 
 function AyudaScreen() {
