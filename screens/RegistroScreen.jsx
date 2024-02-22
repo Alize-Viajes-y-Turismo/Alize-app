@@ -15,8 +15,6 @@ export default function RegistroPantalla({ navigation }) {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isChecked, setChecked] = useState(false);
 
-  
-
   return (
     <ScrollView>
       <View style={styles.container}>
