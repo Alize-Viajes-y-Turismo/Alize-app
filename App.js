@@ -1,10 +1,16 @@
+<<<<<<< HEAD
 import { StyleSheet} from 'react-native';
 import StackNavigator from "./navigation/StackNavigator"
 import { AuthProvider } from './auth/authentication';
+=======
+import TabNavigator from './navigation/TabNavigatior';
 
 
-function App() {
+export default function App() {
+>>>>>>> a865144 (eliminando antiguos tab-navigation y stack-navigation, y eliminando StyleSheet de App)
+
   return (
+<<<<<<< HEAD
     <AuthProvider>
       <StackNavigator/>
     </AuthProvider>
@@ -18,3 +24,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
   }
 });
+=======
+    <TabNavigator />
+  )
+  
+}
+>>>>>>> a865144 (eliminando antiguos tab-navigation y stack-navigation, y eliminando StyleSheet de App)
