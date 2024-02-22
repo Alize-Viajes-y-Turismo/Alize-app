@@ -1,6 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import screenOptions from './screenOptions';
-import tabScreenOptions from './tabScreenOptions';
 
 //screens
 import AyudaScreen from '../../screens/AyudaScreen';
@@ -13,21 +12,21 @@ const Tab = createBottomTabNavigator();
 function AppTabNAvigator() {
 
     return (
-        <Tab.Navigator screenOptions={screenOptions} initialRouteName='HomeScreen'>
+        <Tab.Navigator screenOptions={screenOptions.global} initialRouteName='HomeScreen'>
             <Tab.Screen
                 name="HomeScreen"
                 component={HomeScreen}
-                options={tabScreenOptions.HomeScreen}
+                options={screenOptions.Home}
             />
             <Tab.Screen
                 name="AyudaScreen"
                 component={AyudaScreen}
-                options={tabScreenOptions.AyudaScreen}
+                options={screenOptions.Ayuda}
             />
             <Tab.Screen
                 name="ViajeScreen"
                 component={ViajeScreen}
-                options={tabNavigatorOptions.ViajeScreen}
+                options={screenOptions.Viaje}
             />
         </Tab.Navigator>
     )

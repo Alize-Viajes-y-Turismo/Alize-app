@@ -1,12 +1,40 @@
+import { FontAwesome6 } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
+
+
 const screenOptions = {
-    tabBarActiveTintColor: '#FC3232',
-    tabBarInactiveTintColor: 'gray',
-    tabBarStyle: {
-        margin: 20, // Margen horizontal
-        height: 80,
-        borderRadius: 20,
-        justifyContent: 'center'
+
+    global: {
+        tabBarActiveTintColor: '#FC3232',
+        tabBarInactiveTintColor: 'gray',
+        tabBarStyle: {
+            margin: 20, // Margen horizontal
+            height: 80,
+            borderRadius: 20,
+            justifyContent: 'center'
+        },
     },
+
+    Home: {
+        tabBarIcon: <FontAwesome6 name="user" size={30} color="#FA323" />,
+        tabBarLabel: ''
+    },
+
+    NotAuthHome: {
+        tabBarIcon: <FontAwesome6 name="user" size={30} color={"#FA323"} />,
+        tabBarLabel: ''
+    },
+    Ayuda: {
+        tabBarIcon: <AntDesign name="message1" size={30} color={"#FA323"} />,
+        tabBarLabel: ''
+    },
+    Viaje: {
+        tabBarIcon: <FontAwesome name="search" size={30} color={"#FA323"} />,
+        tabBarLabel: ''
+    }
+
 }
 
 export default screenOptions
+
