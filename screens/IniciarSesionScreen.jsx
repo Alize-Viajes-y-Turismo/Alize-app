@@ -49,10 +49,14 @@ function IniciarSesionScreen({ navigation }) {
       <ScrollView >
         <View style={IniciarSesionScreenStyles.container}>
           <View >
-            <Text style={IniciarSesionScreenStyles.title}>Sumate a la familia de alize, inicia sesion si ya tenes una cuenta registrada con nosotros</Text>
+            <Text style={IniciarSesionScreenStyles.title}>
+              Sumate a la familia de alize, inicia sesion si ya tenes una cuenta registrada con nosotros
+            </Text>
           </View>
           <View >
-            <Text style={IniciarSesionScreenStyles.subtitle}>Ingresar</Text>
+            <Text style={IniciarSesionScreenStyles.subtitle}>
+              Ingresar
+            </Text>
           </View>
           <View style={IniciarSesionScreenStyles.inputContainer}>
             <TextInput
@@ -79,7 +83,9 @@ function IniciarSesionScreen({ navigation }) {
           <View style={IniciarSesionScreenStyles.boxTitleContainer}>
             <Text
               onPress={() => { navigation.navigate('RecuperarContraseñaPantalla') }}
-              style={IniciarSesionScreenStyles.paragraph}>¿Olvidaste tu Contraseña?</Text>
+              style={IniciarSesionScreenStyles.paragraph}>
+                ¿Olvidaste tu Contraseña?
+            </Text>
           </View>
           <View style={IniciarSesionScreenStyles.btnContainer}>
             <BotonPrimario onPress={loginHandler} text='Iniciar Sesion'></BotonPrimario>
@@ -92,7 +98,9 @@ function IniciarSesionScreen({ navigation }) {
           <View >
             <Text
               onPress={() => { navigation.navigate('RegistroScreen') }}
-              style={IniciarSesionScreenStyles.paragraph}>¿No tenes un usuario? Create una cuenta</Text>
+              style={IniciarSesionScreenStyles.paragraph}>
+                ¿No tenes un usuario? Create una cuenta
+            </Text>
           </View>
         </View>
       </ScrollView>

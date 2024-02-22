@@ -5,16 +5,20 @@ import BotonPrimario from '../Componentes/BotonPrimario';
 import Checkbox from 'expo-checkbox';
 import { useAuthContext } from '../contexts/AuthContext';
 import RegistroScreenStyles from '../styles/RegistroScreenStyles';
+import { registerRequest } from '../api/authRequests'
 
 export default function RegistroPantalla({ navigation }) {
+  //funcion para autenticar al usuario (se usa adentro del handleRegister)
+  const {login} = useAuthContext()
 
-  const {registerRequest} = useAuthContext()
-
+  //estados para capturar los datos del formulario
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isChecked, setChecked] = useState(false);
 
+  //esta funcion registra al usuario y luego ejecuta el login si el email ingresado no pertenece a una cuenta existente
+  //en caso contrario, se notifica al usuario que el email ingresado ya pertenece a una cuenta
   async function handleRegister() {
       try {
         const res = registerRequest(email, password)
@@ -25,10 +29,8 @@ export default function RegistroPantalla({ navigation }) {
           case 409: 
             alert("El email que ingresaste ya pertenece a una cuenta")
             break;
-          case 500: 
-            alert("Error interno del servidor")
           default: 
-            alert("No hemos podido logearte")
+            alert("Error interno del servidor")
         }
       } catch(err) {
         alert(err.message)
