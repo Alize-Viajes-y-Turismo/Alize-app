@@ -1,12 +1,20 @@
 import axios from "axios"
 
-export async function loginRequest(user) {
-    const res = await axios.post("/users/login", user);
+export async function loginRequest(email, password) {
+    const body = {
+        email: email,
+        password: password
+    }
+    const res = await axios.post("/users/login", body);
     return res;
 } 
 
-export async function registerRequest(user) {
-    const res = await axios.post("/users/register", user);
+export async function registerRequest(email, password) {
+    const body = {
+        email: email,
+        password: password
+    }
+    const res = await axios.post("/users/register", body);
     return res;
 } 
 
