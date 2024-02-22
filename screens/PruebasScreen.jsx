@@ -1,14 +1,15 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 
-function PruebasScreen() {
+const PruebasPantalla = () => {
+
   return (
     <View>
       <Text>
-        Hola
+        prueba
       </Text>
     </View>
   )
 }
 
-export default PruebasScreen
+export default PruebasPantalla

@@ -1,18 +1,20 @@
-import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
+import { StyleSheet, TouchableOpacity, Text} from "react-native";
 
-export default function Boton({ onPress, text }) {
+export default function BotonPrimario({ onPress, text }) {
 
   return (
-    <TouchableOpacity style={styles.btnText} onPress={onPress} >
-      <Text style={styles.textBtn}>
+    <TouchableOpacity style={styles.boton} onPress={onPress} >
+      <Text style={styles.texto}>
         {text}
       </Text>
     </TouchableOpacity>
   )
 }
 
+//estilos
+
 const styles = StyleSheet.create({
-  btnText: {
+  boton: {
     backgroundColor: '#FC3232',
     width: '176px',
     height: '48px',
@@ -23,10 +25,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 10,
   },
-  textBtn: {
+  texto: {
     color: 'white',
     fontSize: 24,
     fontWeight: '400'
   },
-
 })

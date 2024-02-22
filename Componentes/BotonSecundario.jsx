@@ -1,10 +1,10 @@
-import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
+import { StyleSheet, TouchableOpacity, Text} from "react-native";
 
-export default function BotonAtras({ onPress, text }) {
+export default function BotonSecundario({ onPress, text }) {
 
   return (
-    <TouchableOpacity style={styles.btnTextAtras} onPress={onPress} >
-      <Text style={styles.textBtnAtras}>
+    <TouchableOpacity style={styles.boton} onPress={onPress} >
+      <Text style={styles.texto}>
         {text}
       </Text>
     </TouchableOpacity>
@@ -12,7 +12,7 @@ export default function BotonAtras({ onPress, text }) {
 }
 
 const styles = StyleSheet.create({
-  btnTextAtras: {
+  boton: {
     width: '176px',
     height: '48px',
     borderRadius: 6,
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     borderColor: '#F46262',
     borderWidth: 2,
   },
-  textBtnAtras: {
+  texto: {
     color: 'gray',
     fontSize: 24,
     fontWeight: '400'
