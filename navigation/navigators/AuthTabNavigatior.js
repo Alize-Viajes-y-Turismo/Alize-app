@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import options from './tabScreenOptions';
-import tabNavigatorOptions from './tabNavigatorOptions';
+import tabNavigatorOptions from './screenOptions';
 
 
 //screens
