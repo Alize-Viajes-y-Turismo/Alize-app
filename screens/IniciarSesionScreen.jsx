@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 import { SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, } from 'react-native';
+=======
+import { SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View, } from 'react-native';
+>>>>>>> 5b6d825 (pasando los estilos de las screens a la carpeta styles)
 import Boton from '../Components/BotonPrimario';
 import BotonAtras from '../Components/BotonSecundario';
-import { useState, useLayoutEffect } from 'react';
+import { useState } from 'react';
 import { Entypo } from '@expo/vector-icons';
+<<<<<<< HEAD
 import { useAuth } from '../auth/authentication';
+=======
+import IniciarSesionScreenStyles from '../styles/IniciarSesionScreenStyles';
+>>>>>>> 5b6d825 (pasando los estilos de las screens a la carpeta styles)
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -32,28 +40,27 @@ function InicioSesionPantalla({ navigation }) {
   };
 
 
-
   return (
     <SafeAreaView>
       <ScrollView >
-        <View style={styles.container}>
+        <View style={IniciarSesionScreenStyles.container}>
           <View >
-            <Text style={styles.title}>Sumate a la familia de alize, inicia sesion si ya tenes una cuenta registrada con nosotros</Text>
+            <Text style={IniciarSesionScreenStyles.title}>Sumate a la familia de alize, inicia sesion si ya tenes una cuenta registrada con nosotros</Text>
           </View>
           <View >
-            <Text style={styles.subtitle}>Ingresar</Text>
+            <Text style={IniciarSesionScreenStyles.subtitle}>Ingresar</Text>
           </View>
-          <View style={styles.inputContainer}>
+          <View style={IniciarSesionScreenStyles.inputContainer}>
             <TextInput
-              style={styles.input}
+              style={IniciarSesionScreenStyles.input}
               placeholder="Correo Electronico"
               placeholderTextColor={'gray'}
               onChange={setEmail}
             />
-            <View style={styles.inputContainer}>
-              <View style={styles.passwordInputContainer}>
+            <View style={IniciarSesionScreenStyles.inputContainer}>
+              <View style={IniciarSesionScreenStyles.passwordInputContainer}>
                 <TextInput
-                  style={styles.passwordInput}
+                  style={IniciarSesionScreenStyles.passwordInput}
                   placeholder="Contraseña"
                   placeholderTextColor="gray"
                   secureTextEntry={!showPassword} // Mostrar u ocultar la contraseña según el estado
@@ -65,9 +72,10 @@ function InicioSesionPantalla({ navigation }) {
               </View>
             </View>
           </View>
-          <View style={styles.boxTitleContainer}>
+          <View style={IniciarSesionScreenStyles.boxTitleContainer}>
             <Text
               onPress={() => { navigation.navigate('RecuperarContraseñaPantalla') }}
+<<<<<<< HEAD
               style={styles.paragraph}
             >
               ¿Olvidaste tu Contraseña?
@@ -75,8 +83,14 @@ function InicioSesionPantalla({ navigation }) {
           </View>
           <View style={styles.btnContainer}>
             <Boton onPress={()=> {login(email,password)}} text='Iniciar Sesion'></Boton>
+=======
+              style={IniciarSesionScreenStyles.paragraph}>¿Olvidaste tu Contraseña?</Text>
           </View>
-          <View style={styles.btnContainer}>
+          <View style={IniciarSesionScreenStyles.btnContainer}>
+            <Boton onPress={() => alert('Este boton debe dejarme navegar como usuario dentro de la app')} text='Iniciar Sesion'></Boton>
+>>>>>>> 5b6d825 (pasando los estilos de las screens a la carpeta styles)
+          </View>
+          <View style={IniciarSesionScreenStyles.btnContainer}>
             <BotonAtras
               onPress={() => { navigation.goBack() }}
               text='Atras'></BotonAtras>
@@ -84,7 +98,7 @@ function InicioSesionPantalla({ navigation }) {
           <View >
             <Text
               onPress={() => { navigation.navigate('RegistroPantalla') }}
-              style={styles.paragraph}>¿No tenes un usuario? Create una cuenta</Text>
+              style={IniciarSesionScreenStyles.paragraph}>¿No tenes un usuario? Create una cuenta</Text>
           </View>
         </View>
       </ScrollView>
@@ -93,6 +107,7 @@ function InicioSesionPantalla({ navigation }) {
 
 };
 
+<<<<<<< HEAD
 export default InicioSesionPantalla;
 
 
@@ -168,5 +183,7 @@ const styles = StyleSheet.create({
 
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> 5b6d825 (pasando los estilos de las screens a la carpeta styles)
 export default IniciarSesionScreen;
 >>>>>>> 3292bd0 (debugging)

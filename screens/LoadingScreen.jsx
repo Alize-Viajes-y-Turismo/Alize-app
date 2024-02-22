@@ -4,7 +4,6 @@ function LoadingScreen() {
 
   navigation.setOptions({ tabBarVisible: false });
 
-
   return (
     <>
     </>

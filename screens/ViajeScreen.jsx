@@ -1,5 +1,6 @@
-import { Platform, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Text, TextInput, View } from 'react-native';
 import { useState } from 'react';
+import ViajeScreenStyles from '../styles/ViajeScreenStyles';
 
 function ViajeScreen() {
 
@@ -7,21 +8,21 @@ function ViajeScreen() {
   const [destino, setDestino] = useState('');
   
   return (
-    <View style={styles.container}>
-    <View style={styles.titleContainer}>
-      <Text style={styles.titulo}>Empeza tu viaje</Text>
+    <View style={ViajeScreenStyles.container}>
+    <View style={ViajeScreenStyles.titleContainer}>
+      <Text style={ViajeScreenStyles.titulo}>Empeza tu viaje</Text>
     </View>
-    <View style={styles.container}>
-      <Text style={styles.text}>Origen</Text>
+    <View style={ViajeScreenStyles.container}>
+      <Text style={ViajeScreenStyles.text}>Origen</Text>
       <TextInput
-        style={styles.input}
+        style={ViajeScreenStyles.input}
         placeholder='Corrientes Capital'
         value={origen}
         onChangeText={setOrigen}
       />
-      <Text style={styles.text}>Destino</Text>
+      <Text style={ViajeScreenStyles.text}>Destino</Text>
       <TextInput
-        style={styles.input}
+        style={ViajeScreenStyles.input}
         placeholder='CABA - Buenos Aires'
         value={destino}
         onChangeText={setDestino}
@@ -31,6 +32,7 @@ function ViajeScreen() {
   );
 };
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 export default PasajePantalla;
 =======
@@ -100,3 +102,6 @@ const styles = StyleSheet.create({
   },
 });
 
+=======
+export default ViajeScreen;
+>>>>>>> 5b6d825 (pasando los estilos de las screens a la carpeta styles)
