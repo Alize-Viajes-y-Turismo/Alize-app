@@ -30,7 +30,7 @@ function IniciarSesionScreen({ navigation }) {
           login();
           break;
         case 409: 
-          alert("El email que ingresaste ya pertenece a una cuenta")
+          alert("Contrasena o email incorrectos")
           break;
         case 500: 
           alert("Error interno del servidor")
@@ -90,7 +90,7 @@ function IniciarSesionScreen({ navigation }) {
           </View>
           <View >
             <Text
-              onPress={() => { navigation.navigate('RegistroPantalla') }}
+              onPress={() => { navigation.navigate('RegistroScreen') }}
               style={IniciarSesionScreenStyles.paragraph}>¿No tenes un usuario? Create una cuenta</Text>
           </View>
         </View>

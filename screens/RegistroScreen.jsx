@@ -1,33 +1,55 @@
-import { View, Text, StyleSheet, ScrollView, TextInput } from 'react-native';
+import { View, Text, ScrollView, TextInput } from 'react-native';
 import React, { useState } from 'react';
 import BotonAtras from '../Components/BotonSecundario';
 import Boton from '../Components/BotonPrimario';
 import Checkbox from 'expo-checkbox';
+import { useAuthContext } from '../contexts/AuthContext';
+import RegistroScreenStyles from '../styles/RegistroScreenStyles';
 
 export default function RegistroPantalla({ navigation }) {
 
-  navigation.setOptions({ tabBarVisible: false });
+  const {registerRequest} = useAuthContext()
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isChecked, setChecked] = useState(false);
 
+  async function handleRegister() {
+      try {
+        const res = registerRequest(email, password)
+        switch (res.status) {
+          case 200:
+            login();
+            break;
+          case 409: 
+            alert("El email que ingresaste ya pertenece a una cuenta")
+            break;
+          case 500: 
+            alert("Error interno del servidor")
+          default: 
+            alert("No hemos podido logearte")
+        }
+      } catch(err) {
+        alert(err.message)
+      }
+    }
+
   return (
     <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.boxTitleContainer}>
-          <Text style={styles.title}>¿Todavía no te registraste?</Text>
+      <View style={RegistroScreenStyles.container}>
+        <View style={RegistroScreenStyles.boxTitleContainer}>
+          <Text style={RegistroScreenStyles.title}>¿Todavía no te registraste?</Text>
         </View>
-        <View style={styles.boxTitleContainer}>
-          <Text style={styles.paragraph}>Para poder comprar tus pasajes debes tener una cuenta registrada.</Text>
+        <View style={RegistroScreenStyles.boxTitleContainer}>
+          <Text style={RegistroScreenStyles.paragraph}>Para poder comprar tus pasajes debes tener una cuenta registrada.</Text>
         </View>
-        <View style={styles.boxTitleContainer}>
-          <Text style={styles.subtitle}>Registrarme</Text>
+        <View style={RegistroScreenStyles.boxTitleContainer}>
+          <Text style={RegistroScreenStyles.subtitle}>Registrarme</Text>
         </View>
         <View>
-          <TextInputs
-            style={styles.input}
+          <TextInput
+            style={RegistroScreenStyles.input}
             placeholder="Email"
             placeholderTextColor={'gray'}
             value={email}
@@ -36,7 +58,7 @@ export default function RegistroPantalla({ navigation }) {
         </View>
         <View>
           <TextInput
-            style={styles.input}
+            style={RegistroScreenStyles.input}
             placeholder="Contraseña"
             placeholderTextColor={'gray'}
             value={password}
@@ -45,89 +67,31 @@ export default function RegistroPantalla({ navigation }) {
         </View>
         <View>
           <TextInput
-            style={styles.input}
+            style={RegistroScreenStyles.input}
             placeholder="Confirmar Contraseña"
             placeholderTextColor={'gray'}
             value={confirmPassword}
             onChangeText={setConfirmPassword}
           />
         </View>
-        <View style={styles.containerCheck}>
+        <View style={RegistroScreenStyles.containerCheck}>
           <Checkbox
-            style={styles.checkbox}
+            style={RegistroScreenStyles.checkbox}
             value={isChecked}
             onValueChange={setChecked}
             color={isChecked ? '#FC3232' : undefined}
           />
-          <Text style={styles.checkBoxText}>
+          <Text style={RegistroScreenStyles.checkBoxText}>
             He leído y acepto las condiciones
           </Text>
         </View>
-        <View style={styles.containerBtn}>
-          <Boton text='Registrarme' onPress={() => { alert('Esto tiene que llevar a una peticion hacia el back para validar informacion de si el usuario se registro correctamente') }} />
+        <View style={RegistroScreenStyles.containerBtn}>
+          <Boton text='Registrarme' onPress={handleRegister} />
         </View>
-        <View style={styles.containerBtn}>
+        <View style={RegistroScreenStyles.containerBtn}>
           <BotonAtras text='Atras' onPress={() => navigation.goBack()} />
         </View>
       </View>
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    borderWidth: 2,
-    borderColor: 'pink',
-    padding: 20,
-    backgroundColor: 'white'
-  },
-  title: {
-    color: '#F46262',
-    fontSize: 24,
-    fontWeight: '400',
-    textAlign: 'center',
-    width: 300,
-    margin: 10,
-  },
-  subtitle: {
-    color: '#1E1E1E',
-    fontSize: 24,
-    fontWeight: '400',
-    textAlign: 'center',
-    margin: 10,
-  },
-  paragraph: {
-    fontSize: 16,
-    textAlign: 'center',
-  },
-  boxTitleContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  input: {
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 20,
-    paddingHorizontal: 10
-  },
-  containerBtn: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  containerCheck: {
-    justifyContent: 'start',
-    alignItems: 'center',
-    marginBottom: 20,
-    flexDirection: 'row',
-  },
-  checkBoxText: {
-    marginLeft: 10,
-  },
-});

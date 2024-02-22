@@ -1,4 +1,3 @@
-import { register } from "module";
 import { StyleSheet } from "react-native"
 
 const RegistroScreenStyles = StyleSheet.create({
