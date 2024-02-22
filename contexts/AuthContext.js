@@ -1,24 +1,21 @@
 import { createContext, useContext, useState} from 'react';
-import { registerRequest, loginRequest, verifyTokenRequest } from "../api/authRequests";
-import Cookies from "js-cookie";
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
 
-  const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   function login() {
-    
+    setIsAuthenticated(true)
   };
 
   async function logout() {
-    
+    setIsAuthenticated(false)
   };
 
   return (
-    <AuthContext.Provider value={{ user, token, login, register, checkLogin, isAuthenticated, useAuthprovider }}>
+    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );
