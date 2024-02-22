@@ -16,7 +16,7 @@ const screenOptions = {
     },
 
     Home: {
-        tabBarIcon: <FontAwesome6 name="user" size={30} color="#FA323" />,
+        tabBarIcon: ({color, size}) => (<FontAwesome6 name="user" size={size} color={color} />),
         tabBarLabel: ''
     },
 

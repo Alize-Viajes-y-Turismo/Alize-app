@@ -82,7 +82,7 @@ function IniciarSesionScreen({ navigation }) {
           </View>
           <View style={IniciarSesionScreenStyles.boxTitleContainer}>
             <Text
-              onPress={() => { navigation.navigate('RecuperarContraseñaPantalla') }}
+              onPress={() => { navigation.navigate('RecuperarContraseñaScreen') }}
               style={IniciarSesionScreenStyles.paragraph}>
                 ¿Olvidaste tu Contraseña?
             </Text>

@@ -22,7 +22,11 @@ function NotAuthHomeScreen({ navigation }) {
               text='Iniciar Sesion'
               onPress={() => navigation.navigate('IniciarSesionScreen')} 
             />
-            <Text onPress={() => navigation.navigate('RegistroPantalla')} style={NotAuthHomeScreenStyles.paragraph}>¿No tenes un usuario? Create una cuenta</Text>
+            <Text 
+              onPress={() => navigation.navigate('RegistroScreen')} 
+              style={NotAuthHomeScreenStyles.paragraph}>
+                ¿No tenes un usuario? Create una cuenta
+            </Text>
           </View>
         </View>
       </SafeAreaView>

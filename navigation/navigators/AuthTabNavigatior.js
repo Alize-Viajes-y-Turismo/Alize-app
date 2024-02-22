@@ -10,6 +10,7 @@ import AyudaScreen from '../../screens/AyudaScreen';
 import ViajeScreen from '../../screens/ViajeScreen';
 import IniciarSesionScreen from "../../screens/IniciarSesionScreen"
 import RegistroScreen from '../../screens/RegistroScreen';
+import RecuperarContraseñaScreen from '../../screens/RecuperarContraseñaScreen';
 
 
 const Tab = createBottomTabNavigator();
@@ -42,6 +43,10 @@ function AuthTabNavigator() {
                 name="RegistroScreen" 
                 component={RegistroScreen} 
                 options={screenOptions.Registro}
+            />
+            <Tab.Screen 
+                name="RecuperarContraseñaScreen" 
+                component={RecuperarContraseñaScreen} 
             />
         </Tab.Navigator>
     )
