@@ -33,13 +33,16 @@ const styles = StyleSheet.create({
 >>>>>>> a865144 (eliminando antiguos tab-navigation y stack-navigation, y eliminando StyleSheet de App)
 =======
 import Router from "./navigation/Router"
+import { AuthProvider } from "./contexts/AuthContext"
 
 function App() {
 
   return (
-    <Router />
+    <AuthProvider>
+      <Router />
+    </AuthProvider>
   )
-
+  
 }
 
 export default App
