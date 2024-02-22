@@ -1,6 +1,5 @@
 import axios from "./axios"
 
-//Auth users
 export async function loginRequest(user) {
     const res = await axios.post("/users/login", user);
     return res;
