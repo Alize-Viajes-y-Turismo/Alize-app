@@ -5,6 +5,7 @@ import { useAuth } from '../auth/authentication';
 =======
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useContext } from 'react';
 <<<<<<< HEAD:navigation/AppTabNavigator.js
 import tabNavigatorOptions from './tabNavigatorOptions';
@@ -16,6 +17,10 @@ import tabScreenOptions from './tabScreenOptions';
 import tabNavigatorOptions from '../options/tabNavigatorOptions';
 import tabScreenOptions from '../options/tabScreenOptions';
 >>>>>>> 074968d (agregando carpetas: navigators y options adentro de carpeta navigation):navigation/navigators/AppTabNavigator.js
+=======
+import tabNavigatorOptions from './tabNavigatorOptions';
+import tabScreenOptions from './tabScreenOptions';
+>>>>>>> 13cb7ad (reorganizando carpetas)
 
 <<<<<<< HEAD
 =======
