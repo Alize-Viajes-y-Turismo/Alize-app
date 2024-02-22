@@ -9,7 +9,6 @@ import NotAuthHomeScreen from '../screens/NotAuthHomeScreen';
 import AyudaScreen from '../screens/AyudaScreen';
 import ViajeScreen from '../screens/ViajeScreen';
 import IniciarSesionScreen from "../screens/IniciarSesionScreen"
-import HomeScreen from '../screens/HomeScreen';
 import RegistroScreen from '../screens/RegistroScreen';
 
 
@@ -25,7 +24,7 @@ function TabNavigator() {
     const {auth} = useContext(AuthContext)
 
     return (
-        <Tab.Navigator screenOptions={screenOptions} initialRouteName='NotAuthHome'>
+        <Tab.Navigator screenOptions={screenOptions} initialRouteName='NotAuthHomeScreen'>
             <Tab.Screen 
                 name = "NotAuthHomeScreen"
                 component = {NotAuthHomeScreen}
@@ -49,11 +48,6 @@ function TabNavigator() {
             <Tab.Screen 
                 name="RegistroScreen" 
                 component={RegistroScreen} 
-                options={options.viaje}  
-            />
-            <Tab.Screen 
-                name="HomeScreen" 
-                component={HomeScreen} 
                 options={options.viaje}  
             />
         </Tab.Navigator>

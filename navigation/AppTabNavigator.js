@@ -5,12 +5,9 @@ import { useAuth } from '../auth/authentication';
 <<<<<<< HEAD
 =======
 //screens
-import NotAuthHomeScreen from '../screens/NotAuthHomeScreen';
 import AyudaScreen from '../screens/AyudaScreen';
 import ViajeScreen from '../screens/ViajeScreen';
-import IniciarSesionScreen from "../screens/IniciarSesionScreen"
 import HomeScreen from '../screens/HomeScreen';
-import RegistroScreen from '../screens/RegistroScreen';
 
 
 
@@ -28,6 +25,7 @@ function TabNavigator() {
     return (
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <>
             {authData ? <AppTab /> : <AuthTab />}
         </>
@@ -37,10 +35,13 @@ function TabNavigator() {
 =======
         <Tab.Navigator screenOptions={screenOptions} initialRouteName='NotAuthHome'>
 >>>>>>> 30c8cdc (agregando initialRoute al Tab.Navigator)
+=======
+        <Tab.Navigator screenOptions={screenOptions} initialRouteName='HomeScreen'>
+>>>>>>> 40c087f (eliminando las screens de AppTabNavigation que no deben estar ahi, lo mismo con AuthTabNavigator, y modificando el initialRouteName)
             <Tab.Screen 
-                name = "NotAuthHomeScreen"
-                component = {NotAuthHomeScreen}
-                options={options.bienvenida} 
+                name="HomeScreen" 
+                component={HomeScreen} 
+                options={options.viaje}  
             />
             <Tab.Screen 
                 name="AyudaScreen" 
@@ -50,21 +51,6 @@ function TabNavigator() {
             <Tab.Screen 
                 name="ViajeScreen" 
                 component={ViajeScreen} 
-                options={options.viaje}  
-            />
-            <Tab.Screen 
-                name="IniciarSesionScreen" 
-                component={IniciarSesionScreen} 
-                options={options.viaje}  
-            />
-            <Tab.Screen 
-                name="RegistroScreen" 
-                component={RegistroScreen} 
-                options={options.viaje}  
-            />
-            <Tab.Screen 
-                name="HomeScreen" 
-                component={HomeScreen} 
                 options={options.viaje}  
             />
         </Tab.Navigator>
