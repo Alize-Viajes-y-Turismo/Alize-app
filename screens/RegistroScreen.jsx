@@ -1,7 +1,7 @@
 import { View, Text, ScrollView, TextInput } from 'react-native';
 import React, { useState } from 'react';
-import BotonAtras from '../Components/BotonSecundario';
-import Boton from '../Components/BotonPrimario';
+import BotonSecundario from '../Componentes/BotonSecundario';
+import BotonPrimario from '../Componentes/BotonPrimario';
 import Checkbox from 'expo-checkbox';
 import { useAuthContext } from '../contexts/AuthContext';
 import RegistroScreenStyles from '../styles/RegistroScreenStyles';
@@ -86,10 +86,10 @@ export default function RegistroPantalla({ navigation }) {
           </Text>
         </View>
         <View style={RegistroScreenStyles.containerBtn}>
-          <Boton text='Registrarme' onPress={handleRegister} />
+          <BotonPrimario text='Registrarme' onPress={handleRegister} />
         </View>
         <View style={RegistroScreenStyles.containerBtn}>
-          <BotonAtras text='Atras' onPress={() => navigation.goBack()} />
+          <BotonSecundario text='Atras' onPress={() => navigation.goBack()} />
         </View>
       </View>
     </ScrollView>

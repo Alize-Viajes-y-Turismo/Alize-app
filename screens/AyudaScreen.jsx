@@ -1,5 +1,5 @@
 import { Image, ScrollView, Text, View, } from 'react-native';
-import Boton from '../Components/BotonPrimario';
+import BotonPrimario from '../Componentes/BotonPrimario';
 import AyudaScreenStyles from '../styles/AyudaScreenStyles';
 
 function AyudaScreen() {
@@ -20,7 +20,7 @@ function AyudaScreen() {
           <Image src='./assets/support.png' />
         </View>
         <View style={AyudaScreenStyles.containerBtn}>
-          <Boton text='Obtener Ayuda' ></Boton>
+          <BotonPrimario text='Obtener Ayuda' ></BotonPrimario>
         </View>
         <View style={AyudaScreenStyles.boxTitleContainer}>
           <Text style={AyudaScreenStyles.text}>

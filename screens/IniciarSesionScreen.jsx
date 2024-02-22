@@ -5,40 +5,41 @@ import { Entypo } from '@expo/vector-icons';
 import IniciarSesionScreenStyles from '../styles/IniciarSesionScreenStyles';
 import { useState } from 'react';
 import { useAuthContext } from '../contexts/AuthContext';
-import {loginRequest} from "../api/authRequests"
 
 
 function IniciarSesionScreen({ navigation }) {
+  //funcion para autenticar al usuario (se usa adentro del loginHandler)
+  const {login} = useAuthContext();
 
-  const {login} = useAuthContext()
+  //estados para capturar los datos del formulario
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  
+  //estado para mostrar/ocultar contraseña
+  const [showPassword, setShowPassword] = useState(false); 
 
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [showPassword, setShowPassword] = useState(false); // Estado para controlar si la contraseña se muestra o no
-
-  // Función para alternar entre mostrar y ocultar la contraseña
-  const toggleShowPassword = () => {
+  //funcion para cambiar visibilidad de la contraseña
+  function switchPasswordVisibility() {
     setShowPassword(!showPassword);
   };
 
+  //esta funcion ejecuta el login solamente si los datos ingresados son correctos
+  //en caso contrario, se le notifica al usuario que los datos que ingresó son incorrectos
   async function loginHandler() {
     try {
-      const prueba = 409;
-      const res = loginRequest(email, password)
-      switch (prueba) {
+      const res = await loginRequest(email, password)
+      switch (res.status) {
         case 200:
           login();
           break;
         case 409: 
-          alert("Contrasena o email incorrectos")
+          alert("Los datos ingresados son incorrectos")
           break;
-        case 500: 
-          alert("Error interno del servidor")
         default: 
-          alert("No hemos podido logearte")
+          alert("Error interno del servidor")
       }
     } catch(err) {
-      alert(err.message)
+      alert("Ha ocurrido un error")
     }
   }
 
@@ -58,7 +59,7 @@ function IniciarSesionScreen({ navigation }) {
               style={IniciarSesionScreenStyles.input}
               placeholder="Correo Electronico"
               placeholderTextColor={'gray'}
-              onChange={setEmail}
+              onChangeText={setEmail}
             />
             <View style={IniciarSesionScreenStyles.inputContainer}>
               <View style={IniciarSesionScreenStyles.passwordInputContainer}>
@@ -67,9 +68,9 @@ function IniciarSesionScreen({ navigation }) {
                   placeholder="Contraseña"
                   placeholderTextColor="gray"
                   secureTextEntry={!showPassword} // Mostrar u ocultar la contraseña según el estado
-                  onChange={setPassword}
+                  onChangeText={setPassword}
                 />
-                <TouchableOpacity onPress={toggleShowPassword}>
+                <TouchableOpacity onPress={switchPasswordVisibility}>
                   <Entypo name={showPassword ? 'eye' : 'eye-with-line'} size={24} color="gray" />
                 </TouchableOpacity>
               </View>

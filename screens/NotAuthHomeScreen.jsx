@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
-import Boton from '../Components/BotonPrimario'
+import BotonPrimario from '../Componentes/BotonPrimario'
 import NotAuthHomeScreenStyles from '../styles/NotAuthHomeScreenStyles'
 
 
@@ -18,7 +18,7 @@ function NotAuthHomeScreen({ navigation }) {
               resizeMode="cover"
             />
             <Text style={NotAuthHomeScreenStyles.subtitle}>Inicia sesion si ya tenes una cuenta para poder viajar con nosotros, caso contrario create una cuenta</Text>
-            <Boton
+            <BotonPrimario
               text='Iniciar Sesion'
               onPress={() => navigation.navigate('IniciarSesionScreen')} 
             />

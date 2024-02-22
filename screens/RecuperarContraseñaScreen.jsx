@@ -1,7 +1,7 @@
 import { View, Text, ScrollView, StyleSheet, TextInput, Button, SafeAreaView } from 'react-native'
 import React, { useState } from 'react'
-import Boton from '../Components/BotonPrimario';
-import BotonAtras from '../Components/BotonSecundario';
+import BotonPrimario from '../Componentes/BotonPrimario';
+import BotonSecundario from '../Componentes/BotonSecundario';
 import RecuperarContraseñaScreenStyles from '../styles/RecuperarContraseñaScreenStyles';
 
 function RecuperarContraseñaScreen({ navigation }) {
@@ -33,12 +33,12 @@ function RecuperarContraseñaScreen({ navigation }) {
               onChangeText={setEmail} />
           </View>
           <View style={RecuperarContraseñaScreenStyles.containerBtn}>
-            <Boton text='Enviar' onPress={() => alert('Mostrar algun modal que informe al usuario que su email se envio correctamente')}></Boton>
+            <BotonPrimario text='Enviar' onPress={() => alert('Mostrar algun modal que informe al usuario que su email se envio correctamente')}></BotonPrimario>
           </View>
           <View style={RecuperarContraseñaScreenStyles.containerBtn}>
-            <BotonAtras
+            <BotonSecundario
               onPress={() => { navigation.goBack() }}
-              text='Atras'></BotonAtras>
+              text='Atras'></BotonSecundario>
           </View>
         </View>
       </SafeAreaView>
