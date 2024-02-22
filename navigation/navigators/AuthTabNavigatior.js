@@ -1,8 +1,8 @@
 //screenOptions
-import {screenOptions} from './screenOptions';
+import screenOptions from './screenOptions';
 
+//Tab Navigator
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
 
 //screens
 import NotAuthHomeScreen from '../../screens/NotAuthHomeScreen';
