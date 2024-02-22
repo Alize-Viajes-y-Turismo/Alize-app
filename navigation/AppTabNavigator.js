@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 import AuthTab from './AuthTab.js';
 import AppTab from './AppTab.js';
 import { useAuth } from '../auth/authentication';
+=======
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useContext } from 'react';
+import tabNavigatorOptions from './tabNavigatorOptions';
+import tabScreenOptions from './tabScreenOptions';
+>>>>>>> 4c587ba (trasladando las opciones del tabNavigator y sus screens a dos archivos aparte)
 
 <<<<<<< HEAD
 =======
@@ -26,6 +33,7 @@ function TabNavigator() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <>
             {authData ? <AppTab /> : <AuthTab />}
         </>
@@ -38,25 +46,32 @@ function TabNavigator() {
 =======
         <Tab.Navigator screenOptions={screenOptions} initialRouteName='HomeScreen'>
 >>>>>>> 40c087f (eliminando las screens de AppTabNavigation que no deben estar ahi, lo mismo con AuthTabNavigator, y modificando el initialRouteName)
+=======
+        <Tab.Navigator screenOptions={tabNavigatorOptions.screenOptions} initialRouteName='HomeScreen'>
+>>>>>>> 4c587ba (trasladando las opciones del tabNavigator y sus screens a dos archivos aparte)
             <Tab.Screen 
                 name="HomeScreen" 
                 component={HomeScreen} 
-                options={options.viaje}  
+                options={tabScreenOptions.HomeScreen}  
             />
             <Tab.Screen 
                 name="AyudaScreen" 
                 component={AyudaScreen} 
-                options={options.soporte} 
+                options={tabScreenOptions.AyudaScreen} 
             />
             <Tab.Screen 
                 name="ViajeScreen" 
                 component={ViajeScreen} 
-                options={options.viaje}  
+                options={tabNavigatorOptions.ViajeScreen}  
             />
         </Tab.Navigator>
 >>>>>>> 19f2289 (Mudando las screens del stack al tab navigator)
     )
 };
 
+<<<<<<< HEAD
 export default TabNavigator;
 
+=======
+export default TabNavigator;
+>>>>>>> 4c587ba (trasladando las opciones del tabNavigator y sus screens a dos archivos aparte)
