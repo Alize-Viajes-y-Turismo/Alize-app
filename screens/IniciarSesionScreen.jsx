@@ -1,6 +1,6 @@
 import { SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View, } from 'react-native';
-import Boton from '../Components/BotonPrimario';
-import BotonAtras from '../Components/BotonSecundario';
+import BotonPrimario from '../Componentes/BotonPrimario';
+import BotonSecundario from '../Componentes/BotonSecundario';
 import { Entypo } from '@expo/vector-icons';
 import IniciarSesionScreenStyles from '../styles/IniciarSesionScreenStyles';
 import { useState } from 'react';
@@ -81,12 +81,12 @@ function IniciarSesionScreen({ navigation }) {
               style={IniciarSesionScreenStyles.paragraph}>¿Olvidaste tu Contraseña?</Text>
           </View>
           <View style={IniciarSesionScreenStyles.btnContainer}>
-            <Boton onPress={loginHandler} text='Iniciar Sesion'></Boton>
+            <BotonPrimario onPress={loginHandler} text='Iniciar Sesion'></BotonPrimario>
           </View>
           <View style={IniciarSesionScreenStyles.btnContainer}>
-            <BotonAtras
+            <BotonSecundario
               onPress={() => { navigation.goBack() }}
-              text='Atras'></BotonAtras>
+              text='Atras'></BotonSecundario>
           </View>
           <View >
             <Text
