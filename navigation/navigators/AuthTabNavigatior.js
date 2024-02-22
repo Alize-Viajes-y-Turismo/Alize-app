@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import options from './tabScreenOptions';
-import tabNavigatorOptions from './screenOptions';
+import screenOptions from './screenOptions';
 
 
 //screens
@@ -16,7 +16,7 @@ const Tab = createBottomTabNavigator();
 function AuthTabNavigator() {
 
     return (
-        <Tab.Navigator screenOptions={tabNavigatorOptions.screenOptions} initialRouteName='NotAuthHomeScreen'>
+        <Tab.Navigator screenOptions = {screenOptions} initialRouteName='NotAuthHomeScreen'>
             <Tab.Screen 
                 name = "NotAuthHomeScreen"
                 component = {NotAuthHomeScreen}
