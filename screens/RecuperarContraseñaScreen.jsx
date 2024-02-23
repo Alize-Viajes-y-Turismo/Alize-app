@@ -3,11 +3,13 @@ import React, { useState } from 'react'
 import BotonPrimario from '../Componentes/BotonPrimario';
 import BotonSecundario from '../Componentes/BotonSecundario';
 import RecuperarContraseñaScreenStyles from '../styles/RecuperarContraseñaScreenStyles';
+import { sentRecoveryMail } from '../api/recoveryPasswordRequests';
 
 function RecuperarContraseñaScreen({ navigation }) {
 
+  //funcion para enviar un correo de recuperacion al usuario
   function sentMailHandler() {
-    //enviar correo de verificacion
+    sentRecoveryMail(email)
   }
 
   const [email, setEmail] = useState('');

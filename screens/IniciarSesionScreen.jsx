@@ -5,6 +5,7 @@ import { Entypo } from '@expo/vector-icons';
 import IniciarSesionScreenStyles from '../styles/IniciarSesionScreenStyles';
 import { useState } from 'react';
 import { useAuthContext } from '../contexts/AuthContext';
+import { loginRequest } from '../api/authRequests';
 
 
 function IniciarSesionScreen({ navigation }) {
@@ -39,7 +40,7 @@ function IniciarSesionScreen({ navigation }) {
           alert("Error interno del servidor")
       }
     } catch(err) {
-      alert("Ha ocurrido un error")
+      alert(err.message)
     }
   }
 

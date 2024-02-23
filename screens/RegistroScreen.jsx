@@ -21,7 +21,7 @@ export default function RegistroPantalla({ navigation }) {
   //en caso contrario, se notifica al usuario que el email ingresado ya pertenece a una cuenta
   async function handleRegister() {
       try {
-        const res = registerRequest(email, password)
+        const res = await registerRequest(email, password)
         switch (res.status) {
           case 200:
             login();
