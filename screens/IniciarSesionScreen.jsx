@@ -31,7 +31,7 @@ function IniciarSesionScreen({ navigation }) {
       const res = await loginRequest(email, password)
       switch (res.status) {
         case 200:
-          login();
+          login(res.data);
           break;
         case 409: 
           alert("Los datos ingresados son incorrectos")
