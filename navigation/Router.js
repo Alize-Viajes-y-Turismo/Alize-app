@@ -5,11 +5,11 @@ import { NavigationContainer } from "@react-navigation/native";
 
 function Router() {
 
-    const {isAuthenticated} = useAuthContext()
+    const {authData} = useAuthContext()
 
     return (
         <NavigationContainer>
-            {isAuthenticated ? <AppTabNAvigator /> : <AuthTabNavigator />}
+            {authData ? <AppTabNAvigator /> : <AuthTabNavigator />}
         </NavigationContainer>
     )
 }

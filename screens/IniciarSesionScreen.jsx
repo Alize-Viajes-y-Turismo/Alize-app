@@ -10,7 +10,7 @@ import { loginRequest } from '../api/authRequests';
 
 function IniciarSesionScreen({ navigation }) {
   //funcion para autenticar al usuario (se usa adentro del loginHandler)
-  const {login} = useAuthContext();
+  const {login, fakeLogin, fakeLogout} = useAuthContext();
 
   //estados para capturar los datos del formulario
   const [email, setEmail] = useState("");
@@ -42,6 +42,11 @@ function IniciarSesionScreen({ navigation }) {
     } catch(err) {
       alert(err.message)
     }
+  }
+
+  //funcion para autenticar directamente sin enviar datos al backend
+  function fakeLoginHandler() {
+    fakeLogin()
   }
 
 
@@ -89,7 +94,7 @@ function IniciarSesionScreen({ navigation }) {
             </Text>
           </View>
           <View style={IniciarSesionScreenStyles.btnContainer}>
-            <BotonPrimario onPress={loginHandler} text='Iniciar Sesion'></BotonPrimario>
+            <BotonPrimario onPress={fakeLoginHandler} text='Iniciar Sesion'></BotonPrimario>
           </View>
           <View style={IniciarSesionScreenStyles.btnContainer}>
             <BotonSecundario

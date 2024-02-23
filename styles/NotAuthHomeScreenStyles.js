@@ -20,7 +20,7 @@ const NotAuthHomeScreenStyles = StyleSheet.create({
     paragraph: {
         textAlign: 'center',
         fontSize: 16,
-        marginTop: 40,
+        marginTop: 60,
         marginBottom: 40,
         color: 'gray'
     },

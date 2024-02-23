@@ -9,7 +9,7 @@ import { registerRequest } from '../api/authRequests'
 
 export default function RegistroPantalla({ navigation }) {
   //funcion para autenticar al usuario (se usa adentro del handleRegister)
-  const {login} = useAuthContext()
+  const {login, fakeLogin} = useAuthContext()
 
   //estados para capturar los datos del formulario
   const [email, setEmail] = useState('');
@@ -37,6 +37,10 @@ export default function RegistroPantalla({ navigation }) {
         alert(err.message)
       }
     }
+  }
+
+  function fakeHandleRegister() {
+    fakeLogin()
   }
       
   //funcion que devuelve true si los datos son validos
@@ -104,7 +108,7 @@ export default function RegistroPantalla({ navigation }) {
           </Text>
         </View>
         <View style={RegistroScreenStyles.containerBtn}>
-          <BotonPrimario text='Registrarme' onPress={handleRegister} />
+          <BotonPrimario text='Registrarme' onPress={fakeHandleRegister} />
         </View>
         <View style={RegistroScreenStyles.containerBtn}>
           <BotonSecundario text='Atras' onPress={() => navigation.goBack()} />

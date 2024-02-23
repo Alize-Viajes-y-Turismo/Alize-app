@@ -20,7 +20,7 @@ function AyudaScreen() {
           <Image src='./assets/support.png' />
         </View>
         <View style={AyudaScreenStyles.containerBtn}>
-          <BotonPrimario text='Obtener Ayuda' ></BotonPrimario>
+          <BotonPrimario text='Obtener Ayuda' />
         </View>
         <View style={AyudaScreenStyles.boxTitleContainer}>
           <Text style={AyudaScreenStyles.text}>

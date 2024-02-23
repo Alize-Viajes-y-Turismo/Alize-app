@@ -22,23 +22,36 @@ const screenOptions = {
 
     NotAuthHome: {
         tabBarIcon: ({color, size}) => (<FontAwesome6 name="user" size={size} color={color} />),
-        tabBarLabel: 'Home'
+        tabBarLabel: '',
+        title: "Inicio",
+        headerTitleAlign: "center"
     },
     Ayuda: {
         tabBarIcon: ({color, size}) => (<AntDesign name="message1" size={30} color={"#FA323"} />),
-        tabBarLabel: 'Ayuda'
+        tabBarLabel: '',
+        title: "Ayuda",
+        headerTitleAlign: "center"
     },
     Viaje: {
         tabBarIcon: ({color, size}) => (<FontAwesome name="search" size={30} color={"#FA323"} />),
-        tabBarLabel: 'Viaje'
+        tabBarLabel: '',
+        title: "Viaje",
+        headerTitleAlign: "center"
     },
 
     IniciarSesion: {
         tabBarButton: () => null,
+        title: ""
     },
 
     Registro: {
         tabBarButton: () => null,
+        title: ""
+    },
+
+    RecuperarContraseña: {
+        tabBarButton: () => null,
+        title: ""
     }
 
 }

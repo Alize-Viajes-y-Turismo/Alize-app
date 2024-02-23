@@ -47,6 +47,7 @@ function AuthTabNavigator() {
             <Tab.Screen 
                 name="RecuperarContraseñaScreen" 
                 component={RecuperarContraseñaScreen} 
+                options={screenOptions.RecuperarContraseña}
             />
         </Tab.Navigator>
     )

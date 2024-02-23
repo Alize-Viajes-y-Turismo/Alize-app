@@ -1,4 +1,5 @@
-import { createContext, useContext, useState} from 'react';
+import { createContext, useContext, useState, useEffect} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const AuthContext = createContext();
 
@@ -38,10 +39,22 @@ export function AuthProvider({ children }) {
   async function logout() {
     setAuthData(undefined)
     await AsyncStorage.removeItem('@AuthData');
-  };
+  }; 
+
+  //FUNCIONES DE PRUEBA-----------------------
+
+  function fakeLogin() {
+    setAuthData(true)
+  }
+
+  function fakeLogout() {
+    setAuthData(false)
+  }
+
+  //FUNCIONES DE PRUEBA-----------------------
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ authData, login, logout, fakeLogin, fakeLogout }}>
       {children}
     </AuthContext.Provider>
   );

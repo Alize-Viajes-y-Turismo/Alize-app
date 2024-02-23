@@ -1,18 +1,25 @@
 import React from 'react'
 import { View} from 'react-native'
 import { useAuthContext } from '../contexts/AuthContext'
+import BotonPrimario from '../Componentes/BotonPrimario'
+import { Text } from 'react-native-paper'
 
 function HomeScreen() {
 
-  const {logout} = useAuthContext()
+  const {logout, fakeLogout} = useAuthContext()
 
   function logoutHandler() {
     logout()
   }
 
+  function fakeLoginHandler() {
+    fakeLogout()
+  }
+
   return (
     <View>
-      <BotonPrimario onPress={logoutHandler} text='Cerrar Sesion'></BotonPrimario>
+      <Text>Aqui debe ir el perfil del usuario</Text>
+      <BotonPrimario onPress={fakeLoginHandler} text='Cerrar Sesion'></BotonPrimario>
     </View>
   )
 }

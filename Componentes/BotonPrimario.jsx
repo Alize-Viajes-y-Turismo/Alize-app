@@ -11,8 +11,6 @@ export default function BotonPrimario({ onPress, text }) {
   )
 }
 
-//estilos
-
 const styles = StyleSheet.create({
   boton: {
     backgroundColor: '#FC3232',
