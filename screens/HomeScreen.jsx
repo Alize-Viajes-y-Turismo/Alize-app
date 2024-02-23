@@ -12,7 +12,7 @@ function HomeScreen() {
 
   return (
     <View>
-      <BotonPrimario onPress={logoutHandler} text='Iniciar Sesion'></BotonPrimario>
+      <BotonPrimario onPress={logoutHandler} text='Cerrar Sesion'></BotonPrimario>
     </View>
   )
 }

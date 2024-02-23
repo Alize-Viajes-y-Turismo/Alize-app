@@ -20,6 +20,7 @@ export default function RegistroPantalla({ navigation }) {
   //esta funcion registra al usuario y luego ejecuta el login si el email ingresado no pertenece a una cuenta existente
   //en caso contrario, se notifica al usuario que el email ingresado ya pertenece a una cuenta
   async function handleRegister() {
+    if (isDataValidated()) {
       try {
         const res = await registerRequest(email, password)
         switch (res.status) {
@@ -36,6 +37,21 @@ export default function RegistroPantalla({ navigation }) {
         alert(err.message)
       }
     }
+  }
+      
+  //funcion que devuelve true si los datos son validos
+  //en caso contrario alerta al usuario y devuelve false
+  function isDataValidated() {
+    if (password != confirmPassword) {
+      alert("Las contraseñas no coinciden");
+      return false;
+    } else if (!isChecked) {
+      alert("Debes aceptar las condiciones");
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   return (
     <ScrollView>
