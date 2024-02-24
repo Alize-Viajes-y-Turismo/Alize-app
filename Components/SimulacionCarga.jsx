@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ActivityIndicator, StyleSheet, ScrollView, Image, TouchableNativeFeedback, Alert } from 'react-native';
+import { View, Text, ActivityIndicator, StyleSheet, ScrollView, Image, TouchableNativeFeedback, Alert, Button } from 'react-native';
+
 
 const SimulacionCarga = () => {
   const [isLoading, setIsLoading] = useState(true);
 
-  // Simular una carga ficticia
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsLoading(false);
-    }, 10000); // Simula una carga de 3 segundos
+    }, 10000); // 
     return () => clearTimeout(timeout);
   }, []);
 
@@ -32,6 +32,7 @@ const SimulacionCarga = () => {
             isLoading &&
             <ActivityIndicator size={100} color="#FC3232" style={styles.activityIndicator} />
           }
+       
         </View>
       </View>
     </ScrollView>

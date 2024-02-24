@@ -15,8 +15,8 @@ const StackNavigator = () => {
     <NavigationContainer >
       <Stack.Navigator screenOptions={{ headerShown: false, contentStyle: {backgroundColor:'white'} }} initialRouteName={TabNavigator}>
         <Stack.Screen name="TabNavigator" component={TabNavigator} />
-        <Stack.Screen name="IniciarSesion" component={IniciarSesion} />
         <Stack.Screen name="RegistroPantalla" component={RegistroPantalla} />
+          <Stack.Screen name="IniciarSesion" component={IniciarSesion} />
         <Stack.Screen name="RecuperarContraseñaPantalla" component={RecuperarContraseñaPantalla} />
       </Stack.Navigator>
     </NavigationContainer>

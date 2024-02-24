@@ -3,6 +3,7 @@ import Boton from '../Components/BotonPrimario';
 import BotonAtras from '../Components/BotonSecundario';
 import { useState } from 'react';
 import { Entypo } from '@expo/vector-icons';
+import Login from '../routes/login';
 
 const IniciarSesion = ({ navigation }) => {
 
@@ -51,7 +52,7 @@ const IniciarSesion = ({ navigation }) => {
               style={styles.paragraph}>¿Olvidaste tu Contraseña?</Text>
           </View>
           <View style={styles.btnContainer}>
-            <Boton onPress={() => alert('Este boton debe dejarme navegar como usuario dentro de la app')} text='Iniciar Sesion'></Boton>
+            <Boton onPress={Login} text='Iniciar Sesion'></Boton>
           </View>
           <View style={styles.btnContainer}>
             <BotonAtras

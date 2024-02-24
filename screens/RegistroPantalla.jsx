@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import BotonAtras from '../Components/BotonSecundario';
 import Boton from '../Components/BotonPrimario';
 import Checkbox from 'expo-checkbox';
+import EnviarFormulario from '../routes/registro';
 import axios from '../axiosConfig'
 
 
@@ -65,7 +66,7 @@ export default function RegistroPantalla({ navigation }) {
           </Text>
         </View>
         <View style={styles.containerBtn}>
-          <Boton text='Registrarme' onPress={() => { alert('Esto tiene que llevar a una peticion hacia el back para validar informacion de si el usuario se registro correctamente') }} />
+          <Boton text='Registrarme' onPress={EnviarFormulario} />
         </View>
         <View style={styles.containerBtn}>
           <BotonAtras text='Atras' onPress={() => navigation.goBack()} />
