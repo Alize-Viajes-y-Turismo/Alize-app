@@ -1,12 +1,11 @@
 import React from 'react'
 import { Text } from 'react-native-paper'
+import { Image } from 'react-native'
 
 function LoadingScreen() {
 
   return (
-    <Text>
-      Loading Screen
-    </Text>
+    <Image source={require("../assets/alize-mountain.jpg")}/>
   )
 }
 

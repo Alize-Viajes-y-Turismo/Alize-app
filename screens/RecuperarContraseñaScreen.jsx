@@ -8,8 +8,19 @@ import { sentRecoveryMail } from '../api/recoveryPasswordRequests';
 function RecuperarContraseñaScreen({ navigation }) {
 
   //funcion para enviar un correo de recuperacion al usuario
-  function sentMailHandler() {
-    sentRecoveryMail(email)
+  function onPressHandler() {
+    const res = sentRecoveryMail(email);
+    switch (res.status) {
+      case 200:
+        navigation.navigate("");
+        break;
+      default:
+        alert("Ha ocurrido un error")
+    }
+  }
+
+  function fakeOnPressHandler() {
+    navigation.navigate("CodigoVerificacionScreen");
   }
 
   const [email, setEmail] = useState('');
@@ -43,7 +54,7 @@ function RecuperarContraseñaScreen({ navigation }) {
           <View style={RecuperarContraseñaScreenStyles.containerBtn}>
             <BotonPrimario 
               text='Enviar' 
-              onPress={sentMailHandler}>
+              onPress={fakeOnPressHandler}>
             </BotonPrimario>
           </View>
           <View style={RecuperarContraseñaScreenStyles.containerBtn}>

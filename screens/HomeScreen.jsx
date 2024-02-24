@@ -16,9 +16,18 @@ function HomeScreen() {
     fakeLogout()
   }
 
+  function misDatosHandler() {
+    alert("Esta pantalla todavia no existe")
+  }
+
+  function misPasajesHandler() {
+    alert("Esta pantalla todavia no existe")
+  }
+
   return (
     <View>
-      <Text>Aqui debe ir el perfil del usuario</Text>
+      <BotonPrimario onPress={misDatosHandler} text='Mis datos'></BotonPrimario>
+      <BotonPrimario onPress={misPasajesHandler} text='Mis pasajes'></BotonPrimario>
       <BotonPrimario onPress={fakeLoginHandler} text='Cerrar Sesion'></BotonPrimario>
     </View>
   )
