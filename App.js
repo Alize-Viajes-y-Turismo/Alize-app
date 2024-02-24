@@ -1,19 +1,19 @@
-import { StyleSheet} from 'react-native';
-import StackNavigator from './Stack-Navigation/StackNavigator';
+import Router from "./navigation/Router"
+import { AuthProvider } from "./contexts/AuthContext"
+import {LoadingContextProvider} from "./contexts/LoadingContext"
 
-
-export default function App() {
-
+function App() {
 
   return (
-    <>
-        <StackNavigator />
-    </>
-  );
-};
+    <LoadingContextProvider>
 
-const styles = StyleSheet.create({
-  tab: {
-    backgroundColor: 'red',
-  }
-});
+        <AuthProvider>
+          <Router />
+        </AuthProvider>
+      
+    </LoadingContextProvider>
+  )
+
+}
+
+export default App
