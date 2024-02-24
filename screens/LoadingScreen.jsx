@@ -1,12 +1,12 @@
 import React from 'react'
+import { Text } from 'react-native-paper'
 
 function LoadingScreen() {
 
-  navigation.setOptions({ tabBarVisible: false });
-
   return (
-    <>
-    </>
+    <Text>
+      Loading Screen
+    </Text>
   )
 }
 

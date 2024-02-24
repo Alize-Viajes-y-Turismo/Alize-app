@@ -1,14 +1,19 @@
 import Router from "./navigation/Router"
 import { AuthProvider } from "./contexts/AuthContext"
+import {LoadingContextProvider} from "./contexts/LoadingContext"
 
 function App() {
 
   return (
-    <AuthProvider>
-      <Router />
-    </AuthProvider>
+    <LoadingContextProvider>
+
+        <AuthProvider>
+          <Router />
+        </AuthProvider>
+      
+    </LoadingContextProvider>
   )
-  
+
 }
 
 export default App
