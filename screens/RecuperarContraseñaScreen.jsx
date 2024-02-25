@@ -1,5 +1,5 @@
-import { View, Text, ScrollView, TextInput, SafeAreaView } from 'react-native'
-import React, { useState } from 'react'
+import { View, Text, ScrollView, TextInput, SafeAreaView } from 'react-native';
+import { useState } from 'react';
 import BotonPrimario from '../Componentes/BotonPrimario';
 import BotonSecundario from '../Componentes/BotonSecundario';
 import RecuperarContraseñaScreenStyles from '../styles/RecuperarContraseñaScreenStyles';

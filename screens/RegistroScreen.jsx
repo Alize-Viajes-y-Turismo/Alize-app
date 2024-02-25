@@ -1,61 +1,74 @@
 import { View, Text, ScrollView, TextInput } from 'react-native';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import BotonSecundario from '../Componentes/BotonSecundario';
 import BotonPrimario from '../Componentes/BotonPrimario';
 import Checkbox from 'expo-checkbox';
-import { useAuthContext } from '../contexts/AuthContext';
 import RegistroScreenStyles from '../styles/RegistroScreenStyles';
-import { registerRequest } from '../api/authRequests'
+import { useAuthContext } from '../contexts/AuthContext';
 
 export default function RegistroPantalla({ navigation }) {
-  //funcion para autenticar al usuario (se usa adentro del handleRegister)
-  const {login, fakeLogin} = useAuthContext()
 
-  //estados para capturar los datos del formulario
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  //CONSTANTES
+
+  //funcion para autenticar al usuario (se usa adentro del handleRegister).
+  const { register } = useAuthContext();
+
+
+
+  //Para confirmar la contraseña y el comprobar.
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isChecked, setChecked] = useState(false);
 
-  //esta funcion registra al usuario y luego ejecuta el login si el email ingresado no pertenece a una cuenta existente
-  //en caso contrario, se notifica al usuario que el email ingresado ya pertenece a una cuenta
-  async function handleRegister() {
-    if (isDataValidated()) {
-      try {
-        const res = await registerRequest(email, password)
-        switch (res.status) {
-          case 200:
-            login();
-            break;
-          case 409: 
-            alert("El email que ingresaste ya pertenece a una cuenta")
-            break;
-          default: 
-            alert("Error interno del servidor")
-        }
-      } catch(err) {
-        alert(err.message)
-      }
-    }
-  }
 
-  function fakeHandleRegister() {
-    fakeLogin()
-  }
-      
-  //funcion que devuelve true si los datos son validos
+
+  //Estados para capturar los datos del formulario.
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const user = {email, password};
+
+
+
+    //funcion que devuelve true si los datos son validos
   //en caso contrario alerta al usuario y devuelve false
   function isDataValidated() {
+
     if (password != confirmPassword) {
+
       alert("Las contraseñas no coinciden");
       return false;
+
     } else if (!isChecked) {
+
       alert("Debes aceptar las condiciones");
       return false;
+
     } else {
+
       return true;
+
     }
+
   }
+
+  //esta funcion registra al usuario y luego ejecuta el login si el email ingresado no pertenece a una cuenta existente
+  //en caso contrario, se notifica al usuario que el email ingresado ya pertenece a una cuenta
+  async function handlerRegister() {
+
+    if (isDataValidated()) {
+
+      try {
+        
+        register(user)
+        
+      } catch(error) {
+
+        alert(error.message)
+      }
+    }
+
+  };
+      
+
 
   return (
     <ScrollView>
@@ -108,7 +121,7 @@ export default function RegistroPantalla({ navigation }) {
           </Text>
         </View>
         <View style={RegistroScreenStyles.containerBtn}>
-          <BotonPrimario text='Registrarme' onPress={fakeHandleRegister} />
+          <BotonPrimario text='Registrarme' onPress={handlerRegister} />
         </View>
         <View style={RegistroScreenStyles.containerBtn}>
           <BotonSecundario text='Atras' onPress={() => navigation.goBack()} />

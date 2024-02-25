@@ -1,11 +1,13 @@
-import React from 'react'
-import { Text } from 'react-native-paper'
-import { Image } from 'react-native'
+import { Text } from 'react-native-paper';
+import { Image, View } from 'react-native';
 
 function LoadingScreen() {
 
   return (
-    <Image source={require("../assets/alize-mountain.jpg")}/>
+    <View>
+      <Image source={require("../assets/alize-mountain.jpg")}/>
+    </View>
+    
   )
 }
 

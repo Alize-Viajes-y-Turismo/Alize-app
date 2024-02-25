@@ -1,25 +1,30 @@
 import axios from "axios"
 
-export async function loginRequest(email, password) {
-    const body = {
-        email: email,
-        password: password
-    }
-    const res = await axios.post("https://hfjhbt27-3001.brs.devtunnels.ms/api/users/login", body);
+export async function loginRequest(user) {
+
+    const res = await axios.post("http://localhost:3001/api/users/login", user);
     return res;
+
 } 
 
-export async function registerRequest(email, password) {
-    const body = {
-        email: email,
-        password: password
-    }
-    const res = await axios.post("https://hfjhbt27-3001.brs.devtunnels.ms/api/users/register", body);
+export async function registerRequest(user) {
+
+    const res = await axios.post("http://localhost:3001/api/users/register", user);
     return res;
+
 } 
 
-export async function verifyTokenRequest() {
-    const res = await axios.get("https://hfjhbt27-3001.brs.devtunnels.ms/");
+export async function logoutRequest() {
+
+    const res = await axios.get("http://localhost:3001/api/users/logout");
     return res;
+
+} 
+
+export async function verifyTokenRequest(token) {
+
+    const res = await axios.get("http://localhost:3001/api/verify", token);
+    return res;
+
 } 
 

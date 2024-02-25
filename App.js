@@ -1,17 +1,15 @@
-import Router from "./navigation/Router"
-import { AuthProvider } from "./contexts/AuthContext"
-import {LoadingContextProvider} from "./contexts/LoadingContext"
+import Router from "./navigation/Router";
+import { AuthProvider } from "./contexts/AuthContext";
+import { LoadingProvider } from "./contexts/LoadingContext";
 
 function App() {
 
   return (
-    <LoadingContextProvider>
+   <AuthProvider>
 
-        <AuthProvider>
-          <Router />
-        </AuthProvider>
-      
-    </LoadingContextProvider>
+
+   </AuthProvider>
+
   )
 
 }

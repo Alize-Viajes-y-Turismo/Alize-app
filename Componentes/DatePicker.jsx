@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import DatePicker from 'react-native-modern-datepicker';
 
@@ -8,7 +8,7 @@ const BasicUsage = () => {
 
   return (
     <DatePicker
-     style={styles.calendar}
+      style={styles.calendar}
       onSelectedChange={date => setSelectedDate(date)}
     />
   );

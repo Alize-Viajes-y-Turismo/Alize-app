@@ -5,18 +5,40 @@ import { Entypo } from '@expo/vector-icons';
 import IniciarSesionScreenStyles from '../styles/IniciarSesionScreenStyles';
 import { useState } from 'react';
 import { useAuthContext } from '../contexts/AuthContext';
-import { loginRequest } from '../api/authRequests';
-
 
 function IniciarSesionScreen({ navigation }) {
-  //funcion para autenticar al usuario (se usa adentro del loginHandler)
-  const {login, fakeLogin, fakeLogout} = useAuthContext();
 
-  //estados para capturar los datos del formulario
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  
-  //estado para mostrar/ocultar contraseña
+
+
+  //CONSTANTES
+
+  //funcion para autenticar al usuario (se usa adentro del handleRegister).
+  const { login } = useAuthContext();
+
+
+
+  //Estados para capturar los datos del formulario.
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const user = {email, password};
+
+
+
+  //esta funcion registra al usuario y luego ejecuta el login si el email ingresado no pertenece a una cuenta existente
+  //en caso contrario, se notifica al usuario que el email ingresado ya pertenece a una cuenta
+  async function handlerLogin() {
+
+      try {
+        
+        login(user)
+        
+      } catch(error) {
+
+        alert(error.message)
+      }
+
+  };
+
   const [showPassword, setShowPassword] = useState(false); 
 
   //funcion para cambiar visibilidad de la contraseña
@@ -24,30 +46,9 @@ function IniciarSesionScreen({ navigation }) {
     setShowPassword(!showPassword);
   };
 
-  //esta funcion ejecuta el login solamente si los datos ingresados son correctos
-  //en caso contrario, se le notifica al usuario que los datos que ingresó son incorrectos
-  async function loginHandler() {
-    try {
-      const res = await loginRequest(email, password)
-      switch (res.status) {
-        case 200:
-          login(res.data);
-          break;
-        case 409: 
-          alert("Los datos ingresados son incorrectos")
-          break;
-        default: 
-          alert("Error interno del servidor")
-      }
-    } catch(err) {
-      alert(err.message)
-    }
-  }
 
-  //funcion para autenticar directamente sin enviar datos al backend
-  function fakeLoginHandler() {
-    fakeLogin()
-  }
+//-----------------------------------------------
+
 
 
   return (
@@ -94,7 +95,7 @@ function IniciarSesionScreen({ navigation }) {
             </Text>
           </View>
           <View style={IniciarSesionScreenStyles.btnContainer}>
-            <BotonPrimario onPress={fakeLoginHandler} text='Iniciar Sesion'></BotonPrimario>
+            <BotonPrimario onPress={handlerLogin} text='Iniciar Sesion'></BotonPrimario>
           </View>
           <View style={IniciarSesionScreenStyles.btnContainer}>
             <BotonSecundario

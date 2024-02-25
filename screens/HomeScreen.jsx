@@ -1,20 +1,7 @@
-import React from 'react'
-import { View} from 'react-native'
-import { useAuthContext } from '../contexts/AuthContext'
-import BotonPrimario from '../Componentes/BotonPrimario'
-import { Text } from 'react-native-paper'
+import { View} from 'react-native';
+import BotonPrimario from '../Componentes/BotonPrimario';
 
 function HomeScreen() {
-
-  const {logout, fakeLogout} = useAuthContext()
-
-  function logoutHandler() {
-    logout()
-  }
-
-  function fakeLoginHandler() {
-    fakeLogout()
-  }
 
   function misDatosHandler() {
     alert("Esta pantalla todavia no existe")
@@ -28,7 +15,7 @@ function HomeScreen() {
     <View>
       <BotonPrimario onPress={misDatosHandler} text='Mis datos'></BotonPrimario>
       <BotonPrimario onPress={misPasajesHandler} text='Mis pasajes'></BotonPrimario>
-      <BotonPrimario onPress={fakeLoginHandler} text='Cerrar Sesion'></BotonPrimario>
+      <BotonPrimario text='Cerrar Sesion'></BotonPrimario>
     </View>
   )
 }
