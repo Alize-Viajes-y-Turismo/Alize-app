@@ -2,7 +2,7 @@ import AuthTabNavigator from "./navigators/AuthTabNavigatior";
 import AppTabNAvigator from "./navigators/AppTabNavigator";
 import { useAuthContext } from "../contexts/AuthContext";
 import { NavigationContainer } from "@react-navigation/native";
-//import { useLoadingContext } from "../contexts/LoadingContext";
+import { useLoadingContext } from "../contexts/LoadingContext";
 import LoadingScreen from "../screens/LoadingScreen"
 import { useEffect } from "react"
 
