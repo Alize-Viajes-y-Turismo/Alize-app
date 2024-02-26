@@ -1,3 +1,4 @@
+import React from 'react';
 import { View, Text, ScrollView, TextInput } from 'react-native';
 import { useState } from 'react';
 import BotonSecundario from '../Componentes/BotonSecundario';
@@ -29,7 +30,7 @@ export default function RegistroPantalla({ navigation }) {
 
     //funcion que devuelve true si los datos son validos
   //en caso contrario alerta al usuario y devuelve false
-  function isDataValidated() {
+  const isDataValidated = () => {
 
     if (password != confirmPassword) {
 
@@ -51,13 +52,13 @@ export default function RegistroPantalla({ navigation }) {
 
   //esta funcion registra al usuario y luego ejecuta el login si el email ingresado no pertenece a una cuenta existente
   //en caso contrario, se notifica al usuario que el email ingresado ya pertenece a una cuenta
-  async function handlerRegister() {
+  const handlerRegister = async () => {
 
     if (isDataValidated()) {
 
       try {
         
-        register(user);
+        await register(user);
         
       } catch(error) {
 

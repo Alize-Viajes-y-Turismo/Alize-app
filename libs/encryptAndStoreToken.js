@@ -6,14 +6,14 @@ const { KeyStoreModule } = NativeModules;
 
 const encryptAndStoreToken = async (token) => {
     try {
-
+        
         const key = await KeyStoreModule.generateKey();
 
-        const encryptedID = CryptoJS.AES.encrypt(token, key).toString();
+        const encryptedToken = CryptoJS.AES.encrypt(token, key).toString();
 
         const expirationTime = Date.now() + (2 * 60 * 60 * 1000);
 
-        await AsyncStorage.setItem('encryptedToken', JSON.stringify({ value: encryptedID, expirationTime }));
+        await AsyncStorage.setItem('encryptedToken', JSON.stringify({ value: encryptedToken, expirationTime }));
 
     } catch (error) {
 
@@ -22,4 +22,4 @@ const encryptAndStoreToken = async (token) => {
     }
 }
 
-export default { encryptAndStoreToken };
+export default encryptAndStoreToken;

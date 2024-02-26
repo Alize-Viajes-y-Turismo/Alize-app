@@ -18,17 +18,18 @@ function Router() {
     })
 
     return (
+
         <>
-            {
-                loading ? <LoadingScreen/> :
+        {
+            loading ? <LoadingScreen/> :
 
-                <NavigationContainer>
-                    {authData ? <AppTabNAvigator /> : <AuthTabNavigator />}
-                </NavigationContainer>
-                
-            }
+            <NavigationContainer>
+                {authData ? <AppTabNAvigator /> : <AuthTabNavigator />}
+            </NavigationContainer>
+            
+        }
 
-        </>
+    </>
         
     )
 }

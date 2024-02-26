@@ -1,3 +1,4 @@
+import React from 'react';
 import { View, Text, ScrollView, TextInput, SafeAreaView } from 'react-native';
 import { useState } from 'react';
 import BotonPrimario from '../Componentes/BotonPrimario';

@@ -8,7 +8,7 @@ const NotAuthHomeScreenStyles = StyleSheet.create({
     title: {
         color: '#1E1E1E',
         fontSize: 36,
-        padding: 40,
+        padding: 20,
         textAlign: 'center',
     },
     subtitle: {
@@ -19,9 +19,8 @@ const NotAuthHomeScreenStyles = StyleSheet.create({
     },
     paragraph: {
         textAlign: 'center',
-        fontSize: 16,
-        marginTop: 60,
-        marginBottom: 40,
+        fontSize: 18,
+        marginTop: 10,
         color: 'gray'
     },
     imageContainer: {

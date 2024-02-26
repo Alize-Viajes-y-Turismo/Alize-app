@@ -27,13 +27,13 @@ const screenOptions = {
         headerTitleAlign: "center"
     },
     Ayuda: {
-        tabBarIcon: ({color, size}) => (<AntDesign name="message1" size={30} color={"#FA323"} />),
+        tabBarIcon: ({color, size}) => (<AntDesign name="message1" size={30} color={color} />),
         tabBarLabel: '',
         title: "Ayuda",
         headerTitleAlign: "center"
     },
     Viaje: {
-        tabBarIcon: ({color, size}) => (<FontAwesome name="search" size={30} color={"#FA323"} />),
+        tabBarIcon: ({color, size}) => (<FontAwesome name="search" size={30} color={color} />),
         tabBarLabel: '',
         title: "Viaje",
         headerTitleAlign: "center"

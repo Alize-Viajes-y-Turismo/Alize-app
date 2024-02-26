@@ -1,4 +1,4 @@
-import { Text } from 'react-native-paper';
+import React from 'react';
 import { Image, View } from 'react-native';
 
 function LoadingScreen() {

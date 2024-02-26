@@ -26,6 +26,6 @@ const decryptToken = async () => {
     console.error('Error al verificar el token:', error);
 
     }
-}
+};
 
-export default { decryptToken };
+export default decryptToken;

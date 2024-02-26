@@ -1,3 +1,4 @@
+import React from 'react';
 import { SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View, } from 'react-native';
 import BotonPrimario from '../Componentes/BotonPrimario';
 import BotonSecundario from '../Componentes/BotonSecundario';
@@ -26,15 +27,15 @@ function IniciarSesionScreen({ navigation }) {
 
   //esta funcion registra al usuario y luego ejecuta el login si el email ingresado no pertenece a una cuenta existente
   //en caso contrario, se notifica al usuario que el email ingresado ya pertenece a una cuenta
-  async function handlerLogin() {
+  const handlerLogin = async () => {
 
       try {
-        
-        login(user)
+
+        await login(user);
         
       } catch(error) {
 
-        alert(error.message)
+        alert(error.message);
       }
 
   };

@@ -16,7 +16,7 @@ export const useAuthContext = () => {
 
 };
 
-export const AuthProvider = async ({ children }) => {
+export const AuthProvider = ({ children }) => {
 
   //CONSTANTES
 
@@ -31,6 +31,7 @@ export const AuthProvider = async ({ children }) => {
 
 
   const register = async (user) => {
+
     try{
 
       const res = await registerRequest(user);
@@ -52,11 +53,11 @@ export const AuthProvider = async ({ children }) => {
     const res = await loginRequest(user);
     setAuthData(res.data);
     encryptAndStoreToken(res.token);
-
+  
   } catch (error) {
     
       setAuthLoginErrors(error);
-      console.log(error.response.data);
+      console.log(error.response.data)
 
   }
 
@@ -77,11 +78,11 @@ export const AuthProvider = async ({ children }) => {
 
     }
 
-
+  };
 
     const checkLogin = async () => {
     
-      const token = await decryptToken();
+      const token = decryptToken;
 
       if (!token) {
           setAuthData(undefined)
@@ -108,7 +109,7 @@ export const AuthProvider = async ({ children }) => {
       }
       
 
-  }
+  };
 
 
 
@@ -116,12 +117,11 @@ export const AuthProvider = async ({ children }) => {
 
 
 
-    useEffect( async () => {
+    useEffect( () => {
 
-      checkLogin(token);
+      checkLogin();
+
   }, [])
-
-  }; 
 
 
 
@@ -129,9 +129,9 @@ export const AuthProvider = async ({ children }) => {
 
 
 
-  return (
-    <AuthContext.Provider value={{ authLoginErrors, authData, login, register, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
+return (
+  <AuthContext.Provider value={{ authLoginErrors, authData, login, logout, register}}>
+    {children}
+  </AuthContext.Provider>
+);
 };
