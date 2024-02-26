@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, ActivityIndicator, StyleSheet, ScrollView, Image, TouchableNativeFeedback, Alert, Button } from 'react-native';
+import styles from '../styles/SimulacionCarga';
 
 
 const SimulacionCarga = () => {
@@ -15,6 +16,18 @@ const SimulacionCarga = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
+        <View >
+          <Text style={styles.title}>
+            Tu viaje mas barato
+          </Text>
+        </View>
+        <View>
+          <Image
+            source={require('../assets/alize-mountain.jpg')}
+            style={styles.image}
+            resizeMode="cover"
+          />
+        </View>
         <Text style={styles.loadingText}>Cargando...</Text>
         {
           isLoading &&
@@ -25,33 +38,6 @@ const SimulacionCarga = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 48,
-    marginBottom: 100,
-  },
-  activityIndicator: {
-    borderColor: 'red',
-  },
-  container: {
-    marginTop: 500,
-    justifyContent: 'center',
-    alignItems: 'center',
-    
-  },
-  loadingContainer: {
-    alignItems: 'center',
-  },
-  loadingText: {
-    marginTop: 10,
-    fontSize: 30,
-    marginBottom: 20,
-    textAlign: 'center', // Añadir textAlign: 'center' para centrar el texto horizontalmente
-  },
-  loadedText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-});
+
 
 export default SimulacionCarga;
