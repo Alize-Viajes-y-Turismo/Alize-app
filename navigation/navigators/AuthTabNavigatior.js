@@ -12,6 +12,7 @@ import IniciarSesionScreen from "../../screens/IniciarSesionScreen"
 import RegistroScreen from '../../screens/RegistroScreen';
 import RecuperarContraseñaScreen from '../../screens/RecuperarContraseñaScreen';
 import CodigoVerificacionScreen from '../../screens/CodigoVerificacionScreen';
+import Prueba from '../../screens/Prueba';
 
 
 const Tab = createBottomTabNavigator();
@@ -54,6 +55,11 @@ function AuthTabNavigator() {
                 name="CodigoVerificacionScreen" 
                 component={CodigoVerificacionScreen} 
                 options={screenOptions.RecuperarContraseña}
+            />
+               <Tab.Screen 
+                name="Prueba" 
+                component={Prueba} 
+                options={screenOptions.Viaje}
             />
         </Tab.Navigator>
     )
