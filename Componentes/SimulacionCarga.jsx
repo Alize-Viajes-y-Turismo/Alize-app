@@ -15,37 +15,17 @@ const SimulacionCarga = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <View style={styles.loadingContainer}>
-          <TouchableNativeFeedback
-            onPress={() => Alert.alert('Hola')}>
-            <Text style={styles.title}>
-              Tu Viaje mas barato
-            </Text>
-          </TouchableNativeFeedback>
-          <Image
-            source={require('../assets/alize-mountain.jpg')}
-            resizeMode="cover"
-            style={styles.image}
-          />
-          <Text style={styles.loadingText}>Cargando...</Text>
-          {
-            isLoading &&
-            <ActivityIndicator size={100} color="#FC3232" style={styles.activityIndicator} />
-          }
-       
-        </View>
+        <Text style={styles.loadingText}>Cargando...</Text>
+        {
+          isLoading &&
+          <ActivityIndicator size={100} color="#FC3232" style={styles.activityIndicator} />
+        }
       </View>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  image: {
-    width: 400,
-    height: 400,
-    marginBottom: 100,
-
-  },
   title: {
     fontSize: 48,
     marginBottom: 100,
@@ -54,11 +34,10 @@ const styles = StyleSheet.create({
     borderColor: 'red',
   },
   container: {
-    marginTop: 100,
-    borderWidth: 2,
-    borderColor: 'blue',
+    marginTop: 500,
     justifyContent: 'center',
     alignItems: 'center',
+    
   },
   loadingContainer: {
     alignItems: 'center',
@@ -67,6 +46,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 30,
     marginBottom: 20,
+    textAlign: 'center', // Añadir textAlign: 'center' para centrar el texto horizontalmente
   },
   loadedText: {
     fontSize: 18,
