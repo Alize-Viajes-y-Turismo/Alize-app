@@ -5,13 +5,14 @@ import { NavigationContainer } from "@react-navigation/native";
 import { useLoadingContext } from "../contexts/LoadingContext";
 import LoadingScreen from "../screens/LoadingScreen"
 import { useEffect } from "react"
+import Layout from "../Componentes/LayoutComponent";
 
 function Router() {
 
-    const {authData} = useAuthContext()
-    const {loading, endLoading} = useLoadingContext()
+    const { authData } = useAuthContext()
+    const { loading, endLoading } = useLoadingContext()
 
-    useEffect(()=>{
+    useEffect(() => {
         setTimeout(() => {
             endLoading()
         }, 5000);
@@ -22,17 +23,19 @@ function Router() {
             {
                 loading ?
 
-                <LoadingScreen/>
+                    <LoadingScreen />
 
-                :
+                    :
 
-                <NavigationContainer>
-                    {authData ? <AppTabNAvigator /> : <AuthTabNavigator />}
-                </NavigationContainer>
+                    <NavigationContainer>
+                        <Layout>
+                            {authData ? <AppTabNAvigator /> : <AuthTabNavigator />}
+                        </Layout>
+                    </NavigationContainer>
             }
 
         </>
-        
+
     )
 }
 
