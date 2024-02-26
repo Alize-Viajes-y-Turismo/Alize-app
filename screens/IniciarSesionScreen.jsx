@@ -6,18 +6,19 @@ import IniciarSesionScreenStyles from '../styles/IniciarSesionScreenStyles';
 import { useState } from 'react';
 import { useAuthContext } from '../contexts/AuthContext';
 import { loginRequest } from '../api/authRequests';
+import { useForm, Controller } from 'react-hook-form';
 
 
 function IniciarSesionScreen({ navigation }) {
   //funcion para autenticar al usuario (se usa adentro del loginHandler)
-  const {login, fakeLogin, fakeLogout} = useAuthContext();
+  const { login, fakeLogin, fakeLogout } = useAuthContext();
 
   //estados para capturar los datos del formulario
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+
   //estado para mostrar/ocultar contraseña
-  const [showPassword, setShowPassword] = useState(false); 
+  const [showPassword, setShowPassword] = useState(false);
 
   //funcion para cambiar visibilidad de la contraseña
   function switchPasswordVisibility() {
@@ -32,14 +33,16 @@ function IniciarSesionScreen({ navigation }) {
       switch (res.status) {
         case 200:
           login(res.data);
+          setEmail("");
+          setPassword("");
           break;
-        case 409: 
+        case 409:
           alert("Los datos ingresados son incorrectos")
           break;
-        default: 
+        default:
           alert("Error interno del servidor")
       }
-    } catch(err) {
+    } catch (err) {
       alert(err.message)
     }
   }
@@ -49,10 +52,17 @@ function IniciarSesionScreen({ navigation }) {
     fakeLogin()
   }
 
+  // Estado para manejar los formularios y sus validaciones
+  const { control, handleSubmit, formState: { errors } } = useForm();
+
+  const onSubmit = data => {
+    // Lógica para enviar el formulario
+    console.log(data);
+  };
 
   return (
     <SafeAreaView>
-      <ScrollView >
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={IniciarSesionScreenStyles.container}>
           <View >
             <Text style={IniciarSesionScreenStyles.title}>
@@ -65,21 +75,52 @@ function IniciarSesionScreen({ navigation }) {
             </Text>
           </View>
           <View style={IniciarSesionScreenStyles.inputContainer}>
-            <TextInput
-              style={IniciarSesionScreenStyles.input}
-              placeholder="Correo Electronico"
-              placeholderTextColor={'gray'}
-              onChangeText={setEmail}
+            {errors.email && <Text style={IniciarSesionScreenStyles.errorMessage}>{errors.email.message}</Text>}
+            <Controller
+              control={control}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <TextInput
+                  style={IniciarSesionScreenStyles.input}
+                  onBlur={onBlur}
+                  onChangeText={onChange}
+                  value={value}
+                  placeholder="Correo Electrónico"
+                />
+              )}
+              name="email"
+              rules={{
+                required: 'Correo electrónico requerido',
+                pattern: {
+                  value: /^\S+@\S+\.com$/i,
+                  message: 'El correo debe contener un dominio correcto'
+                }
+              }}
             />
             <View style={IniciarSesionScreenStyles.inputContainer}>
+              {errors.password && <Text style={IniciarSesionScreenStyles.errorMessage}>{errors.password.message}</Text>}
               <View style={IniciarSesionScreenStyles.passwordInputContainer}>
-                <TextInput
-                  style={IniciarSesionScreenStyles.passwordInput}
-                  placeholder="Contraseña"
-                  placeholderTextColor="gray"
-                  secureTextEntry={!showPassword} // Mostrar u ocultar la contraseña según el estado
-                  onChangeText={setPassword}
+                <Controller
+                  control={control}
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <TextInput
+                      style={IniciarSesionScreenStyles.passwordInput}
+                      onBlur={onBlur}
+                      onChangeText={onChange}
+                      value={value}
+                      placeholder="Contraseña"
+                      secureTextEntry={!showPassword}
+                    />
+                  )}
+                  name="password"
+                  rules={{
+                    required: 'Contraseña requerida',
+                    pattern: {
+                      value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
+                      message: 'La contraseña debe tener al menos 6 caracteres y contener letras y números'
+                    }
+                  }}
                 />
+
                 <TouchableOpacity onPress={switchPasswordVisibility}>
                   <Entypo name={showPassword ? 'eye' : 'eye-with-line'} size={24} color="gray" />
                 </TouchableOpacity>
@@ -90,11 +131,11 @@ function IniciarSesionScreen({ navigation }) {
             <Text
               onPress={() => { navigation.navigate('RecuperarContraseñaScreen') }}
               style={IniciarSesionScreenStyles.paragraph}>
-                ¿Olvidaste tu Contraseña?
+              ¿Olvidaste tu Contraseña?
             </Text>
           </View>
           <View style={IniciarSesionScreenStyles.btnContainer}>
-            <BotonPrimario onPress={fakeLoginHandler} text='Iniciar Sesion'></BotonPrimario>
+            <BotonPrimario onPress={handleSubmit(onSubmit)} text='Iniciar Sesion'></BotonPrimario>
           </View>
           <View style={IniciarSesionScreenStyles.btnContainer}>
             <BotonSecundario
@@ -105,7 +146,7 @@ function IniciarSesionScreen({ navigation }) {
             <Text
               onPress={() => { navigation.navigate('RegistroScreen') }}
               style={IniciarSesionScreenStyles.paragraph}>
-                ¿No tenes un usuario? Create una cuenta
+              ¿No tenes un usuario? Create una cuenta
             </Text>
           </View>
         </View>

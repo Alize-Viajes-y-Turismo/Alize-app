@@ -6,7 +6,7 @@ import NotAuthHomeScreenStyles from '../styles/NotAuthHomeScreenStyles'
 
 function NotAuthHomeScreen({ navigation }) {
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <SafeAreaView >
         <View style={NotAuthHomeScreenStyles.container}>
           <Text style={NotAuthHomeScreenStyles.title}>Bienvenido/a</Text>

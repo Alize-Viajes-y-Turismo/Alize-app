@@ -4,6 +4,7 @@ import BotonPrimario from '../Componentes/BotonPrimario';
 import BotonSecundario from '../Componentes/BotonSecundario';
 import RecuperarContraseñaScreenStyles from '../styles/RecuperarContraseñaScreenStyles';
 import { sentRecoveryMail } from '../api/recoveryPasswordRequests';
+import { useForm, Controller } from 'react-hook-form';
 
 function RecuperarContraseñaScreen({ navigation }) {
 
@@ -25,6 +26,14 @@ function RecuperarContraseñaScreen({ navigation }) {
 
   const [email, setEmail] = useState('');
 
+  // Estado para manejar los formularios y sus validaciones
+  const { control, handleSubmit, formState: { errors } } = useForm();
+
+  const onSubmit = data => {
+    // Lógica para enviar el formulario
+    console.log(data);
+  };
+
   return (
     <ScrollView>
       <SafeAreaView>
@@ -44,17 +53,32 @@ function RecuperarContraseñaScreen({ navigation }) {
               Recuperar Contraseña
             </Text>
           </View>
-          <View >
-            <TextInput
-              style={RecuperarContraseñaScreenStyles.input}
-              placeholder="Correo Electronico"
-              placeholderTextColor={'gray'}
-              onChangeText={setEmail} />
-          </View>
+          {errors.email && <Text style={RecuperarContraseñaScreenStyles.errorMessage}>{errors.email.message}</Text>}
+          <Controller
+            control={control}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <TextInput
+                style={RecuperarContraseñaScreenStyles.input}
+                placeholder="Correo Electronico"
+                placeholderTextColor={'gray'}
+                onChangeText={onChange}
+                onBlur={onBlur}
+                value={value}
+              />
+            )}
+            name="email"
+            rules={{
+              required: 'Correo electrónico requerido',
+              pattern: {
+                value: /^\S+@\S+\.com$/i,
+                message: 'El correo debe contener un dominio correcto'
+              }
+            }}
+          />
           <View style={RecuperarContraseñaScreenStyles.containerBtn}>
-            <BotonPrimario 
-              text='Enviar' 
-              onPress={fakeOnPressHandler}>
+            <BotonPrimario
+              text='Enviar'
+              onPress={handleSubmit(onSubmit)}>
             </BotonPrimario>
           </View>
           <View style={RecuperarContraseñaScreenStyles.containerBtn}>
