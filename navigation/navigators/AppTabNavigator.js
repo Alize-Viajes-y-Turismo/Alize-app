@@ -31,6 +31,7 @@ function AppTabNavigator() {
                 component={ViajeScreen} 
                 options={screenOptions.Viaje}
             />
+            
         </Tab.Navigator>
     )
 };

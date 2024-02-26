@@ -4,9 +4,6 @@ const RegistroScreenStyles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        borderWidth: 2,
-        borderColor: 'pink',
-        padding: 20,
         backgroundColor: 'white'
     },
     title: {
@@ -56,6 +53,21 @@ const RegistroScreenStyles = StyleSheet.create({
     checkBoxText: {
         marginLeft: 10,
     },
+    errorMessage: {
+        color: 'red',
+        marginBottom: 5
+    },
+    passwordInputContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent:'space-between',
+        borderWidth: 1,
+        borderColor: 'gray',
+        borderRadius: 5,
+        padding: 10,
+        marginBottom: 20,
+        paddingHorizontal: 10
+      },
 });
 
 export default RegistroScreenStyles

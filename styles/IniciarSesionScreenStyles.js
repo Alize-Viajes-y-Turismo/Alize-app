@@ -5,7 +5,8 @@ const IniciarSesionScreenStyles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
-    marginTop: 20
+    marginTop: 20,
+    backgroundColor: 'white'
   },
   title: {
     color: '#1E1E1E',
@@ -46,6 +47,8 @@ const IniciarSesionScreenStyles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'gray',
     borderRadius: 5,
+    padding: 10,
+    marginBottom: 20,
     paddingHorizontal: 10
   },
   passwordInput: {
@@ -65,7 +68,11 @@ const IniciarSesionScreenStyles = StyleSheet.create({
     alignItems: 'center',
     textAlign: 'center',
     marginBottom: 20
-  }
+  },
+  errorMessage: {
+    color: 'red',
+    marginBottom: 5
+  },
 })
 
 export default IniciarSesionScreenStyles

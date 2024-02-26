@@ -2,14 +2,9 @@ import { StyleSheet } from "react-native"
 
 const RecuperarContraseñaScreenStyles = StyleSheet.create({
     container: {
-        borderWidth: 20,
-        borderColor: 'red',
         flex: 1,
-        position: 'relative',
-        top: 50,
-        justifyContent: 'center',
-        padding: 20,
-        marginTop: 40,
+       
+        backgroundColor:'white'
     },
     title: {
         color: '#1E1E1E',
@@ -53,6 +48,10 @@ const RecuperarContraseñaScreenStyles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 20,
     },
+    errorMessage: {
+        color: 'red',
+        marginBottom: 5
+      },
 })
 
 export default RecuperarContraseñaScreenStyles
