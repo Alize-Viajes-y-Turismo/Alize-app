@@ -35,7 +35,7 @@ function RecuperarContraseñaScreen({ navigation }) {
   };
 
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <SafeAreaView>
         <View style={RecuperarContraseñaScreenStyles.container}>
           <View style={RecuperarContraseñaScreenStyles.boxTitleContainer}>
