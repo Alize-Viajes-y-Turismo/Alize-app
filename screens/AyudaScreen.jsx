@@ -1,5 +1,5 @@
 import { Image, ScrollView, StatusBar, StyleSheet, Text, View, } from 'react-native';
-import Boton from '../Components/BotonPrimario';
+import BotonPrimario from '../Componentes/BotonPrimario';
 
 const SoportePantalla = () => {
   return (
@@ -19,14 +19,16 @@ const SoportePantalla = () => {
           <Image src='./assets/support.png' />
         </View>
         <View style={styles.containerBtn}>
-          <Boton text='Obtener Ayuda' ></Boton>
+        </View>
+        <View style={styles.boxTitleContainer}>
+          <BotonPrimario text='Ayuda' />
         </View>
         <View style={styles.boxTitleContainer}>
           <Text style={styles.text}>
             Preguntas Frecuentes
           </Text>
         </View>
-     
+
       </View>
     </ScrollView>
   );
