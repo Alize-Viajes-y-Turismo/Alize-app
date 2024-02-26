@@ -5,10 +5,12 @@ import { LoadingProvider } from "./contexts/LoadingContext";
 function App() {
 
   return (
-   <AuthProvider>
-
-
-   </AuthProvider>
+    
+    <LoadingProvider>
+      <AuthProvider>
+        <Router/>
+      </AuthProvider>
+    </LoadingProvider>
 
   )
 

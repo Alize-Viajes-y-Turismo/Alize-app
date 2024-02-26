@@ -23,8 +23,6 @@ export const AuthProvider = async ({ children }) => {
   const [authData, setAuthData] = useState(undefined);
   const [authLoginErrors, setAuthLoginErrors] = useState(undefined);
 
-  const token = await decryptToken();
-
 
 
 //-------------------------------------------
@@ -81,8 +79,10 @@ export const AuthProvider = async ({ children }) => {
 
 
 
-    const checkLogin = async (token) => {
-      
+    const checkLogin = async () => {
+    
+      const token = await decryptToken();
+
       if (!token) {
           setAuthData(undefined)
           return;

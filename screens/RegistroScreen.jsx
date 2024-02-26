@@ -24,8 +24,7 @@ export default function RegistroPantalla({ navigation }) {
   //Estados para capturar los datos del formulario.
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const user = {email, password};
-
+  const user = {email: email, password: password};
 
 
     //funcion que devuelve true si los datos son validos
@@ -58,11 +57,12 @@ export default function RegistroPantalla({ navigation }) {
 
       try {
         
-        register(user)
+        register(user);
         
       } catch(error) {
 
         alert(error.message)
+        
       }
     }
 
