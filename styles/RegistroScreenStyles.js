@@ -7,23 +7,25 @@ const RegistroScreenStyles = StyleSheet.create({
         backgroundColor: 'white'
     },
     title: {
-        color: '#F46262',
-        fontSize: 24,
-        fontWeight: '400',
-        textAlign: 'center',
-        width: 300,
-        margin: 10,
-    },
-    subtitle: {
         color: '#1E1E1E',
         fontSize: 24,
-        fontWeight: '400',
+        justifyContent: 'center',
+        alignItems: 'center',
         textAlign: 'center',
-        margin: 10,
+        marginBottom: 40
+    },
+    subtitle: {
+        fontSize: 24,
+        color: '#1E1E1E',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        marginBottom: 40
     },
     paragraph: {
         fontSize: 16,
         textAlign: 'center',
+        marginBottom: 20
     },
     boxTitleContainer: {
         justifyContent: 'center',
