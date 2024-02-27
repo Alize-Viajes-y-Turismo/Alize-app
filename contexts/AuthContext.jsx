@@ -1,7 +1,9 @@
 import { createContext, useContext, useState, useEffect} from 'react';
 import { registerRequest, loginRequest, logoutRequest } from '../api/authRequests';
-import encryptAndStoreToken from '../libs/encryptAndStoreToken';
-import decryptToken from '../libs/decryptToken';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
+
 
 const AuthContext = createContext();
 
@@ -35,8 +37,8 @@ export const AuthProvider = ({ children }) => {
     try{
 
       const res = await registerRequest(user);
-      setAuthData(res.data);
-      encryptAndStoreToken(res.token);
+      setAuthData(res.data.data);
+      AsyncStorage.setItem('token', res.data.token);
 
   } catch (error) {
 
@@ -51,13 +53,13 @@ export const AuthProvider = ({ children }) => {
   try {
 
     const res = await loginRequest(user);
-    setAuthData(res.data);
-    encryptAndStoreToken(res.token);
+    setAuthData(res.data.data);
+    AsyncStorage.setItem('token', res.data.token);
   
   } catch (error) {
     
       setAuthLoginErrors(error);
-      console.log(error.response.data)
+      console.log(error)
 
   }
 
@@ -82,7 +84,7 @@ export const AuthProvider = ({ children }) => {
 
     const checkLogin = async () => {
     
-      const token = decryptToken;
+      const token = await AsyncStorage.getItem('token');
 
       if (!token) {
           setAuthData(undefined)
@@ -93,14 +95,14 @@ export const AuthProvider = ({ children }) => {
 
           const res = await verifyTokenRequest(token)
 
-          if (!res.data) {
+          if (!res.data.data) {
 
               setAuthData(undefined)
               return;
 
           }
 
-          setAuthData(res.data)
+          setAuthData(res.data.data)
 
       } catch (error) {
         
