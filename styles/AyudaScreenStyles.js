@@ -3,38 +3,53 @@ import { StyleSheet } from "react-native"
 const AyudaScreenStyles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        backgroundColor: 'white',
         borderWidth: 2,
         borderColor: 'pink',
-        padding: 20,
     },
     title: {
-        color: '#F46262',
-        fontSize: 24,
+        color: '#1E1E1E',
+        fontSize: 36,
         fontWeight: '400',
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
         width: 300,
-        margin: 10,
+        marginTop: 30,
     },
-    text: {
-        color: '#1E1E1E',
-        fontSize: 36,
+    subTitle: {
+        fontSize: 24,
+        marginTop: 30,
 
     },
-    btn: {
-        backgroundColor: 'gray',
+    paragraph:{
+        fontSize: 16,
+    },
+    imageContainer: {
+        alignItems: 'center',
+        textAlign: 'center',
+        marginTop: 30,
+
     },
     boxTitleContainer: {
         justifyContent: 'center',
         alignItems: 'center',
+        marginTop: 30,
     },
     containerBtn: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 20,
+        marginTop: 40,
     },
+    collapseContainer:{
+        marginBottom:20
+    },
+    boxCollapseContainer: {
+        marginTop: 30,
+    },
+    textCollape:{
+        marginTop:10
+    }
 })
 
 export default AyudaScreenStyles

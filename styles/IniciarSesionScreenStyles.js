@@ -16,9 +16,6 @@ const IniciarSesionScreenStyles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 40
   },
-  boxTitleContainer: {
-    marginBottom: 20
-  },
   subtitle: {
     fontSize: 24,
     color: '#1E1E1E',
@@ -48,7 +45,6 @@ const IniciarSesionScreenStyles = StyleSheet.create({
     borderColor: 'gray',
     borderRadius: 5,
     padding: 10,
-    marginBottom: 20,
     paddingHorizontal: 10
   },
   passwordInput: {
@@ -67,7 +63,6 @@ const IniciarSesionScreenStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
-    marginBottom: 20
   },
   errorMessage: {
     color: 'red',

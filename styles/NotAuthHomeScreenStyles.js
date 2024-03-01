@@ -3,7 +3,6 @@ import { StyleSheet } from "react-native"
 const NotAuthHomeScreenStyles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white'
     },
     title: {
         color: '#1E1E1E',
@@ -34,6 +33,11 @@ const NotAuthHomeScreenStyles = StyleSheet.create({
         height: 200,
         marginBottom: 40,
     },
+    scrollView:{
+        backgroundColor:'white',
+        borderWidth: 2,
+        borderColor: 'black'
+    }
 })
 
 export default NotAuthHomeScreenStyles
