@@ -5,7 +5,6 @@ import LoadingScreen from './LoadingScreen'
 const Prueba = () => {
   return (
     <View>
-
       <Text>
         <LoadingScreen />
       </Text>

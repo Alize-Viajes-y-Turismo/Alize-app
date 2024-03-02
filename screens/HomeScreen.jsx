@@ -5,15 +5,7 @@ import { useAuthContext } from '../contexts/AuthContext';
 
 function HomeScreen() {
 
-  //CONSTANTES
-
   const {logout} = useAuthContext();
-
-
-
-
-
-
 
   const handlerLogout = async () => {
 
@@ -23,7 +15,7 @@ function HomeScreen() {
       
     } catch(error) {
 
-      alert(error.message);
+      console.log(error.message);
     }
 
 };

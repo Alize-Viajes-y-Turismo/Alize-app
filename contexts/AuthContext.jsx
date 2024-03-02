@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
 
       const res = await registerRequest(user);
       setAuthData(res.data.data);
-      AsyncStorage.setItem('token', res.data.token);
+      await AsyncStorage.setItem('token', res.data.token);
 
     } catch (error) {
 
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
       const res = await loginRequest(user);
     
       setAuthData(res.data.data);
-      AsyncStorage.setItem('token', res.data.token);
+      await AsyncStorage.setItem('token', res.data.token);
     
     } catch (error) {
       
@@ -51,8 +51,6 @@ export const AuthProvider = ({ children }) => {
     }
 
   };
-
-
 
   const logout = async () => {
 
