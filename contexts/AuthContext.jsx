@@ -1,65 +1,54 @@
 import { createContext, useContext, useState, useEffect} from 'react';
-import { registerRequest, loginRequest, logoutRequest, verifyTokenRequest } from '../api/authRequests';
+import { registerRequest, loginRequest, logoutRequest, verifyTokenRequest } from '../api/requests';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const AuthContext = createContext();
 
 export const useAuthContext = () => {
 
-  const context = useContext(AuthContext)
-
-  if (!context) {
-    throw new Error("Error de contexto");
-  }
-  return context;
+  return useContext(AuthContext)
 
 };
 
 export const AuthProvider = ({ children }) => {
 
-  //CONSTANTES
 
   const [authData, setAuthData] = useState(undefined);
+
   const [authLoginErrors, setAuthLoginErrors] = useState(undefined);
-
-
-
-//-------------------------------------------
-
-
-
 
   const register = async (user) => {
 
-    try{
+    try {
 
       const res = await registerRequest(user);
       setAuthData(res.data.data);
       AsyncStorage.setItem('token', res.data.token);
 
-  } catch (error) {
+    } catch (error) {
 
-      setAuthLoginErrors(error);
-      console.log(error.response.data);
-  }
+        setAuthLoginErrors(error);
+        console.log(error.message);
+
+    }
 
   };
 
   const login = async (user) => {
   
-  try {
+    try {
 
-    const res = await loginRequest(user);
-   
-    setAuthData(res.data.data);
-    AsyncStorage.setItem('token', res.data.token);
-  
-  } catch (error) {
+      const res = await loginRequest(user);
     
-      setAuthLoginErrors(error);
-      console.log(error.response.data)
+      setAuthData(res.data.data);
+      AsyncStorage.setItem('token', res.data.token);
+    
+    } catch (error) {
+      
+        setAuthLoginErrors(error);
+        console.log(error.message)
 
-  }
+    }
 
   };
 
@@ -76,7 +65,7 @@ export const AuthProvider = ({ children }) => {
 
     } catch (error){
 
-      console.log(error);
+      console.log(error.message);
 
     }
 
@@ -88,31 +77,27 @@ export const AuthProvider = ({ children }) => {
 
       if (!token) {
           setAuthData(undefined)
-          return;
-      }
+      } else {
 
-      try {
+        try {
 
           const res = await verifyTokenRequest({ token: token })
 
           console.log(res.data.data)
 
           if (!res.data.data) {
-
               setAuthData(undefined)
-              return;
-
+          } else {
+            setAuthData(res.data.data)
           }
 
-          setAuthData(res.data.data)
+        } catch (error) {
+          
+          setAuthData(undefined)
+          console.log(error.message)
 
-      } catch (error) {
-        
-        setAuthData(undefined)
-        console.log(error.response.data)
-
+        }
       }
-      
 
   };
 
@@ -121,15 +106,15 @@ export const AuthProvider = ({ children }) => {
     checkLogin();
     console.log("checkLogin")
 
-}, []) 
+  }, []) 
 
 
 
-return (
-  <AuthContext.Provider value={{ authLoginErrors, authData, login, logout, register, checkLogin}}>
-    {children}
-  </AuthContext.Provider>
-);
+  return (
+    <AuthContext.Provider value={{ authLoginErrors, authData, login, logout, register, checkLogin}}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 

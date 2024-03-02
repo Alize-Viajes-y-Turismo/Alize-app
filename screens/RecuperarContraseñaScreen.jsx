@@ -4,7 +4,7 @@ import { useState } from 'react';
 import BotonPrimario from '../componentes/BotonPrimario';
 import BotonSecundario from '../componentes/BotonSecundario';
 import RecuperarContraseñaScreenStyles from '../styles/RecuperarContraseñaScreenStyles';
-import { sentRecoveryMail } from '../api/recoveryPasswordRequests';
+import { sentRecoveryMail } from '../api/requests';
 import { useForm, Controller } from 'react-hook-form';
 
 function RecuperarContraseñaScreen({ navigation }) {
