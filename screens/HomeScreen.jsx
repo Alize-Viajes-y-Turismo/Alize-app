@@ -1,6 +1,6 @@
 import React from 'react'
 import { View} from 'react-native'
-import BotonPrimario from '../components/BotonPrimario'
+import BotonPrimario from '../componentes/BotonPrimario'
 import { useAuthContext } from '../contexts/AuthContext';
 
 function HomeScreen() {

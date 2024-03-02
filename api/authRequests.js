@@ -1,13 +1,13 @@
-import axios from "./axios.js"
+import backendApi from "./backendApi.js"
 
 
-export const loginRequest = user => axios.post("/users/login", user);
+export const loginRequest = user => backendApi.post("/users/login", user);
 
-export const registerRequest = user => axios.post("/users/register", user);
+export const registerRequest = user => backendApi.post("/users/register", user);
 
-export const logoutRequest = () => axios.get("/users/logout");
+export const logoutRequest = () => backendApi.get("/users/logout");
 
-export const verifyTokenRequest = token => axios.post("/verify", token);
+export const verifyTokenRequest = token => backendApi.post("/verify", token);
 
 
 

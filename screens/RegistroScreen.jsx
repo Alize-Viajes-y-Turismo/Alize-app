@@ -1,10 +1,9 @@
 import { View, Text, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
-import BotonSecundario from '../Componentes/BotonSecundario';
-import BotonPrimario from '../Componentes/BotonPrimario';
+import BotonSecundario from '../componentes/BotonSecundario';
+import BotonPrimario from '../componentes/BotonPrimario';
 import Checkbox from 'expo-checkbox';
 import RegistroScreenStyles from '../styles/RegistroScreenStyles';
-import { registerRequest } from '../api/authRequests'
 import { Controller, useForm } from 'react-hook-form';
 import { Entypo } from '@expo/vector-icons';
 import { useAuthContext } from '../contexts/AuthContext';

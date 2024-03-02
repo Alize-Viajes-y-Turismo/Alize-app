@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, ScrollView, TextInput, SafeAreaView } from 'react-native';
 import { useState } from 'react';
-import BotonPrimario from '../components/BotonPrimario';
-import BotonSecundario from '../components/BotonSecundario';
+import BotonPrimario from '../componentes/BotonPrimario';
+import BotonSecundario from '../componentes/BotonSecundario';
 import RecuperarContraseñaScreenStyles from '../styles/RecuperarContraseñaScreenStyles';
 import { sentRecoveryMail } from '../api/recoveryPasswordRequests';
 import { useForm, Controller } from 'react-hook-form';

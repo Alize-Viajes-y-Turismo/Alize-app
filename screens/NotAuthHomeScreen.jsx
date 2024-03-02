@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, SafeAreaView, ScrollView, Text, View } from 'react-native';
-import BotonPrimario from '../components/BotonPrimario';
+import BotonPrimario from '../componentes/BotonPrimario';
 import NotAuthHomeScreenStyles from '../styles/NotAuthHomeScreenStyles';
 
 

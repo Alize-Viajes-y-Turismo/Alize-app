@@ -1,5 +1,5 @@
 import { Image, Linking, SafeAreaView, ScrollView, Text, View, } from 'react-native';
-import BotonPrimario from '../Componentes/BotonPrimario';
+import BotonPrimario from '../componentes/BotonPrimario';
 import AyudaScreenStyles from '../styles/AyudaScreenStyles';
 import { Collapse, CollapseBody, CollapseHeader } from 'accordion-collapse-react-native';
 

@@ -7,11 +7,11 @@ function App() {
 
   return (
     <React.StrictMode>
-    <AuthProvider>
-    <LoadingProvider>
-        <Router/>
-    </LoadingProvider>
-    </AuthProvider>
+      <AuthProvider>
+        <LoadingProvider>
+            <Router/>
+        </LoadingProvider>
+      </AuthProvider>
     </React.StrictMode>
   )
 
