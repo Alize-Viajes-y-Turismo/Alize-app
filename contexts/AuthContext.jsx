@@ -1,9 +1,6 @@
 import { createContext, useContext, useState, useEffect} from 'react';
-import { registerRequest, loginRequest, logoutRequest } from '../api/authRequests';
+import { registerRequest, loginRequest, logoutRequest, verifyTokenRequest } from '../api/authRequests';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-
-
 
 const AuthContext = createContext();
 
@@ -53,13 +50,14 @@ export const AuthProvider = ({ children }) => {
   try {
 
     const res = await loginRequest(user);
+   
     setAuthData(res.data.data);
     AsyncStorage.setItem('token', res.data.token);
   
   } catch (error) {
     
       setAuthLoginErrors(error);
-      console.log(error)
+      console.log(error.response.data)
 
   }
 
@@ -72,6 +70,8 @@ export const AuthProvider = ({ children }) => {
     try {
 
       await logoutRequest();
+      await AsyncStorage.removeItem("token");
+      
       setAuthData(undefined);
 
     } catch (error){
@@ -93,7 +93,9 @@ export const AuthProvider = ({ children }) => {
 
       try {
 
-          const res = await verifyTokenRequest(token)
+          const res = await verifyTokenRequest({ token: token })
+
+          console.log(res.data.data)
 
           if (!res.data.data) {
 
@@ -107,33 +109,27 @@ export const AuthProvider = ({ children }) => {
       } catch (error) {
         
         setAuthData(undefined)
+        console.log(error.response.data)
 
       }
       
 
   };
 
+  useEffect( () => {
 
+    checkLogin();
+    console.log("checkLogin")
 
-//------------------------------------
-
-
-
-    useEffect( () => {
-
-      checkLogin();
-
-  }, [])
-
-
-
-//-------------------------------------------
+}, []) 
 
 
 
 return (
-  <AuthContext.Provider value={{ authLoginErrors, authData, login, logout, register}}>
+  <AuthContext.Provider value={{ authLoginErrors, authData, login, logout, register, checkLogin}}>
     {children}
   </AuthContext.Provider>
 );
 };
+
+

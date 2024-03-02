@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext, useEffect } from "react";
 
 const LoadingContext = createContext()
 
@@ -24,6 +24,18 @@ export function LoadingProvider({children}) {
     function endLoading() {
         setLoading(false)
     }
+
+
+
+
+    useEffect(()=>{
+        setTimeout(() => {
+            endLoading()
+        }, 5000);
+    }, [])
+
+
+
 
     return (
         <LoadingContext.Provider value={{ loading, startLoading, endLoading }}>

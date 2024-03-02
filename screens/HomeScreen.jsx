@@ -1,6 +1,6 @@
 import React from 'react'
 import { View} from 'react-native'
-import BotonPrimario from '../Componentes/BotonPrimario'
+import BotonPrimario from '../components/BotonPrimario'
 import { useAuthContext } from '../contexts/AuthContext';
 
 function HomeScreen() {
@@ -19,7 +19,7 @@ function HomeScreen() {
 
     try {
 
-      await logout();
+      logout();
       
     } catch(error) {
 

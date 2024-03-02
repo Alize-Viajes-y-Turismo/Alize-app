@@ -4,7 +4,7 @@ export async function sentRecoveryMail(email) {
     const body = {
         email: email
     }
-    const res = await axios.post("/api/recoveryMail", body);
+    const res = await axios.post("/recoveryMail", body);
     return res;
 } 
 

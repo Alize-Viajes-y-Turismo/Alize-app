@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, ScrollView, Text, View, } from 'react-native';
-import BotonPrimario from '../Componentes/BotonPrimario';
+import BotonPrimario from '../components/BotonPrimario';
 import AyudaScreenStyles from '../styles/AyudaScreenStyles';
 
 function AyudaScreen() {

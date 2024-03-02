@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, ScrollView, TextInput } from 'react-native';
 import { useState } from 'react';
-import BotonSecundario from '../Componentes/BotonSecundario';
-import BotonPrimario from '../Componentes/BotonPrimario';
+import BotonSecundario from '../components/BotonSecundario';
+import BotonPrimario from '../components/BotonPrimario';
 import Checkbox from 'expo-checkbox';
 import RegistroScreenStyles from '../styles/RegistroScreenStyles';
 import { useAuthContext } from '../contexts/AuthContext';
