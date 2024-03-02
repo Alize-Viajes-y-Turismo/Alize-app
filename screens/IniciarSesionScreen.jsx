@@ -33,12 +33,6 @@ function IniciarSesionScreen({ navigation }) {
       switch (res.status) {
         case 200:
           login(res.data);
-          setEmail("");
-          setPassword("");
-          break;
-        case 409:
-          alert("Los datos ingresados son incorrectos")
-          break;
         default:
           alert("Error interno del servidor")
       }
@@ -54,11 +48,6 @@ function IniciarSesionScreen({ navigation }) {
 
   // Estado para manejar los formularios y sus validaciones
   const { control, handleSubmit, formState: { errors } } = useForm();
-
-  const onSubmit = data => {
-    // Lógica para enviar el formulario
-    console.log(data);
-  };
 
   return (
     <SafeAreaView>
@@ -135,7 +124,7 @@ function IniciarSesionScreen({ navigation }) {
             </Text>
           </View>
           <View style={IniciarSesionScreenStyles.btnContainer}>
-            <BotonPrimario onPress={handleSubmit(onSubmit)} text='Iniciar Sesion'></BotonPrimario>
+            <BotonPrimario onPress={handleSubmit(loginHandler)} text='Iniciar Sesion'></BotonPrimario>
           </View>
           <View style={IniciarSesionScreenStyles.btnContainer}>
             <BotonSecundario

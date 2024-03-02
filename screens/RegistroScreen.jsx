@@ -22,13 +22,13 @@ export default function RegistroPantalla({ navigation }) {
 
   //esta funcion registra al usuario y luego ejecuta el login si el email ingresado no pertenece a una cuenta existente
   //en caso contrario, se notifica al usuario que el email ingresado ya pertenece a una cuenta
-  async function handleRegister() {
+  async function handleRegister(data) {
     if (isDataValidated()) {
       try {
-        const res = await registerRequest(email, password)
+        const res = await registerRequest(data.email, data.password)
         switch (res.status) {
           case 200:
-            login();
+            login(res.data);
             break;
           case 409:
             alert("El email que ingresaste ya pertenece a una cuenta")
@@ -60,11 +60,7 @@ export default function RegistroPantalla({ navigation }) {
     }
   }
 
-  const { control, handleSubmit, formState: { errors } } = useForm()
-
-  const onSubmit = data => {
-    console.log(data)
-  }
+  const { control, handleSubmit, formState: { errors } } = useForm();
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -87,16 +83,14 @@ export default function RegistroPantalla({ navigation }) {
         {errors.email && <Text style={RegistroScreenStyles.errorMessage}>{errors.email.message}</Text>}
         <Controller
           control={control}
-          render={({ field: { onChangeText, onblur, value } }) => (
-            <View>
+          render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 style={RegistroScreenStyles.input}
-                onblur={onblur}
-                onChangeText={onChangeText}
+                onblur={onBlur}
+                onChangeText={onChange}
                 value={value}
                 placeholder="Email"
               />
-            </View>
           )}
           name='email'
           rules={{
@@ -106,8 +100,7 @@ export default function RegistroPantalla({ navigation }) {
               message: 'El correo debe contener un dominio correcto'
             }
           }}
-        >
-        </Controller>
+        />
         {errors.password && <Text style={RegistroScreenStyles.errorMessage}>{errors.password.message}</Text>}
         <View style={RegistroScreenStyles.passwordInputContainer}>
           <Controller
@@ -173,7 +166,7 @@ export default function RegistroPantalla({ navigation }) {
           </Text>
         </View>
         <View style={RegistroScreenStyles.containerBtn}>
-          <BotonPrimario text='Registrarme' onPress={handleSubmit(onSubmit)} />
+          <BotonPrimario text='Registrarme' onPress={handleSubmit(handleRegister)} />
         </View>
         <View style={RegistroScreenStyles.containerBtn}>
           <BotonSecundario text='Atras' onPress={() => navigation.goBack()} />
