@@ -19,19 +19,20 @@ function Router() {
     })
 
     return (
+
         <>
-            {
-                loading ?
+        {
+            loading ? 
 
-                    <LoadingScreen />
+            <LoadingScreen />
 
-                    :
+            :
 
-                    <NavigationContainer>
-                        <Layout>
-                            {authData ? <AppTabNAvigator /> : <AuthTabNavigator />}
-                        </Layout>
-                    </NavigationContainer>
+            <NavigationContainer>
+                <Layout>
+                    {authData ? <AppTabNAvigator /> : <AuthTabNavigator />}
+                </Layout>
+            </NavigationContainer>
             }
 
         </>

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Text, TextInput, View } from 'react-native';
 import { useState } from 'react';
 import ViajeScreenStyles from '../styles/ViajeScreenStyles';

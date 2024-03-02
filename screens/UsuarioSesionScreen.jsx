@@ -1,9 +1,13 @@
-import React from 'react'
-import { View } from 'react-native'
+import React from 'react';
+import { View, Text } from 'react-native';
 
 function UsuarioSesionScreen() {
   return (
-    <View>UsuarioSesionPantalla</View>
+    <View>
+      <Text>
+      UsuarioSesionPantalla
+      </Text>
+    </View>
   )
 }
 

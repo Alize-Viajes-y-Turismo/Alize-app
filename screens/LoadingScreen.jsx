@@ -6,6 +6,7 @@ import SimulacionCarga from '../Componentes/SimulacionCarga'
 function LoadingScreen() {
 
   return (
+    
     <SimulacionCarga />
 
   )

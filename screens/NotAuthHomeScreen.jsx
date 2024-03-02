@@ -1,7 +1,7 @@
-import React from 'react'
-import { Image, SafeAreaView, ScrollView, Text, View } from 'react-native'
-import BotonPrimario from '../Componentes/BotonPrimario'
-import NotAuthHomeScreenStyles from '../styles/NotAuthHomeScreenStyles'
+import React from 'react';
+import { Image, SafeAreaView, ScrollView, Text, View } from 'react-native';
+import BotonPrimario from '../components/BotonPrimario';
+import NotAuthHomeScreenStyles from '../styles/NotAuthHomeScreenStyles';
 
 
 function NotAuthHomeScreen({ navigation }) {

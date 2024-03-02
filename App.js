@@ -1,17 +1,18 @@
-import Router from "./navigation/Router"
-import { AuthProvider } from "./contexts/AuthContext"
-import {LoadingContextProvider} from "./contexts/LoadingContext"
+import Router from "./navigation/Router";
+import { AuthProvider } from "./contexts/AuthContext";
+import { LoadingProvider } from "./contexts/LoadingContext";
+import React from "react";
 
 function App() {
 
   return (
-    <LoadingContextProvider>
-
-        <AuthProvider>
-          <Router />
-        </AuthProvider>
-      
-    </LoadingContextProvider>
+    <React.StrictMode>
+    <AuthProvider>
+    <LoadingProvider>
+        <Router/>
+    </LoadingProvider>
+    </AuthProvider>
+    </React.StrictMode>
   )
 
 }

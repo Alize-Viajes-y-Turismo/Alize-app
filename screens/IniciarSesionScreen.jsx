@@ -1,53 +1,39 @@
+import React from 'react';
 import { SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View, } from 'react-native';
-import BotonPrimario from '../Componentes/BotonPrimario';
-import BotonSecundario from '../Componentes/BotonSecundario';
+import BotonPrimario from '../components/BotonPrimario';
+import BotonSecundario from '../components/BotonSecundario';
 import { Entypo } from '@expo/vector-icons';
 import IniciarSesionScreenStyles from '../styles/IniciarSesionScreenStyles';
 import { useState } from 'react';
 import { useAuthContext } from '../contexts/AuthContext';
-import { loginRequest } from '../api/authRequests';
 import { useForm, Controller } from 'react-hook-form';
 
 
 function IniciarSesionScreen({ navigation }) {
-  //funcion para autenticar al usuario (se usa adentro del loginHandler)
-  const { login, fakeLogin, fakeLogout } = useAuthContext();
 
-  //estados para capturar los datos del formulario
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { login } = useAuthContext();
 
-  //estado para mostrar/ocultar contraseña
   const [showPassword, setShowPassword] = useState(false);
 
-  //funcion para cambiar visibilidad de la contraseña
+  const { control, handleSubmit, formState: { errors } } = useForm();
+
+
+  const handleLogin = async (user) => {
+
+      try {
+
+        await login(user);
+        
+      } catch(error) {
+
+        alert(error.message);
+      }
+
+  };
+
   function switchPasswordVisibility() {
     setShowPassword(!showPassword);
   };
-
-  //esta funcion ejecuta el login solamente si los datos ingresados son correctos
-  //en caso contrario, se le notifica al usuario que los datos que ingresó son incorrectos
-  async function loginHandler() {
-    try {
-      const res = await loginRequest(email, password)
-      switch (res.status) {
-        case 200:
-          login(res.data);
-        default:
-          alert("Error interno del servidor")
-      }
-    } catch (err) {
-      alert(err.message)
-    }
-  }
-
-  //funcion para autenticar directamente sin enviar datos al backend
-  function fakeLoginHandler() {
-    fakeLogin()
-  }
-
-  // Estado para manejar los formularios y sus validaciones
-  const { control, handleSubmit, formState: { errors } } = useForm();
 
   return (
     <SafeAreaView>
@@ -124,7 +110,7 @@ function IniciarSesionScreen({ navigation }) {
             </Text>
           </View>
           <View style={IniciarSesionScreenStyles.btnContainer}>
-            <BotonPrimario onPress={handleSubmit(loginHandler)} text='Iniciar Sesion'></BotonPrimario>
+            <BotonPrimario onPress={handleSubmit(handleLogin)} text='Iniciar Sesion'></BotonPrimario>
           </View>
           <View style={IniciarSesionScreenStyles.btnContainer}>
             <BotonSecundario
