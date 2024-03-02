@@ -9,6 +9,9 @@ export const logoutRequest = () => backendApi.get("/users/logout");
 
 export const verifyTokenRequest = token => backendApi.post("/verify", token);
 
+export const sentRecoveryMail = email => backendApi.post("/recoveryMail", email)
+
+
 
 
 
