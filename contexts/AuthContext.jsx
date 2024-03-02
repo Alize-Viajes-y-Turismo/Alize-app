@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
       const res = await loginRequest(user);
     
       setAuthData(res.data.data);
-      await AsyncStorage.setItem('token', res.data.token);
+      await AsyncStorage.setItem('token', res.data.token); //todavia no existe el token en la respuesta http
     
     } catch (error) {
       
@@ -95,6 +95,7 @@ export const AuthProvider = ({ children }) => {
           console.log(error.message)
 
         }
+        
       }
 
   };
@@ -102,7 +103,7 @@ export const AuthProvider = ({ children }) => {
   useEffect( () => {
 
     checkLogin();
-    console.log("checkLogin")
+    console.log("checking Login")
 
   }, []) 
 

@@ -36,7 +36,6 @@ function IniciarSesionScreen({ navigation }) {
   };
 
   return (
-    <SafeAreaView>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={IniciarSesionScreenStyles.container}>
           <View >
@@ -126,7 +125,6 @@ function IniciarSesionScreen({ navigation }) {
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
   );
 
 };
