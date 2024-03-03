@@ -3,7 +3,7 @@ import { SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View, } fr
 import BotonPrimario from '../componentes/BotonPrimario';
 import BotonSecundario from '../componentes/BotonSecundario';
 import { Entypo } from '@expo/vector-icons';
-import IniciarSesionScreenStyles from '../styles/IniciarSesionScreenStyles';
+import styles from '../styles/IniciarSesionScreenStyles';
 import { useState } from 'react';
 import { useAuthContext } from '../contexts/AuthContext';
 import { useForm, Controller } from 'react-hook-form';
@@ -36,95 +36,70 @@ function IniciarSesionScreen({ navigation }) {
   };
 
   return (
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={IniciarSesionScreenStyles.container}>
-          <View >
-            <Text style={IniciarSesionScreenStyles.title}>
-              Sumate a la familia de alize, inicia sesion si ya tenes una cuenta registrada con nosotros
-            </Text>
-          </View>
-          <View >
-            <Text style={IniciarSesionScreenStyles.subtitle}>
-              Ingresar
-            </Text>
-          </View>
-          <View style={IniciarSesionScreenStyles.inputContainer}>
-            {errors.email && <Text style={IniciarSesionScreenStyles.errorMessage}>{errors.email.message}</Text>}
+    <View style={styles.container}>
+      <Text style={styles.title}>Sumate a la familia de alize, inicia sesion si ya tenes una cuenta registrada con nosotros</Text>
+      <Text style={styles.title}>Ingresar</Text>
+      <View style={styles.inputContainer}>
+      {errors.email && <Text style={styles.errorMessage}>{errors.email.message}</Text>}
+      <Controller
+        control={control}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <TextInput
+            style={styles.input}
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+            placeholder="Correo Electrónico"/>
+          )}
+          name="email"
+          rules={{
+            required: 'Correo electrónico requerido',
+            pattern: {
+              value: /^\S+@\S+\.com$/i,
+              message: 'El correo debe contener un dominio correcto'
+            }
+          }}/>
+          {errors.password && <Text style={styles.errorMessage}>{errors.password.message}</Text>}
+          <View style={styles.passwordInputContainer}>
             <Controller
               control={control}
               render={({ field: { onChange, onBlur, value } }) => (
                 <TextInput
-                  style={IniciarSesionScreenStyles.input}
+                  style={styles.passwordInput}
                   onBlur={onBlur}
                   onChangeText={onChange}
                   value={value}
-                  placeholder="Correo Electrónico"
-                />
+                  placeholder="Contraseña"
+                  secureTextEntry={!showPassword}/>
               )}
-              name="email"
+              name="password"
               rules={{
-                required: 'Correo electrónico requerido',
+                required: 'Contraseña requerida',
                 pattern: {
-                  value: /^\S+@\S+\.com$/i,
-                  message: 'El correo debe contener un dominio correcto'
+                  value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
+                  message: 'La contraseña debe tener al menos 6 caracteres y contener letras y números'
                 }
-              }}
-            />
-            <View style={IniciarSesionScreenStyles.inputContainer}>
-              {errors.password && <Text style={IniciarSesionScreenStyles.errorMessage}>{errors.password.message}</Text>}
-              <View style={IniciarSesionScreenStyles.passwordInputContainer}>
-                <Controller
-                  control={control}
-                  render={({ field: { onChange, onBlur, value } }) => (
-                    <TextInput
-                      style={IniciarSesionScreenStyles.passwordInput}
-                      onBlur={onBlur}
-                      onChangeText={onChange}
-                      value={value}
-                      placeholder="Contraseña"
-                      secureTextEntry={!showPassword}
-                    />
-                  )}
-                  name="password"
-                  rules={{
-                    required: 'Contraseña requerida',
-                    pattern: {
-                      value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
-                      message: 'La contraseña debe tener al menos 6 caracteres y contener letras y números'
-                    }
-                  }}
-                />
-
-                <TouchableOpacity onPress={switchPasswordVisibility}>
-                  <Entypo name={showPassword ? 'eye' : 'eye-with-line'} size={24} color="gray" />
-                </TouchableOpacity>
-              </View>
-            </View>
+            }}/>
+            <TouchableOpacity onPress={switchPasswordVisibility}>
+              <Entypo name={showPassword ? 'eye' : 'eye-with-line'} size={24} color="gray" />
+            </TouchableOpacity>
           </View>
-          <View style={IniciarSesionScreenStyles.boxTitleContainer}>
-            <Text
-              onPress={() => { navigation.navigate('RecuperarContraseñaScreen') }}
-              style={IniciarSesionScreenStyles.paragraph}>
-              ¿Olvidaste tu Contraseña?
-            </Text>
-          </View>
-          <View style={IniciarSesionScreenStyles.btnContainer}>
-            <BotonPrimario onPress={handleSubmit(handleLogin)} text='Iniciar Sesion'></BotonPrimario>
-          </View>
-          <View style={IniciarSesionScreenStyles.btnContainer}>
-            <BotonSecundario
-              onPress={() => { navigation.goBack() }}
-              text='Atras'></BotonSecundario>
-          </View>
-          <View >
-            <Text
-              onPress={() => { navigation.navigate('RegistroScreen') }}
-              style={IniciarSesionScreenStyles.paragraph}>
-              ¿No tenes un usuario? Create una cuenta
-            </Text>
-          </View>
-        </View>
-      </ScrollView>
+      </View>
+      <Text
+        onPress={() => { navigation.navigate('RecuperarContraseñaScreen') }}
+        style={styles.paragraph}>
+        ¿Olvidaste tu Contraseña?
+      </Text>
+      <BotonPrimario onPress={handleSubmit(handleLogin)} text='Iniciar Sesion'></BotonPrimario>
+      <BotonSecundario
+        onPress={() => { navigation.goBack() }}
+        text='Atras'></BotonSecundario>
+      <Text
+        onPress={() => { navigation.navigate('RegistroScreen') }}
+        style={styles.paragraph}>
+        ¿No tenes un usuario? Create una cuenta
+      </Text>
+    </View>
   );
 
 };

@@ -14,8 +14,8 @@ const screenOptions = {
             borderRadius: 30,
             alignItems: 'center', // Para centrar verticalmente los iconos
             justifyContent: 'center',
-           
         },
+        tabBarHideOnKeyboard: true
     },
 
     Home: {

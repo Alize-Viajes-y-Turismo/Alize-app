@@ -2,41 +2,28 @@ import { StyleSheet } from "react-native"
 
 const IniciarSesionScreenStyles = StyleSheet.create({
   container: {
+    backgroundColor: 'white',
+    borderWidth: 1,
     flex: 1,
-    justifyContent: 'center',
-    padding: 20,
-    marginTop: 20,
-    backgroundColor: 'white'
+    justifyContent: "space-around"
   },
   title: {
     color: '#1E1E1E',
-    fontSize: 24,
-    justifyContent: 'center',
-    alignItems: 'center',
+    fontSize: 25,
     textAlign: 'center',
-    marginBottom: 40
-  },
-  subtitle: {
-    fontSize: 24,
-    color: '#1E1E1E',
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
-    marginBottom: 40
   },
   input: {
-    flexDirection: 'row',
-    alignItems: 'center',
     borderWidth: 1,
     borderColor: 'gray',
     borderRadius: 5,
-    padding: 10,
-    marginBottom: 20,
-    paddingHorizontal: 10
-
+    width: "100%",
   },
   inputContainer: {
-    marginBottom: 20,
+    borderWidth: 1,
+    width: "100%",
+    height: "30%",
+    alignItems:"center",
+    justifyContent: "space-around"
   },
   passwordInputContainer: {
     flexDirection: 'row',
@@ -44,8 +31,6 @@ const IniciarSesionScreenStyles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'gray',
     borderRadius: 5,
-    padding: 10,
-    paddingHorizontal: 10
   },
   passwordInput: {
     flex: 1,
@@ -63,6 +48,7 @@ const IniciarSesionScreenStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
+    borderWidth: 1
   },
   errorMessage: {
     color: 'red',
