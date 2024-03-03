@@ -3,40 +3,29 @@ import { StyleSheet } from "react-native"
 const NotAuthHomeScreenStyles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: "space-around",
+        alignItems: "center",
+        backgroundColor: "white"
     },
     title: {
         color: '#1E1E1E',
-        fontSize: 36,
-        padding: 20,
+        fontSize: 29,
         textAlign: 'center',
     },
     subtitle: {
         color: '#1E1E1E',
-        fontSize: 20,
+        fontSize: 18,
         textAlign: 'center',
-        marginBottom: 40,
     },
-    paragraph: {
+    link: {
         textAlign: 'center',
         fontSize: 18,
-        marginTop: 10,
         color: 'gray'
-    },
-    imageContainer: {
-        alignItems: 'center', // Añade esta línea para centrar horizontalmente
-        textAlign: 'center',
-        justifyContent: 'center',
     },
     image: {
         width: 200,
         height: 200,
-        marginBottom: 40,
     },
-    scrollView:{
-        backgroundColor:'white',
-        borderWidth: 2,
-        borderColor: 'black'
-    }
 })
 
 export default NotAuthHomeScreenStyles
