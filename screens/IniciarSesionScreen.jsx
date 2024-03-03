@@ -40,26 +40,34 @@ function IniciarSesionScreen({ navigation }) {
       <Text style={styles.title}>Sumate a la familia de alize, inicia sesion si ya tenes una cuenta registrada con nosotros</Text>
       <Text style={styles.title}>Ingresar</Text>
       <View style={styles.inputContainer}>
-      {errors.email && <Text style={styles.errorMessage}>{errors.email.message}</Text>}
-      <Controller
-        control={control}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
-            style={styles.input}
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-            placeholder="Correo Electrónico"/>
-          )}
-          name="email"
-          rules={{
-            required: 'Correo electrónico requerido',
-            pattern: {
-              value: /^\S+@\S+\.com$/i,
-              message: 'El correo debe contener un dominio correcto'
-            }
-          }}/>
+        <View style={styles.div}>
+          {errors.email && <Text style={styles.errorMessage}>{errors.email.message}</Text>}
+        </View>
+        <View style={styles.div}>
+          <Controller
+            control={control}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <TextInput
+                style={styles.input}
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value}
+                placeholder="Correo Electrónico"/>
+              )}
+              name="email"
+              rules={{
+                required: 'Correo electrónico requerido',
+                pattern: {
+                  value: /^\S+@\S+\.com$/i,
+                  message: 'El correo debe contener un dominio correcto'
+                }
+              }}/>
+        </View>
+        
+        <View style={styles.div}>
           {errors.password && <Text style={styles.errorMessage}>{errors.password.message}</Text>}
+        </View>
+        <View style={styles.div}>
           <View style={styles.passwordInputContainer}>
             <Controller
               control={control}
@@ -79,11 +87,13 @@ function IniciarSesionScreen({ navigation }) {
                   value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
                   message: 'La contraseña debe tener al menos 6 caracteres y contener letras y números'
                 }
-            }}/>
-            <TouchableOpacity onPress={switchPasswordVisibility}>
-              <Entypo name={showPassword ? 'eye' : 'eye-with-line'} size={24} color="gray" />
-            </TouchableOpacity>
+              }}/>
+              <TouchableOpacity onPress={switchPasswordVisibility}>
+                <Entypo name={showPassword ? 'eye' : 'eye-with-line'} size={24} color="gray" />
+              </TouchableOpacity>
           </View>
+        </View>
+        
       </View>
       <Text
         onPress={() => { navigation.navigate('RecuperarContraseñaScreen') }}

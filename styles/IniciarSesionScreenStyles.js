@@ -3,7 +3,6 @@ import { StyleSheet } from "react-native"
 const IniciarSesionScreenStyles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    borderWidth: 1,
     flex: 1,
     justifyContent: "space-around"
   },
@@ -17,9 +16,9 @@ const IniciarSesionScreenStyles = StyleSheet.create({
     borderColor: 'gray',
     borderRadius: 5,
     width: "100%",
+    height: "80%"
   },
   inputContainer: {
-    borderWidth: 1,
     width: "100%",
     height: "30%",
     alignItems:"center",
@@ -31,6 +30,7 @@ const IniciarSesionScreenStyles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'gray',
     borderRadius: 5,
+    height: "80%"
   },
   passwordInput: {
     flex: 1,
@@ -52,7 +52,11 @@ const IniciarSesionScreenStyles = StyleSheet.create({
   },
   errorMessage: {
     color: 'red',
-    marginBottom: 5
+  },
+  div: {
+    width: "100%",
+    height: "25%",
+    justifyContent: "center"
   },
 })
 
