@@ -19,7 +19,7 @@ const IniciarSesionScreenStyles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'gray',
     borderRadius: 5,
-    height: 50
+    height: 50,
   },
   inputContainer: {
     alignItems:"center",

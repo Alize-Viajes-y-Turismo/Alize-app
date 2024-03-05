@@ -1,36 +1,34 @@
 import React from 'react'
-import { KeyboardAvoidingView, Text, View } from 'react-native'
-import LoadingScreen from './LoadingScreen'
-import { TextInput } from 'react-native-paper'
+import { View} from 'react-native'
+import BotonPrimario from '../componentes/BotonPrimario'
+import { useAuthContext } from '../contexts/AuthContext';
 
-const Prueba = () => {
-  return (
-    <>
-    <KeyboardAvoidingView style={{alignItems: "center"}}>
-    <View style={{borderWidth: 1, height: 500}}>
-      <TextInput/>
-      <TextInput/>
-      <TextInput/>
-      <TextInput/>
-      <TextInput/>
-      <TextInput/>
-      <TextInput/>
-      <TextInput/>
-      <TextInput/>
-      <TextInput/>
-      <TextInput/>
-      <TextInput/>
+function HomeScreen() {
 
-    </View>
+  const {logout} = useAuthContext();
 
+  const handlerLogout = async () => {
 
-    <View style={{borderWidth: 1, height: 500}}/>
-    </KeyboardAvoidingView>
+    try {
 
-    </>
-
+      logout();
       
+    } catch(error) {
+
+      console.log(error.message);
+    }
+
+};
+
+
+
+  return (
+    <View style={{flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "white"}}>
+      <BotonPrimario text='Mis datos'></BotonPrimario>
+      <BotonPrimario text='Mis pasajes' style={{marginTop: "5%", marginBottom: "5%"}}></BotonPrimario>
+      <BotonPrimario  onPress={handlerLogout} text='Cerrar Sesion'></BotonPrimario>
+    </View>
   )
 }
 
-export default Prueba
+export default HomeScreen
