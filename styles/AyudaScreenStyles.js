@@ -1,11 +1,9 @@
 import { StyleSheet } from "react-native"
 
-const AyudaScreenStyles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white',
-        borderWidth: 2,
-        borderColor: 'pink',
     },
     title: {
         color: '#1E1E1E',
@@ -20,10 +18,11 @@ const AyudaScreenStyles = StyleSheet.create({
     subTitle: {
         fontSize: 24,
         marginTop: 30,
-
+        textAlign: "center"
     },
     paragraph:{
         fontSize: 16,
+        textAlign: "center"
     },
     imageContainer: {
         alignItems: 'center',
@@ -42,14 +41,20 @@ const AyudaScreenStyles = StyleSheet.create({
         marginTop: 40,
     },
     collapseContainer:{
-        marginBottom:20
+        marginBottom:20,
+        borderWidth: 1,
+        width: "100%",
+        borderRadius: 10,
+        padding: 5,
+        borderColor: "red"
     },
     boxCollapseContainer: {
         marginTop: 30,
+        alignItems: "center"
     },
     textCollape:{
         marginTop:10
     }
 })
 
-export default AyudaScreenStyles
+export default styles

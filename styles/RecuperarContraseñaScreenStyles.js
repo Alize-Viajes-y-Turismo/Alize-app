@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native"
 const RecuperarContraseñaScreenStyles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor:'white'
+        backgroundColor:'white',
     },
     title: {
         color: '#1E1E1E',

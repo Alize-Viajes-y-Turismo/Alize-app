@@ -39,15 +39,15 @@ function IniciarSesionScreen({ navigation }) {
     <View style={styles.container}>
 
     <Text style={[styles.h1, {marginBottom: 15, marginTop: 15}]}>Sumate a la familia de alize, iniciá sesión si ya tenés una cuenta registrada con nosotros</Text>
-    <Text style={styles.h2}>Ingresar</Text>
+    <Text style={[styles.h2, {marginBottom: "10%"}]}>Ingresar</Text>
     
     {/*email input*/}
-    {errors.email && <Text style={styles.errorMessage}>{errors.email.message}</Text>}
+    {errors.email && <Text style={[styles.errorMessage, {marginTop: "10%"}]}>{errors.email.message}</Text>}
     <Controller
       control={control}
       render={({ field: { onChange, onBlur, value } }) => (
         <TextInput
-          style={[styles.input, {marginTop: "10%", marginBottom: "15%"}]}
+          style={[styles.input, {marginBottom: "15%"}]}
           onBlur={onBlur}
           onChangeText={onChange}
           value={value}
