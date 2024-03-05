@@ -1,21 +1,16 @@
 import { StyleSheet } from "react-native"
 
-const ViajeScreenStyles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         flex: 1,
-        borderWidth: 2,
-        borderColor: 'pink',
-        paddingHorizontal: 20
-    },
-    titleContainer: {
-        justifyContent: 'center',
-        alignItems: 'center'
+        backgroundColor: "white",
+        borderWidth: 1
     },
     titulo: {
         fontSize: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
+        textAlign: "center",
         marginBottom: 20,
+        marginTop: "15%"
     },
     text: {
         fontSize: 16,
@@ -32,7 +27,9 @@ const ViajeScreenStyles = StyleSheet.create({
         fontSize: 20,
         shadowColor: '#5B5662', // Cambia a color deseado
         elevation: 5, // Solo para Android
-        borderRadius: 2,
+        borderRadius: 5,
+        borderColor: "gray",
+        borderWidth: 1
     },
     calendarInput: {
         position: 'relative',
@@ -62,4 +59,4 @@ const ViajeScreenStyles = StyleSheet.create({
     },
 });
 
-export default ViajeScreenStyles
+export default styles

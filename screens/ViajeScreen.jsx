@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, TextInput, View } from 'react-native';
 import { useState } from 'react';
-import ViajeScreenStyles from '../styles/ViajeScreenStyles';
+import styles from '../styles/ViajeScreenStyles';
 
 function ViajeScreen() {
 
@@ -9,26 +9,24 @@ function ViajeScreen() {
   const [destino, setDestino] = useState('');
   
   return (
-    <View style={ViajeScreenStyles.container}>
-    <View style={ViajeScreenStyles.titleContainer}>
-      <Text style={ViajeScreenStyles.titulo}>Empeza tu viaje</Text>
+    <View style={styles.container}>
+    <View style={styles.titleContainer}>
+      <Text style={styles.titulo}>Empezá tu viaje</Text>
     </View>
-    <View style={ViajeScreenStyles.container}>
-      <Text style={ViajeScreenStyles.text}>Origen</Text>
+      <Text style={styles.text}>Origen</Text>
       <TextInput
-        style={ViajeScreenStyles.input}
+        style={styles.input}
         placeholder='Corrientes Capital'
         value={origen}
         onChangeText={setOrigen}
       />
-      <Text style={ViajeScreenStyles.text}>Destino</Text>
+      <Text style={styles.text}>Destino</Text>
       <TextInput
-        style={ViajeScreenStyles.input}
+        style={styles.input}
         placeholder='CABA - Buenos Aires'
         value={destino}
         onChangeText={setDestino}
       />
-    </View>
   </View>
   );
 };
