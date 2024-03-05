@@ -47,15 +47,18 @@ export default function RegistroPantalla({ navigation }) {
       
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>¿Todavía no te registraste?</Text>
-      <Text style={styles.paragraph}>Para poder comprar tus pasajes debes tener una cuenta registrada.</Text>
-      <Text style={styles.subtitle}>Registrarme</Text>
+
+      <Text style={[styles.title, {marginTop: "12%", marginBottom: "7%"}]}>¿Todavía no te registraste?</Text>
+      <Text style={[styles.paragraph, {marginBottom: "7%"}]}>Para poder comprar tus pasajes debes tener una cuenta registrada.</Text>
+      <Text style={[styles.subtitle, {marginBottom: "7%"}]}>Registrarme</Text>
+
+      {/*Email Input*/}
       {errors.email && <Text style={styles.errorMessage}>{errors.email.message}</Text>}
       <Controller
         control={control}
         render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
-              style={styles.input}
+              style={[styles.input, {marginBottom: "7%"}]}
               onblur={onBlur}
               onChangeText={onChange}
               value={value}
@@ -66,48 +69,59 @@ export default function RegistroPantalla({ navigation }) {
         rules={{
           required: "Correo electrónico requerido",
           pattern: {
-            value: /^\S+@\S+\.com$/i,
+            value: "/^\S+@\S+\.com$/i",
             message: 'El correo debe contener un dominio correcto'
           }
-        }}/>
+        }}
+      />
+
       {errors.password && <Text style={styles.errorMessage}>{errors.password.message}</Text>}
-      <View style={styles.passwordInputContainer}>
         <Controller
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
+            <View style={[styles.password.container, {marginBottom: "7%"}]}>
             <TextInput
-              style={styles.passwordInput}
+              placeholder="Contraseña"
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              placeholder="Contraseña"
-              secureTextEntry={!showPassword}
+              style={styles.password.input}
             />
+            <TouchableOpacity 
+              onPress={switchPasswordVisibility}
+              style={styles.password.icon}
+            >
+              <Entypo name={showPassword ? 'eye' : 'eye-with-line'} size={24} color="gray" />
+            </TouchableOpacity>
+          </View>
           )}
           name="password"
           rules={{
             required: 'Contraseña es requerida',
             pattern: {
-              value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
+              value: "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/",
               message: 'La contraseña debe tener al menos 6 caracteres y contener letras y números'
             }
-          }}/>
-        <TouchableOpacity onPress={switchPasswordVisibility}>
-          <Entypo name={showPassword ? 'eye' : 'eye-with-line'} size={24} color="gray" />
-        </TouchableOpacity>
-      </View>
+          }}
+        />
+
+      {/*Input Confirmar Contrasena*/}
       {errors.confirm && <Text style={styles.errorMessage}>{errors.confirm.message}</Text>}
       <Controller
         control={control}
         render={({ field: { onChange, onBlur, value } }) => (
-          <View style={styles.passwordInputContainer}>
+          <View style={[styles.password.container, {marginBottom: "7%"}]}>
             <TextInput
               placeholder="Confirmar Contraseña"
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
+              style={styles.password.input}
             />
-            <TouchableOpacity onPress={switchPasswordVisibility}>
+            <TouchableOpacity 
+              onPress={switchPasswordVisibility}
+              style={styles.password.icon}
+            >
               <Entypo name={showPassword ? 'eye' : 'eye-with-line'} size={24} color="gray" />
             </TouchableOpacity>
           </View>
@@ -116,10 +130,13 @@ export default function RegistroPantalla({ navigation }) {
         rules={{
           required: "Confirmar contraseña es requerida",
           pattern: {
-            value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
+            value: "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/",
             validate: value => value === control.fieldsRef.current.password.value || "Las contraseñas no coinciden"
           }
-        }}/>
+        }}
+      />
+
+      {/*Condiciones*/}
       <View style={styles.containerCheck}>
         <Checkbox
           style={styles.checkbox}
@@ -131,12 +148,11 @@ export default function RegistroPantalla({ navigation }) {
           He leído y acepto las condiciones
         </Text>
       </View>
-      <View style={styles.containerBtn}>
-        <BotonPrimario text='Registrarme' onPress={handleSubmit(handleRegister)} />
-      </View>
-      <View style={styles.containerBtn}>
+      <View style={{alignItems: "center", marginTop: "5%"}}>
+        <BotonPrimario text='Registrarme' onPress={handleSubmit(handleRegister)} style={{marginBottom: 20}} />
         <BotonSecundario text='Atras' onPress={() => navigation.goBack()} />
       </View>
+        
     </View>
   );
 }

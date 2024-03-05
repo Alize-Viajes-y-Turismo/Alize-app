@@ -3,8 +3,6 @@ import { StyleSheet } from "react-native"
 const RegistroScreenStyles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'space-around',
-        alignItems: "center",
         backgroundColor: 'white',
     },
     title: {
@@ -67,6 +65,24 @@ const RegistroScreenStyles = StyleSheet.create({
         paddingHorizontal: 10,
         width: "100%"
       },
+    password: {
+        container: {
+            flexDirection: "row",
+            borderWidth: 1,
+            borderColor: 'gray',
+            borderRadius: 5,
+            height: 50,
+            padding: 10
+        },
+        input: {
+            flex: 9
+        },
+        icon: {
+            flex: 1,
+            justifyContent: "center"
+        }
+    }
 });
+
 
 export default RegistroScreenStyles
