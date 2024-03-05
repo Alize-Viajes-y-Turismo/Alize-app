@@ -3,8 +3,9 @@ import { StyleSheet } from "react-native"
 const RegistroScreenStyles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        backgroundColor: 'white'
+        justifyContent: 'space-around',
+        alignItems: "center",
+        backgroundColor: 'white',
     },
     title: {
         color: '#1E1E1E',
@@ -12,7 +13,6 @@ const RegistroScreenStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
-        marginBottom: 40
     },
     subtitle: {
         fontSize: 24,
@@ -20,17 +20,14 @@ const RegistroScreenStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
-        marginBottom: 40
     },
     paragraph: {
         fontSize: 16,
         textAlign: 'center',
-        marginBottom: 20
     },
     boxTitleContainer: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 10,
     },
     input: {
         alignItems: 'center',
@@ -38,13 +35,17 @@ const RegistroScreenStyles = StyleSheet.create({
         borderColor: 'gray',
         borderRadius: 5,
         padding: 10,
-        marginBottom: 20,
-        paddingHorizontal: 10
+        width: "100%"
+    },
+    passwordInput: {
+        alignItems: 'center',
+        borderColor: 'gray',
+        padding: 10,
+        width: "100%",
     },
     containerBtn: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 20,
     },
     containerCheck: {
         justifyContent: 'start',
@@ -53,22 +54,18 @@ const RegistroScreenStyles = StyleSheet.create({
         flexDirection: 'row',
     },
     checkBoxText: {
-        marginLeft: 10,
     },
     errorMessage: {
         color: 'red',
-        marginBottom: 5
     },
     passwordInputContainer: {
-        flexDirection: 'row',
+        flexDirection: "row",
         alignItems: 'center',
-        justifyContent:'space-between',
         borderWidth: 1,
         borderColor: 'gray',
         borderRadius: 5,
-        padding: 10,
-        marginBottom: 20,
-        paddingHorizontal: 10
+        paddingHorizontal: 10,
+        width: "100%"
       },
 });
 

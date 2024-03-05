@@ -4,39 +4,40 @@ const IniciarSesionScreenStyles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     flex: 1,
-    justifyContent: "space-around"
   },
-  title: {
-    color: '#1E1E1E',
+  h1: {
+    color: 'black',
     fontSize: 25,
+    textAlign: 'center',
+  },
+  h2: {
+    color: 'black',
+    fontSize: 22,
     textAlign: 'center',
   },
   input: {
     borderWidth: 1,
     borderColor: 'gray',
     borderRadius: 5,
-    width: "100%",
-    height: "80%"
+    height: 50
   },
   inputContainer: {
-    width: "100%",
-    height: "30%",
     alignItems:"center",
     justifyContent: "space-around"
   },
   passwordInputContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
     borderWidth: 1,
     borderColor: 'gray',
     borderRadius: 5,
-    height: "80%"
+    height: 50
   },
   passwordInput: {
-    flex: 1,
+    flex: 9
   },
   passwordVisibilityButton: {
-    padding: 10,
+    flex: 1,
+    justifyContent: "center"
   },
   paragraph: {
     textAlign: 'center',
@@ -52,11 +53,6 @@ const IniciarSesionScreenStyles = StyleSheet.create({
   },
   errorMessage: {
     color: 'red',
-  },
-  div: {
-    width: "100%",
-    height: "25%",
-    justifyContent: "center"
   },
 })
 

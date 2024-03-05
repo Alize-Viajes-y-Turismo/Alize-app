@@ -1,9 +1,9 @@
 import { StyleSheet, TouchableOpacity, Text} from "react-native";
 
-export default function BotonPrimario({ onPress, text }) {
+export default function BotonPrimario({ onPress, text, style }) {
 
   return (
-    <TouchableOpacity style={styles.boton} onPress={onPress} >
+    <TouchableOpacity style={[styles.boton, style]} onPress={onPress} >
       <Text style={styles.texto}>
         {text}
       </Text>
@@ -14,7 +14,7 @@ export default function BotonPrimario({ onPress, text }) {
 const styles = StyleSheet.create({
   boton: {
     backgroundColor: '#FC3232',
-    width: '176px',
+    width: '60%',
     height: '48px',
     borderRadius: 6,
     paddingHorizontal: 20,

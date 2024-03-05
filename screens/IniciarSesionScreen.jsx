@@ -37,73 +37,82 @@ function IniciarSesionScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Sumate a la familia de alize, inicia sesion si ya tenes una cuenta registrada con nosotros</Text>
-      <Text style={styles.title}>Ingresar</Text>
-      <View style={styles.inputContainer}>
-        <View style={styles.div}>
-          {errors.email && <Text style={styles.errorMessage}>{errors.email.message}</Text>}
-        </View>
-        <View style={styles.div}>
-          <Controller
-            control={control}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                style={styles.input}
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-                placeholder="Correo Electrónico"/>
-              )}
-              name="email"
-              rules={{
-                required: 'Correo electrónico requerido',
-                pattern: {
-                  value: /^\S+@\S+\.com$/i,
-                  message: 'El correo debe contener un dominio correcto'
-                }
-              }}/>
-        </View>
+
+    <Text style={[styles.h1, {marginBottom: 15, marginTop: 15}]}>Sumate a la familia de alize, iniciá sesión si ya tenés una cuenta registrada con nosotros</Text>
+    <Text style={styles.h2}>Ingresar</Text>
+    
+    {/*email input*/}
+    {errors.email && <Text style={styles.errorMessage}>{errors.email.message}</Text>}
+    <Controller
+      control={control}
+      render={({ field: { onChange, onBlur, value } }) => (
+        <TextInput
+          style={[styles.input, {marginTop: "10%", marginBottom: "15%"}]}
+          onBlur={onBlur}
+          onChangeText={onChange}
+          value={value}
+          placeholder="Correo Electrónico"/>
+        )}
+        name="email"
+        rules={{
+          required: 'Correo electrónico requerido',
+          pattern: {
+            value: "/^\S+@\S+\.com$/i",
+            message: 'El correo debe contener un dominio correcto'
+          }
+        }}
+    />
+
+    {/*password input*/}
+    {errors.password && <Text style={styles.errorMessage}>{errors.password.message}</Text>}
+    <View style={[styles.passwordInputContainer, {marginBottom: "10%"}]}>
+
+      <Controller
+        control={control}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <TextInput
+            style={[styles.passwordInput]}
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+            placeholder="Contraseña"
+            secureTextEntry={!showPassword}/>
+        )}
+        name="password"
+        rules={{
+          required: 'Contraseña requerida',
+          pattern: {
+            value: "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/",
+            message: 'La contraseña debe tener al menos 6 caracteres y contener letras y números'
+          }
+        }}
+      />
+      <TouchableOpacity onPress={switchPasswordVisibility} style={styles.passwordVisibilityButton}>
+        <Entypo name={showPassword ? 'eye' : 'eye-with-line'} size={24} color="gray" />
+      </TouchableOpacity>
+
+    </View>
         
-        <View style={styles.div}>
-          {errors.password && <Text style={styles.errorMessage}>{errors.password.message}</Text>}
-        </View>
-        <View style={styles.div}>
-          <View style={styles.passwordInputContainer}>
-            <Controller
-              control={control}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <TextInput
-                  style={styles.passwordInput}
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                  placeholder="Contraseña"
-                  secureTextEntry={!showPassword}/>
-              )}
-              name="password"
-              rules={{
-                required: 'Contraseña requerida',
-                pattern: {
-                  value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
-                  message: 'La contraseña debe tener al menos 6 caracteres y contener letras y números'
-                }
-              }}/>
-              <TouchableOpacity onPress={switchPasswordVisibility}>
-                <Entypo name={showPassword ? 'eye' : 'eye-with-line'} size={24} color="gray" />
-              </TouchableOpacity>
-          </View>
-        </View>
-        
-      </View>
       <Text
         onPress={() => { navigation.navigate('RecuperarContraseñaScreen') }}
-        style={styles.paragraph}>
+        style={[styles.paragraph, {marginBottom: "10%"}]}>
         ¿Olvidaste tu Contraseña?
       </Text>
-      <BotonPrimario onPress={handleSubmit(handleLogin)} text='Iniciar Sesion'></BotonPrimario>
+      <View style={{alignItems: "center"}}>
+
+      <BotonPrimario 
+        onPress={handleSubmit(handleLogin)} 
+        text='Iniciar Sesion'
+        style={{marginBottom: "5%"}}
+      />
       <BotonSecundario
         onPress={() => { navigation.goBack() }}
-        text='Atras'></BotonSecundario>
+        text='Atras'
+        style={{marginBottom: "5%"}}
+      />
+
+      </View>
+      
       <Text
         onPress={() => { navigation.navigate('RegistroScreen') }}
         style={styles.paragraph}>
