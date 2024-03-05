@@ -3,7 +3,7 @@ import { View, Text, ScrollView, TextInput, SafeAreaView } from 'react-native';
 import { useState } from 'react';
 import BotonPrimario from '../componentes/BotonPrimario';
 import BotonSecundario from '../componentes/BotonSecundario';
-import RecuperarContraseñaScreenStyles from '../styles/RecuperarContraseñaScreenStyles';
+import styles from '../styles/RecuperarContraseñaScreenStyles';
 import { sentRecoveryMail } from '../api/requests';
 import { useForm, Controller } from 'react-hook-form';
 
@@ -36,61 +36,55 @@ function RecuperarContraseñaScreen({ navigation }) {
   };
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <SafeAreaView>
-        <View style={RecuperarContraseñaScreenStyles.container}>
-          <View style={RecuperarContraseñaScreenStyles.boxTitleContainer}>
-            <Text style={RecuperarContraseñaScreenStyles.title}>
-              ¿Olvidaste la contraseña?
-            </Text>
-          </View>
-          <View style={RecuperarContraseñaScreenStyles.boxTitleContainer}>
-            <Text style={RecuperarContraseñaScreenStyles.paragraph}>
-              Las instrucciones necesarias a llevar a cabo para recuperar tu constraseña se enviaran al correo electronico ingresado
-            </Text>
-          </View>
-          <View style={RecuperarContraseñaScreenStyles.boxTitleContainer}>
-            <Text style={RecuperarContraseñaScreenStyles.subtitle}>
-              Recuperar Contraseña
-            </Text>
-          </View>
-          {errors.email && <Text style={RecuperarContraseñaScreenStyles.errorMessage}>{errors.email.message}</Text>}
-          <Controller
-            control={control}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                style={RecuperarContraseñaScreenStyles.input}
-                placeholder="Correo Electronico"
-                placeholderTextColor={'gray'}
-                onChangeText={onChange}
-                onBlur={onBlur}
-                value={value}
-              />
-            )}
-            name="email"
-            rules={{
-              required: 'Correo electrónico requerido',
-              pattern: {
-                value: /^\S+@\S+\.com$/i,
-                message: 'El correo debe contener un dominio correcto'
-              }
-            }}
+    <View style={styles.container}>
+      <Text style={[styles.title, {marginTop: "35%"}]}>
+        ¿Olvidaste la contraseña?
+      </Text>
+      <View style={styles.boxTitleContainer}>
+        <Text style={styles.paragraph}>
+          Las instrucciones necesarias a llevar a cabo para recuperar tu constraseña se enviaran al correo electronico ingresado
+        </Text>
+      </View>
+      <View style={styles.boxTitleContainer}>
+        <Text style={styles.subtitle}>
+          Recuperar Contraseña
+        </Text>
+      </View>
+      {errors.email && <Text style={styles.errorMessage}>{errors.email.message}</Text>}
+      <Controller
+        control={control}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <TextInput
+            style={styles.input}
+            placeholder="Correo Electronico"
+            placeholderTextColor={'gray'}
+            onChangeText={onChange}
+            onBlur={onBlur}
+            value={value}
           />
-          <View style={RecuperarContraseñaScreenStyles.containerBtn}>
-            <BotonPrimario
-              text='Enviar'
-              onPress={handleSubmit(onSubmit)}>
-            </BotonPrimario>
-          </View>
-          <View style={RecuperarContraseñaScreenStyles.containerBtn}>
-            <BotonSecundario
-              onPress={() => { navigation.goBack() }}
-              text='Atras'>
-            </BotonSecundario>
-          </View>
-        </View>
-      </SafeAreaView>
-    </ScrollView>
+        )}
+        name="email"
+        rules={{
+          required: 'Correo electrónico requerido',
+          pattern: {
+            value: /^\S+@\S+\.com$/i,
+            message: 'El correo debe contener un dominio correcto'
+          }
+        }}
+      />
+      <View style={{marginTop: "15%", alignItems: "center"}}>
+        <BotonPrimario
+          text='Enviar'
+          onPress={handleSubmit(onSubmit)}
+          style={{marginBottom: "5%"}}>
+        </BotonPrimario>
+        <BotonSecundario
+          onPress={() => { navigation.goBack() }}
+          text='Atras'>
+        </BotonSecundario>
+      </View>
+      
+    </View>
   )
 }
 

@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native"
 
-const RegistroScreenStyles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white',
@@ -85,4 +85,4 @@ const RegistroScreenStyles = StyleSheet.create({
 });
 
 
-export default RegistroScreenStyles
+export default styles
