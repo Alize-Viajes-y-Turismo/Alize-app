@@ -7,9 +7,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 function App() {
 
   return (
-    
-      
-    
+     
     <React.StrictMode>
       <AuthProvider>
         <LoadingProvider>
@@ -17,6 +15,7 @@ function App() {
         </LoadingProvider>
       </AuthProvider>
     </React.StrictMode>
+    
   )
 
 }

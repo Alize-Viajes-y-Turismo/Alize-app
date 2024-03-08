@@ -37,11 +37,11 @@ function RecuperarContraseñaScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={[styles.title, {marginTop: "35%"}]}>
+      <Text style={[styles.title, {marginTop: "30%", marginBottom: "10%"}]}>
         ¿Olvidaste la contraseña?
       </Text>
       <View style={styles.boxTitleContainer}>
-        <Text style={styles.paragraph}>
+        <Text style={[styles.paragraph, {marginBottom: "10%"}]}>
           Las instrucciones necesarias a llevar a cabo para recuperar tu constraseña se enviaran al correo electronico ingresado
         </Text>
       </View>
@@ -67,7 +67,7 @@ function RecuperarContraseñaScreen({ navigation }) {
         rules={{
           required: 'Correo electrónico requerido',
           pattern: {
-            value: /^\S+@\S+\.com$/i,
+            value: "/^\S+@\S+\.com$/i",
             message: 'El correo debe contener un dominio correcto'
           }
         }}

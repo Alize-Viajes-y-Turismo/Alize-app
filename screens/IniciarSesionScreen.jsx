@@ -47,7 +47,7 @@ function IniciarSesionScreen({ navigation }) {
       control={control}
       render={({ field: { onChange, onBlur, value } }) => (
         <TextInput
-          style={[styles.input, {marginBottom: "15%"}]}
+          style={[styles.input, {marginBottom: "15%", padding: 10},]}
           onBlur={onBlur}
           onChangeText={onChange}
           value={value}
@@ -57,7 +57,7 @@ function IniciarSesionScreen({ navigation }) {
         rules={{
           required: 'Correo electrónico requerido',
           pattern: {
-            value: "/^\S+@\S+\.com$/i",
+            value: /^\S+@\S+\.com$/i,
             message: 'El correo debe contener un dominio correcto'
           }
         }}
@@ -71,7 +71,7 @@ function IniciarSesionScreen({ navigation }) {
         control={control}
         render={({ field: { onChange, onBlur, value } }) => (
           <TextInput
-            style={[styles.passwordInput]}
+            style={[styles.passwordInput, {padding: 10}]}
             onBlur={onBlur}
             onChangeText={onChange}
             value={value}
@@ -82,7 +82,7 @@ function IniciarSesionScreen({ navigation }) {
         rules={{
           required: 'Contraseña requerida',
           pattern: {
-            value: "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/",
+            value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
             message: 'La contraseña debe tener al menos 6 caracteres y contener letras y números'
           }
         }}
