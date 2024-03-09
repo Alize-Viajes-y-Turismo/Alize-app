@@ -59,7 +59,7 @@ export default function RegistroPantalla({ navigation }) {
   };
       
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor: "white"}}>
     <View style={styles.container}>
 
       <Text style={[styles.title, {marginTop: "12%", marginBottom: "7%"}]}>¿Todavía no te registraste?</Text>
