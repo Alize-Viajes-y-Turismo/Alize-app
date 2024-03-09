@@ -20,12 +20,18 @@ export default function RegistroPantalla({ navigation }) {
   
   const [isChecked, setChecked] = useState(false);
 
-  const { control, handleSubmit, formState: { errors } } = useForm();
+  const { control, watch, handleSubmit, formState: { errors } } = useForm();
 
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
 
   function switchPasswordVisibility() {
     setShowPassword(!showPassword);
+  };
+
+  function switchConfirmPasswordVisibility() {
+    setShowConfirmPassword(!showConfirmPassword);
   };
 
   const handleRegister = async (data) => {
@@ -74,7 +80,7 @@ export default function RegistroPantalla({ navigation }) {
         )}
         name='email'
         rules={{
-          required: "Correo electrónico requerido",
+          required: "Este campo es obligatorio",
           pattern: {
             value: /^\S+@\S+\.com$/i,
             message: 'El correo debe contener un dominio correcto'
@@ -82,6 +88,7 @@ export default function RegistroPantalla({ navigation }) {
         }}
       />
 
+        {/* input contrasena */}
         {errors.password && <Text style={styles.errorMessage}>{errors.password.message}</Text>}
         <Controller
           control={control}
@@ -93,6 +100,7 @@ export default function RegistroPantalla({ navigation }) {
               onChangeText={onChange}
               value={value}
               style={styles.password.input}
+              secureTextEntry={!showPassword}
             />
             <TouchableOpacity 
               onPress={switchPasswordVisibility}
@@ -104,7 +112,7 @@ export default function RegistroPantalla({ navigation }) {
           )}
           name="password"
           rules={{
-            required: 'Contraseña es requerida',
+            required: 'Este campo es obligatorio',
             pattern: {
               value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
               message: 'La contraseña debe tener al menos 6 caracteres y contener letras y números'
@@ -124,22 +132,20 @@ export default function RegistroPantalla({ navigation }) {
               onChangeText={onChange}
               value={value}
               style={styles.password.input}
+              secureTextEntry={!showConfirmPassword}
             />
             <TouchableOpacity 
-              onPress={switchPasswordVisibility}
+              onPress={switchConfirmPasswordVisibility}
               style={styles.password.icon}
             >
-              <Entypo name={showPassword ? 'eye' : 'eye-with-line'} size={24} color="gray" />
+              <Entypo name={showConfirmPassword ? 'eye' : 'eye-with-line'} size={24} color="gray" />
             </TouchableOpacity>
           </View>
         )}
         name='confirm'
         rules={{
-          required: "Confirmar contraseña es requerida",
-          pattern: {
-            value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
-            validate: value => value === control.fieldsRef.current.password.value || "Las contraseñas no coinciden"
-          }
+          required: "Este campo es obligatorio",
+          validate: (value) => value === watch('password') || 'Las contraseñas no coinciden'
         }}
       />
 
@@ -156,6 +162,7 @@ export default function RegistroPantalla({ navigation }) {
           He leído y acepto las condiciones
         </Text>
       </View>
+
       <View style={{alignItems: "center", marginTop: "5%"}}>
         {
 
