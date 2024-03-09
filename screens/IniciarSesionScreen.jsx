@@ -7,9 +7,12 @@ import styles from '../styles/IniciarSesionScreenStyles';
 import { useState } from 'react';
 import { useAuthContext } from '../contexts/AuthContext';
 import { useForm, Controller } from 'react-hook-form';
-
+import { useLoadingContext } from '../contexts/LoadingContext';
+import { ActivityIndicator } from 'react-native';
 
 function IniciarSesionScreen({ navigation }) {
+
+  const {loginLoading, startLoginLoading, endLoginLoading} = useLoadingContext()
 
   const { login } = useAuthContext();
 
@@ -22,11 +25,14 @@ function IniciarSesionScreen({ navigation }) {
 
       try {
 
+        startLoginLoading()
         await login(user);
+        endLoginLoading()
         
       } catch(error) {
 
         alert(error.message);
+        endLoginLoading()
       }
 
   };
@@ -100,11 +106,21 @@ function IniciarSesionScreen({ navigation }) {
       </Text>
       <View style={{alignItems: "center"}}>
 
-      <BotonPrimario 
+      {
+        loginLoading ?
+
+        <ActivityIndicator size={100} color="#FC3232" style={styles.activityIndicator} />
+
+        :
+
+        <BotonPrimario 
         onPress={handleSubmit(handleLogin)} 
         text='Iniciar Sesion'
         style={{marginBottom: "5%"}}
-      />
+        />
+
+      }
+      
       <BotonSecundario
         onPress={() => { navigation.goBack() }}
         text='Atras'

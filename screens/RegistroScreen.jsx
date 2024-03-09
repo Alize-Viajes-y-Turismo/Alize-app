@@ -7,10 +7,14 @@ import styles from '../styles/RegistroScreenStyles';
 import { Controller, useForm } from 'react-hook-form';
 import { Entypo } from '@expo/vector-icons';
 import { useAuthContext } from '../contexts/AuthContext';
+import { useLoadingContext } from '../contexts/LoadingContext';
+import { ActivityIndicator } from 'react-native';
 
 
 
 export default function RegistroPantalla({ navigation }) {
+
+  const {loginLoading, startLoginLoading, endLoginLoading} = useLoadingContext()
 
   const { register } = useAuthContext();
   
@@ -34,12 +38,15 @@ export default function RegistroPantalla({ navigation }) {
     }
 
     try {
-        
+      
+      startLoginLoading()
       await register(user);
+      endLoginLoading()
         
     } catch(error) {
 
       alert(error.message)
+      endLoginLoading()
         
     }
     
@@ -69,13 +76,13 @@ export default function RegistroPantalla({ navigation }) {
         rules={{
           required: "Correo electrónico requerido",
           pattern: {
-            value: "/^\S+@\S+\.com$/i",
+            value: /^\S+@\S+\.com$/i,
             message: 'El correo debe contener un dominio correcto'
           }
         }}
       />
 
-      {errors.password && <Text style={styles.errorMessage}>{errors.password.message}</Text>}
+        {errors.password && <Text style={styles.errorMessage}>{errors.password.message}</Text>}
         <Controller
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
@@ -99,7 +106,7 @@ export default function RegistroPantalla({ navigation }) {
           rules={{
             required: 'Contraseña es requerida',
             pattern: {
-              value: "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/",
+              value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
               message: 'La contraseña debe tener al menos 6 caracteres y contener letras y números'
             }
           }}
@@ -130,11 +137,12 @@ export default function RegistroPantalla({ navigation }) {
         rules={{
           required: "Confirmar contraseña es requerida",
           pattern: {
-            value: "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/",
+            value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
             validate: value => value === control.fieldsRef.current.password.value || "Las contraseñas no coinciden"
           }
         }}
       />
+
 
       {/*Condiciones*/}
       <View style={styles.containerCheck}>
@@ -149,7 +157,18 @@ export default function RegistroPantalla({ navigation }) {
         </Text>
       </View>
       <View style={{alignItems: "center", marginTop: "5%"}}>
-        <BotonPrimario text='Registrarme' onPress={handleSubmit(handleRegister)} style={{marginBottom: 20}} />
+        {
+
+          loginLoading ?
+
+          <ActivityIndicator size={100} color="#FC3232" style={styles.activityIndicator} />
+          
+          :
+
+          <BotonPrimario text='Registrarme' onPress={handleSubmit(handleRegister)} style={{marginBottom: 20}} />
+          
+        }
+        
         <BotonSecundario text='Atras' onPress={() => navigation.goBack()} />
       </View>
         

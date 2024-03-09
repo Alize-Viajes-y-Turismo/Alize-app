@@ -16,6 +16,7 @@ export const useLoadingContext = () => {
 export function LoadingProvider({children}) {
 
     const [loading, setLoading] = useState(true)
+    const [loginLoading, setLoginLoading] = useState(false)
 
     function startLoading(){
         setLoading(true)
@@ -23,6 +24,14 @@ export function LoadingProvider({children}) {
 
     function endLoading() {
         setLoading(false)
+    }
+
+    function startLoginLoading(){
+        setLoginLoading(true)
+    }
+
+    function endLoginLoading() {
+        setLoginLoading(false)
     }
 
 
@@ -38,7 +47,7 @@ export function LoadingProvider({children}) {
 
 
     return (
-        <LoadingContext.Provider value={{ loading, startLoading, endLoading }}>
+        <LoadingContext.Provider value={{ loading, startLoading, endLoading, loginLoading, startLoginLoading, endLoginLoading }}>
             {children}
         </LoadingContext.Provider>
     )

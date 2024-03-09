@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
 
         setAuthLoginErrors(error);
-        console.log(error.message);
+        alert(error.message);
 
     }
 
@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       
         setAuthLoginErrors(error);
-        console.log(error.message)
+        alert(error.message)
 
     }
 
