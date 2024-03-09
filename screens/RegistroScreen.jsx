@@ -59,6 +59,7 @@ export default function RegistroPantalla({ navigation }) {
   };
       
   return (
+    <ScrollView showsVerticalScrollIndicator={false}>
     <View style={styles.container}>
 
       <Text style={[styles.title, {marginTop: "12%", marginBottom: "7%"}]}>¿Todavía no te registraste?</Text>
@@ -151,17 +152,27 @@ export default function RegistroPantalla({ navigation }) {
 
 
       {/*Condiciones*/}
+      {errors.checkbox && <Text style={styles.errorMessage}>{errors.checkbox.message}</Text>}
       <View style={styles.containerCheck}>
-        <Checkbox
-          style={styles.checkbox}
-          value={isChecked}
-          onValueChange={setChecked}
-          color={isChecked ? '#FC3232' : undefined}
+        <Controller 
+          control={control}
+          render={({field}) => (
+            <Checkbox
+              style={styles.checkbox}
+              value={field.value}
+              onValueChange={(value) => field.onChange(value)}
+              color='#FC3232'
+            />
+          )}
+          name="checkbox"
+          rules={{ required: 'Debes aceptar las condiciones' }}
         />
         <Text style={styles.checkBoxText}>
           He leído y acepto las condiciones
         </Text>
       </View>
+
+     
 
       <View style={{alignItems: "center", marginTop: "5%"}}>
         {
@@ -180,5 +191,6 @@ export default function RegistroPantalla({ navigation }) {
       </View>
         
     </View>
+    </ScrollView>
   );
 }
