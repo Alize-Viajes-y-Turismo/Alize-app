@@ -23,7 +23,7 @@ function HomeScreen() {
       
     } catch(error) {
 
-      alert(error.message);
+      alert(error);
       endLoginLoading()
     }
 

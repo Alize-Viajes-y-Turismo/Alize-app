@@ -6,6 +6,7 @@ import { useForm, Controller } from 'react-hook-form';
 
 
 
+
 //Importar componentes
 import BotonPrimario from '../componentes/BotonPrimario';
 import BotonSecundario from '../componentes/BotonSecundario';
@@ -18,7 +19,7 @@ import styles from '../styles/RecuperarContraseñaScreenStyles';
 
 
 //Importar lógica
-import { verifyTokenNavigationRequest } from '../api/navigationRequests';
+
 
 
 

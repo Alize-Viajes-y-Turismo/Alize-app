@@ -16,8 +16,7 @@ export default function RegistroPantalla({ navigation }) {
 
   const {loginLoading, startLoginLoading, endLoginLoading} = useLoadingContext()
 
-  const { register } = useAuthContext();
-  
+
   const [isChecked, setChecked] = useState(false);
 
   const { control, watch, handleSubmit, formState: { errors } } = useForm();
@@ -33,6 +32,9 @@ export default function RegistroPantalla({ navigation }) {
   function switchConfirmPasswordVisibility() {
     setShowConfirmPassword(!showConfirmPassword);
   };
+
+  
+  const { register } = useAuthContext();
 
   const handleRegister = async (data) => {
 
@@ -57,6 +59,7 @@ export default function RegistroPantalla({ navigation }) {
     }
     
   };
+
       
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor: "white"}}>

@@ -7,6 +7,32 @@ import { TextInput } from 'react-native-paper';
 
 function CodigoVerificacionScreen() {
 
+  const { register } = useAuthContext();
+
+  const handleRegister = async (data) => {
+
+    user = {
+
+      email: data.email,
+      password: data.password
+
+    }
+
+    try {
+      
+      startLoginLoading()
+      await register(user);
+      endLoginLoading()
+        
+    } catch(error) {
+
+      alert(error.message)
+      endLoginLoading()
+        
+    }
+    
+  };
+
   return (
     <View style={{flex: 1, backgroundColor: "white", borderWidth: 1}}>
       <Text style={{backgroundColor: "red", textAlign: "center", padding: 15, color: "white", fontSize: 20}}>

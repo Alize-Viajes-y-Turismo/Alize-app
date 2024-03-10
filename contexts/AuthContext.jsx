@@ -1,6 +1,5 @@
 import { createContext, useContext, useState, useEffect} from 'react';
-import { registerRequest, loginRequest, logoutRequest} from '../api/usersRequests';
-import { verifyTokenNavigationRequest } from '../api/navigationRequests';
+import { registerRequest, loginRequest, logoutRequest, verifyTokenNavigationRequest} from '../api/usersRequests';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const AuthContext = createContext();
