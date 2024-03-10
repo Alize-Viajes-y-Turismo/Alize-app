@@ -1,12 +1,28 @@
+//Importar modulos
 import React from 'react';
 import { View, Text, ScrollView, TextInput, SafeAreaView } from 'react-native';
 import { useState } from 'react';
-import BotonPrimario from '../componentes/BotonPrimario';
-import BotonSecundario from '../componentes/BotonSecundario';
-import styles from '../styles/RecuperarContraseñaScreenStyles';
-import { sentRecoveryMail } from '../api/requests';
 import { useForm, Controller } from 'react-hook-form';
 
+
+
+//Importar componentes
+import BotonPrimario from '../componentes/BotonPrimario';
+import BotonSecundario from '../componentes/BotonSecundario';
+
+
+
+//Importar estilos
+import styles from '../styles/RecuperarContraseñaScreenStyles';
+
+
+
+//Importar lógica
+import { verifyTokenNavigationRequest } from '../api/navigationRequests';
+
+
+
+//Página
 function RecuperarContraseñaScreen({ navigation }) {
 
   //funcion para enviar un correo de recuperacion al usuario

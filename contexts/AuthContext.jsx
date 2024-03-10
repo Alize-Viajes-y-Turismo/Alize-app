@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect} from 'react';
-import { registerRequest, loginRequest, logoutRequest, verifyTokenRequest } from '../api/requests';
+import { registerRequest, loginRequest, logoutRequest} from '../api/usersRequests';
+import { verifyTokenNavigationRequest } from '../api/navigationRequests';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const AuthContext = createContext();
@@ -41,7 +42,7 @@ export const AuthProvider = ({ children }) => {
       const res = await loginRequest(user);
     
       setAuthData(res.data.data);
-      await AsyncStorage.setItem('token', res.data.token); //todavia no existe el token en la respuesta http
+      await AsyncStorage.setItem('token', res.data.token); 
     
     } catch (error) {
       
@@ -79,7 +80,7 @@ export const AuthProvider = ({ children }) => {
 
         try {
 
-          const res = await verifyTokenRequest({ token: token })
+          const res = await verifyTokenNavigationRequest({ token: token })
 
           console.log(res.data.data)
 

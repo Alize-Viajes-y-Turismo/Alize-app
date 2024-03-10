@@ -18,6 +18,8 @@ export function LoadingProvider({children}) {
     const [loading, setLoading] = useState(true)
     const [loginLoading, setLoginLoading] = useState(false)
 
+
+    
     function startLoading(){
         setLoading(true)
     }
@@ -25,6 +27,14 @@ export function LoadingProvider({children}) {
     function endLoading() {
         setLoading(false)
     }
+
+
+
+
+
+
+
+
 
     function startLoginLoading(){
         setLoginLoading(true)
