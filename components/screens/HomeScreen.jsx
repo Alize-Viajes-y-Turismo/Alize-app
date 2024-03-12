@@ -1,6 +1,6 @@
 import React from 'react'
 import { View} from 'react-native'
-import BotonPrimario from '../componentes/BotonPrimario'
+import BotonPrimario from '../components/BotonPrimario'
 import { useAuthContext } from '../contexts/AuthContext';
 import { useLoadingContext } from '../contexts/LoadingContext';
 import { ActivityIndicator } from 'react-native';

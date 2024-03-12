@@ -5,7 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { useLoadingContext } from "../contexts/LoadingContext";
 import LoadingScreen from "../screens/LoadingScreen"
 import { useEffect } from "react"
-import Layout from "../componentes/LayoutComponent";
+import Layout from "../components/LayoutComponent";
 
 function Router() {
 

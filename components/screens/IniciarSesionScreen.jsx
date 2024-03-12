@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View, } from 'react-native';
-import BotonPrimario from '../componentes/BotonPrimario';
-import BotonSecundario from '../componentes/BotonSecundario';
+import BotonPrimario from '../components/BotonPrimario';
+import BotonSecundario from '../components/BotonSecundario';
 import { Entypo } from '@expo/vector-icons';
 import styles from '../styles/IniciarSesionScreenStyles';
 import { useState } from 'react';

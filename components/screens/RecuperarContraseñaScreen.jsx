@@ -8,8 +8,8 @@ import { useForm, Controller } from 'react-hook-form';
 
 
 //Importar componentes
-import BotonPrimario from '../componentes/BotonPrimario';
-import BotonSecundario from '../componentes/BotonSecundario';
+import BotonPrimario from '../components/BotonPrimario';
+import BotonSecundario from '../components/BotonSecundario';
 
 
 

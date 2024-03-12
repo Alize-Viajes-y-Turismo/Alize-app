@@ -1,7 +1,7 @@
 import { View, Text, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
-import BotonSecundario from '../componentes/BotonSecundario';
-import BotonPrimario from '../componentes/BotonPrimario';
+import BotonSecundario from '../components/BotonSecundario';
+import BotonPrimario from '../components/BotonPrimario';
 import Checkbox from 'expo-checkbox';
 import styles from '../styles/RegistroScreenStyles';
 import { Controller, useForm } from 'react-hook-form';
