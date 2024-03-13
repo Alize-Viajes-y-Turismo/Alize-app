@@ -103,7 +103,7 @@ function Login({ navigation }) {
     
         
       <Text
-        onPress={() => { navigation.navigate('RecuperarContraseñaScreen') }}
+        onPress={() => { navigation.navigate('Recovery') }}
         style={styles.paragraph}>
         ¿Olvidaste tu Contraseña?
       </Text>
