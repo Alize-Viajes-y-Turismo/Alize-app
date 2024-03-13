@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native"
+import {verticalScale, horizontalScale} from "../styles/metrics"
 
 const styles = StyleSheet.create({
     container: {
@@ -7,13 +8,10 @@ const styles = StyleSheet.create({
     },
     title: {
         color: '#1E1E1E',
-        fontSize: 36,
+        fontSize: 30,
         fontWeight: '400',
-        justifyContent: 'center',
-        alignItems: 'center',
         textAlign: 'center',
-        width: 300,
-        marginTop: 30,
+        marginTop: verticalScale(20),
     },
     subTitle: {
         fontSize: 24,

@@ -44,16 +44,16 @@ function IniciarSesionScreen({ navigation }) {
   return (
     <View style={styles.container}>
 
-    <Text style={[styles.h1, {marginBottom: 15, marginTop: 15}]}>Sumate a la familia de alize, iniciá sesión si ya tenés una cuenta registrada con nosotros</Text>
-    <Text style={[styles.h2, {marginBottom: "10%"}]}>Ingresar</Text>
+    <Text style={styles.texto1}>Sumate a la familia de Alize. Iniciá sesión si ya tenés una cuenta registrada con nosotros</Text>
+    <Text style={styles.texto2}>Ingresar</Text>
     
     {/*email input*/}
-    {errors.email && <Text style={[styles.errorMessage, {marginTop: "10%"}]}>{errors.email.message}</Text>}
+    {errors.email && <Text style={styles.errorMessage}>{errors.email.message}</Text>}
     <Controller
       control={control}
       render={({ field: { onChange, onBlur, value } }) => (
         <TextInput
-          style={[styles.input, {marginBottom: "15%", padding: 10},]}
+          style={styles.input}
           onBlur={onBlur}
           onChangeText={onChange}
           value={value}
@@ -70,8 +70,9 @@ function IniciarSesionScreen({ navigation }) {
     />
 
     {/*password input*/}
+    <View style={styles.container2}>
     {errors.password && <Text style={styles.errorMessage}>{errors.password.message}</Text>}
-    <View style={[styles.passwordInputContainer, {marginBottom: "10%"}]}>
+    <View style={styles.passwordInputContainer}>
 
       <Controller
         control={control}
@@ -98,10 +99,12 @@ function IniciarSesionScreen({ navigation }) {
       </TouchableOpacity>
 
     </View>
+    </View>
+    
         
       <Text
         onPress={() => { navigation.navigate('RecuperarContraseñaScreen') }}
-        style={[styles.paragraph, {marginBottom: "10%"}]}>
+        style={styles.paragraph}>
         ¿Olvidaste tu Contraseña?
       </Text>
       <View style={{alignItems: "center"}}>
@@ -131,7 +134,7 @@ function IniciarSesionScreen({ navigation }) {
       
       <Text
         onPress={() => { navigation.navigate('RegistroScreen') }}
-        style={styles.paragraph}>
+        style={styles.paragraph2}>
         ¿No tenes un usuario? Create una cuenta
       </Text>
     </View>
