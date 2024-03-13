@@ -23,7 +23,7 @@ const SimulacionCarga = () => {
         </View>
         <View>
           <Image
-            source={require('../assets/alize-mountain.jpg')}
+            source={require('../../assets/alize-mountain.jpg')}
             style={styles.image}
             resizeMode="cover"
           />

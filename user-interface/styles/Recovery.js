@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native"
 
-const RecuperarContraseñaScreenStyles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor:'white',
@@ -53,4 +53,4 @@ const RecuperarContraseñaScreenStyles = StyleSheet.create({
       },
 })
 
-export default RecuperarContraseñaScreenStyles
+export default styles

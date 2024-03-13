@@ -1,12 +1,12 @@
 import React from 'react'
 import { View} from 'react-native'
 import BotonPrimario from '../components/BotonPrimario'
-import { useAuthContext } from '../contexts/AuthContext';
-import { useLoadingContext } from '../contexts/LoadingContext';
+import { useAuthContext } from '../../contexts/AuthContext';
+import { useLoadingContext } from '../../contexts/LoadingContext';
 import { ActivityIndicator } from 'react-native';
 
 
-function HomeScreen() {
+function Home() {
 
   const {logout} = useAuthContext();
 
@@ -51,4 +51,4 @@ function HomeScreen() {
   )
 }
 
-export default HomeScreen
+export default Home

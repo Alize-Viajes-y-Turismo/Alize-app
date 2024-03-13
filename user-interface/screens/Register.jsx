@@ -3,16 +3,16 @@ import React, { useState } from 'react';
 import BotonSecundario from '../components/BotonSecundario';
 import BotonPrimario from '../components/BotonPrimario';
 import Checkbox from 'expo-checkbox';
-import styles from '../styles/RegistroScreenStyles';
+import styles from '../styles/Register';
 import { Controller, useForm } from 'react-hook-form';
 import { Entypo } from '@expo/vector-icons';
-import { useAuthContext } from '../contexts/AuthContext';
-import { useLoadingContext } from '../contexts/LoadingContext';
+import { useAuthContext } from '../../contexts/AuthContext';
+import { useLoadingContext } from '../../contexts/LoadingContext';
 import { ActivityIndicator } from 'react-native';
 
 
 
-export default function RegistroPantalla({ navigation }) {
+export default function Register({ navigation }) {
 
   const {loginLoading, startLoginLoading, endLoginLoading} = useLoadingContext()
 

@@ -1,4 +1,4 @@
-import {verticalScale, horizontalScale} from "../styles/metrics"
+import {verticalScale, horizontalScale} from "./metrics"
 import { StyleSheet } from "react-native"
 
 export default styles = StyleSheet.create({

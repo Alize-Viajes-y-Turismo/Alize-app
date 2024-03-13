@@ -5,9 +5,9 @@ import screenOptions from './screenOptions';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 //screens
-import HomeScreen from '../../screens/HomeScreen';
-import AyudaScreen from '../../screens/AyudaScreen';
-import ViajeScreen from '../../screens/ViajeScreen';
+import Profile from '../../user-interface/screens/Profile';
+import Support from '../../user-interface/screens/Support';
+import Journey from '../../user-interface/screens/Journey';
 
 
 const Tab = createBottomTabNavigator();
@@ -17,18 +17,18 @@ function AppTabNavigator() {
     return (
         <Tab.Navigator screenOptions = {screenOptions.global} initialRouteName='HomeScreen'>
             <Tab.Screen 
-                name = "HomeScreen"
-                component = {HomeScreen}
+                name = "Profile"
+                component = {Profile}
                 options={screenOptions.NotAuthHome} 
             />
             <Tab.Screen 
-                name="AyudaScreen" 
-                component={AyudaScreen} 
+                name="Support" 
+                component={Support} 
                 options={screenOptions.Ayuda} 
             />
             <Tab.Screen 
-                name="ViajeScreen" 
-                component={ViajeScreen} 
+                name="Journey" 
+                component={Journey} 
                 options={screenOptions.Viaje}
             />
             

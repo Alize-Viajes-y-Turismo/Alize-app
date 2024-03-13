@@ -3,9 +3,9 @@ import AppTabNAvigator from "./navigators/AppTabNavigator";
 import { useAuthContext } from "../contexts/AuthContext";
 import { NavigationContainer } from "@react-navigation/native";
 import { useLoadingContext } from "../contexts/LoadingContext";
-import LoadingScreen from "../screens/LoadingScreen"
+import LoadingScreen from "../user-interface/screens/LoadingScreen"
 import { useEffect } from "react"
-import Layout from "../components/LayoutComponent";
+import Layout from "../user-interface/components/LayoutComponent";
 
 function Router() {
 

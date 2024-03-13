@@ -5,14 +5,14 @@ import screenOptions from './screenOptions';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 //screens
-import NotAuthHomeScreen from '../../screens/NotAuthHomeScreen';
-import AyudaScreen from '../../screens/AyudaScreen';
-import ViajeScreen from '../../screens/ViajeScreen';
-import IniciarSesionScreen from "../../screens/IniciarSesionScreen"
-import RegistroScreen from '../../screens/RegistroScreen';
-import RecuperarContraseñaScreen from '../../screens/RecuperarContraseñaScreen';
-import CodigoVerificacionRegistroScreen from '../../screens/CodigoVerificacionRegistroScreen';
-import Prueba from '../../screens/Prueba';
+import Home from '../../user-interface/screens/Home';
+import Support from '../../user-interface/screens/Support';
+import Journey from '../../user-interface/screens/Journey';
+import Login from "../../user-interface/screens/Login"
+import Register from '../../user-interface/screens/Register';
+import Recovery from '../../user-interface/screens/Recovery';
+import RegisterVerify from '../../user-interface/screens/RecoveryVerify';
+import Prueba from '../../user-interface/screens/Prueba';
 
 
 const Tab = createBottomTabNavigator();
@@ -22,38 +22,38 @@ function AuthTabNavigator() {
     return (
         <Tab.Navigator screenOptions = {screenOptions.global} initialRouteName='NotAuthHomeScreen'>
             <Tab.Screen 
-                name = "NotAuthHomeScreen"
-                component = {NotAuthHomeScreen}
+                name = "Home"
+                component = {Home}
                 options={screenOptions.NotAuthHome} 
             />
             <Tab.Screen 
-                name="AyudaScreen" 
-                component={AyudaScreen} 
-                options={screenOptions.Ayuda} 
+                name="Support" 
+                component={Support} 
+                options={screenOptions.Ayuda}
             />
             <Tab.Screen 
-                name="ViajeScreen" 
-                component={ViajeScreen} 
+                name="Journey" 
+                component={Journey} 
                 options={screenOptions.Viaje}
             />
             <Tab.Screen 
-                name="IniciarSesionScreen" 
-                component={IniciarSesionScreen} 
+                name="Login"
+                component={Login} 
                 options = {screenOptions.IniciarSesion}
             />
             <Tab.Screen 
-                name="RegistroScreen" 
-                component={RegistroScreen} 
+                name="Register" 
+                component={Register} 
                 options={screenOptions.Registro}
             />
             <Tab.Screen 
-                name="RecuperarContraseñaScreen" 
-                component={RecuperarContraseñaScreen} 
+                name="Recovery" 
+                component={Recovery} 
                 options={screenOptions.RecuperarContraseña}
             />
             <Tab.Screen 
-                name="CodigoVerificacionRegistroScreen" 
-                component={CodigoVerificacionRegistroScreen} 
+                name="RegisterVerify" 
+                component={RegisterVerify} 
                 options={screenOptions.RecuperarContraseña}
             />
                <Tab.Screen 

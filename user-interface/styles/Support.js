@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native"
-import {verticalScale, horizontalScale} from "../styles/metrics"
+import {verticalScale, horizontalScale} from "./metrics"
 
 const styles = StyleSheet.create({
     container: {

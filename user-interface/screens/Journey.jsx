@@ -1,9 +1,9 @@
 import React from 'react';
 import { Text, TextInput, View } from 'react-native';
 import { useState } from 'react';
-import styles from '../styles/ViajeScreenStyles';
+import styles from '../styles/Journey';
 
-function ViajeScreen() {
+function Journey() {
 
   const [origen, setOrigen] = useState('');
   const [destino, setDestino] = useState('');
@@ -31,4 +31,4 @@ function ViajeScreen() {
   );
 };
 
-export default ViajeScreen;
+export default Journey;

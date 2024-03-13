@@ -3,14 +3,14 @@ import { SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View, } fr
 import BotonPrimario from '../components/BotonPrimario';
 import BotonSecundario from '../components/BotonSecundario';
 import { Entypo } from '@expo/vector-icons';
-import styles from '../styles/IniciarSesionScreenStyles';
+import styles from '../styles/login';
 import { useState } from 'react';
-import { useAuthContext } from '../contexts/AuthContext';
+import { useAuthContext } from '../../contexts/AuthContext';
 import { useForm, Controller } from 'react-hook-form';
-import { useLoadingContext } from '../contexts/LoadingContext';
+import { useLoadingContext } from '../../contexts/LoadingContext';
 import { ActivityIndicator } from 'react-native';
 
-function IniciarSesionScreen({ navigation }) {
+function Login({ navigation }) {
 
   const {loginLoading, startLoginLoading, endLoginLoading} = useLoadingContext()
 
@@ -142,6 +142,6 @@ function IniciarSesionScreen({ navigation }) {
 
 };
 
-export default IniciarSesionScreen;
+export default Login;
 
 

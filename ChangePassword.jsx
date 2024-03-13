@@ -10,7 +10,7 @@ import { useAuthContext } from '../contexts/AuthContext';
 
 
 
-export default function RegistroPantalla({ navigation }) {
+export default function ChangePassword({ navigation }) {
 
   const { register } = useAuthContext();
   

@@ -4,27 +4,17 @@ import { View, Text, ScrollView, TextInput, SafeAreaView } from 'react-native';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
-
-
-
 //Importar componentes
 import BotonPrimario from '../components/BotonPrimario';
 import BotonSecundario from '../components/BotonSecundario';
 
-
-
 //Importar estilos
-import styles from '../styles/RecuperarContraseñaScreenStyles';
-
-
+import styles from '../styles/Recovery';
 
 //Importar lógica
 
-
-
-
 //Página
-function RecuperarContraseñaScreen({ navigation }) {
+function Recovery({ navigation }) {
 
   //funcion para enviar un correo de recuperacion al usuario
   function onPressHandler() {
@@ -105,4 +95,4 @@ function RecuperarContraseñaScreen({ navigation }) {
   )
 }
 
-export default RecuperarContraseñaScreen;
+export default Recovery;

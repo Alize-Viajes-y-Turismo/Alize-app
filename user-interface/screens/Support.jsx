@@ -1,9 +1,9 @@
 import { Image, Linking, SafeAreaView, ScrollView, Text, View, } from 'react-native';
 import BotonPrimario from '../components/BotonPrimario';
-import styles from '../styles/AyudaScreenStyles';
+import styles from '../styles/Support';
 import { Collapse, CollapseBody, CollapseHeader } from 'accordion-collapse-react-native';
 
-const SoportePantalla = () => {
+export default Support = () => {
 
   const handleWhatsAppPress = () => {
     const phoneNumber = '+543794681650'; // Reemplaza con el número de teléfono de WhatsApp al que deseas enviar el mensaje
@@ -34,7 +34,7 @@ const SoportePantalla = () => {
             </Text>
           </View>
           <View style={styles.imageContainer}>
-            <Image source={require('../assets/support.png')} />
+            <Image source={require('../../assets/support.png')} />
           </View>
           <View style={styles.containerBtn}>
             <BotonPrimario onPress={handleWhatsAppPress} text='Ayuda' />
@@ -83,8 +83,5 @@ const SoportePantalla = () => {
       </ScrollView>
   );
 };
-
-export default SoportePantalla;
-
 
 
