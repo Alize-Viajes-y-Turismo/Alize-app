@@ -15,7 +15,7 @@ export default function RegisterVerify({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.texto1}>
-        Codigo de Verificacion
+        Codigo de Verificacion para Registro
       </Text>
       <View style={{height: "100%", backgroundColor: "lightgray"}}>
         <Text style={styles.texto2}>

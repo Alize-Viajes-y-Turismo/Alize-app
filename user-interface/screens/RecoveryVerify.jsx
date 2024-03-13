@@ -15,7 +15,7 @@ export default function RecoveryVerify({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.texto1}>
-        Codigo de Verificacion
+        Codigo de Verificacion para Recuperar Contrasena
       </Text>
       <View style={{height: "100%", backgroundColor: "lightgray"}}>
         <Text style={styles.texto2}>

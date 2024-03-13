@@ -1,10 +1,11 @@
 import axios from "axios";
+import {EXPO_PUBLIC_API} from "../env.js"
 
 
 
 const axiosApi = axios.create({
 
-    baseURL: process.env.API + "api",
+    baseURL: EXPO_PUBLIC_API + "api",
     withCredentials: true,
 
 })
