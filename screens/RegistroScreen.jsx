@@ -16,12 +16,20 @@ export default function RegistroPantalla({ navigation }) {
 
   const {loginLoading, startLoginLoading, endLoginLoading} = useLoadingContext()
 
+  const { preRegisterUser } = useAuthContext();
+
+
 
   const [isChecked, setChecked] = useState(false);
 
+
+
   const { control, watch, handleSubmit, formState: { errors } } = useForm();
 
+
+
   const [showPassword, setShowPassword] = useState(false);
+  
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
 
@@ -33,10 +41,9 @@ export default function RegistroPantalla({ navigation }) {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
-  
-  const { register } = useAuthContext();
 
-  const handleRegister = async (data) => {
+
+  const handlePreRegisterUser = async (data) => {
 
     user = {
 
@@ -47,13 +54,20 @@ export default function RegistroPantalla({ navigation }) {
 
     try {
       
-      startLoginLoading()
-      await register(user);
-      endLoginLoading()
-        
+      startLoginLoading();
+      await preRegisterUser(user);
+      endLoginLoading();
+
+      if (res.data.data) {
+
+        navigation.navigate('CodigoVerificacionScreen')
+  
+        };
+  
+    
     } catch(error) {
 
-      alert(error.message)
+      console.log(error.message)
       endLoginLoading()
         
     }
@@ -186,7 +200,7 @@ export default function RegistroPantalla({ navigation }) {
           
           :
 
-          <BotonPrimario text='Registrarme' onPress={handleSubmit(handleRegister)} style={{marginBottom: 20}} />
+          <BotonPrimario text='Registrarme' onPress={handleSubmit(handlePreRegisterUser)} style={{marginBottom: 20}} />
           
         }
         
@@ -195,5 +209,4 @@ export default function RegistroPantalla({ navigation }) {
         
     </View>
     </ScrollView>
-  );
-}
+  )};

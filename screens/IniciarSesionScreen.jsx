@@ -122,7 +122,7 @@ function IniciarSesionScreen({ navigation }) {
       }
       
       <BotonSecundario
-        onPress={() => { navigation.goBack() }}
+        onPress={() => navigation.goBack() }
         text='Atras'
         style={{marginBottom: "5%"}}
       />

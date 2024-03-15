@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect} from 'react';
-import { registerRequest, loginRequest, logoutRequest, verifyTokenNavigationRequest} from '../api/usersRequests';
+import { loginRequest, logoutRequest, registerUserRequest, resetPasswordRequest, sendEmailCodeRequest, verifyCodeRequest, verifyDataRegisterRequest, verifyTokenNavigationRequest } from '../api/usersRequests';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const AuthContext = createContext();
@@ -15,20 +15,53 @@ export const AuthProvider = ({ children }) => {
 
   const [authData, setAuthData] = useState(undefined);
 
+  const [verifyCode, setVerifyCode] = useState(undefined);
+
+  const [navigate, setNavigate] = useState(undefined);
+
   const [authLoginErrors, setAuthLoginErrors] = useState(undefined);
 
-  const register = async (user) => {
+  const preRegisterUser = async (user) => {
 
     try {
 
-      const res = await registerRequest(user);
-      setAuthData(res.data.data);
-      await AsyncStorage.setItem('token', res.data.token);
+      const res = await verifyDataRegisterRequest(user);
+      const code = await sendEmailCodeRequest(res.data.data);
 
+      setAuthData(res.data.data);
+      setVerifyCode(code.data.code);
+      
     } catch (error) {
 
         setAuthLoginErrors(error);
         alert(error.message);
+
+    }
+
+  };
+
+  const registerUser = async (user, emailCode, verifyCode) => {
+
+    try {
+
+      if (emailCode === verifyCode) {
+
+        const res = await registerUserRequest(user);
+        await AsyncStorage.setItem('token', res.data.token);
+        
+        setAuthData(res.data.data);
+        setNavigate(true);
+
+      } else{
+
+        console.log("Código inválido")
+
+      }
+
+    } catch (error) {
+
+        setAuthLoginErrors(error);
+        console.log(error.message);
 
     }
 
@@ -39,14 +72,15 @@ export const AuthProvider = ({ children }) => {
     try {
 
       const res = await loginRequest(user);
-    
-      setAuthData(res.data.data);
       await AsyncStorage.setItem('token', res.data.token); 
+
+      setAuthData(res.data.data);
+      setNavigate(true);
     
     } catch (error) {
       
         setAuthLoginErrors(error);
-        alert(error.message)
+        console.log(error.message);
 
     }
 
@@ -60,6 +94,7 @@ export const AuthProvider = ({ children }) => {
       await AsyncStorage.removeItem("token");
       
       setAuthData(undefined);
+      setNavigate(false);
 
     } catch (error){
 
@@ -74,24 +109,34 @@ export const AuthProvider = ({ children }) => {
       const token = await AsyncStorage.getItem('token');
 
       if (!token) {
-          setAuthData(undefined)
+
+        setAuthData(undefined)
+        setNavigate(false)
+
       } else {
 
         try {
 
           const res = await verifyTokenNavigationRequest({ token: token })
 
-          console.log(res.data.data)
-
           if (!res.data.data) {
-              setAuthData(undefined)
+
+            setAuthData(undefined)
+            setNavigate(false)
+
           } else {
+
             setAuthData(res.data.data)
+            setNavigate(true)
+
+
           }
 
         } catch (error) {
           
           setAuthData(undefined)
+          setNavigate(false)
+
           console.log(error.message)
 
         }
@@ -105,12 +150,12 @@ export const AuthProvider = ({ children }) => {
     checkLogin();
     console.log("checking Login")
 
-  }, []) 
+  }, [navigate]);
 
 
 
   return (
-    <AuthContext.Provider value={{ authLoginErrors, authData, login, logout, register, checkLogin}}>
+    <AuthContext.Provider value={{ authLoginErrors, authData, navigate, verifyCode, login, logout, registerUser, checkLogin, preRegisterUser}}>
       {children}
     </AuthContext.Provider>
   );

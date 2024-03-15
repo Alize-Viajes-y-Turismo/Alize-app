@@ -9,7 +9,7 @@ import Layout from "../componentes/LayoutComponent";
 
 function Router() {
 
-    const { authData } = useAuthContext()
+    const { navigate } = useAuthContext()
     const { loading, endLoading } = useLoadingContext()
 
     useEffect(() => {
@@ -30,7 +30,7 @@ function Router() {
 
             <NavigationContainer>
                 <Layout>
-                    {authData ? <AppTabNAvigator /> : <AuthTabNavigator />}
+                    {navigate ? <AppTabNAvigator /> : <AuthTabNavigator />}
                 </Layout>
             </NavigationContainer>
             }
