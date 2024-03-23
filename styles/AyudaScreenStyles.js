@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         marginTop: 30,
         textAlign: "center"
     },
-    paragraph:{
+    paragraph: {
         fontSize: 16,
         textAlign: "center"
     },
@@ -40,20 +40,22 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 40,
     },
-    collapseContainer:{
-        marginBottom:20,
-        borderWidth: 1,
+    collapseContainer: {
+        marginBottom: 40,
         width: "100%",
         borderRadius: 10,
         padding: 5,
-        borderColor: "red"
+    },
+    containerTextCollpse: {
+        flexDirection: 'row', 
+        justifyContent: 'space-between',
     },
     boxCollapseContainer: {
         marginTop: 30,
         alignItems: "center"
     },
-    textCollape:{
-        marginTop:10
+    textCollape: {
+        marginTop: 10
     }
 })
 
