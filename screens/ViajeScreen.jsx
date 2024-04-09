@@ -1,32 +1,18 @@
 import React from 'react';
-import { Text, TextInput, View } from 'react-native';
-import { useState } from 'react';
+import { Text, View } from 'react-native';
 import styles from '../styles/ViajeScreenStyles';
 
 function ViajeScreen() {
 
-  const [origen, setOrigen] = useState('');
-  const [destino, setDestino] = useState('');
-  
   return (
     <View style={styles.container}>
     <View style={styles.titleContainer}>
-      <Text style={styles.titulo}>Empezá tu viaje</Text>
+      <Text style={styles.titulo}>Elegi tu viaje</Text>
     </View>
-      <Text style={styles.text}>Origen</Text>
-      <TextInput
-        style={styles.input}
-        placeholder='Corrientes Capital'
-        value={origen}
-        onChangeText={setOrigen}
-      />
-      <Text style={styles.text}>Destino</Text>
-      <TextInput
-        style={styles.input}
-        placeholder='CABA - Buenos Aires'
-        value={destino}
-        onChangeText={setDestino}
-      />
+      <Text style={styles.text}>Viaje 1: Corrientes a Buenos Aires</Text>
+      <Text style={styles.text}>Viaje 2: Buenos Aires a Corrientes</Text>
+      <Text style={styles.text}>Viaje 3: Resistencia a Buenos Aires</Text>
+      <Text style={styles.text}>Viaje 4: Buenos Aires a Resistencia</Text>
   </View>
   );
 };

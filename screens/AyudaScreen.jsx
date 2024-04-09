@@ -7,13 +7,15 @@ import { Collapse, CollapseBody, CollapseHeader } from 'accordion-collapse-react
 const SoportePantalla = () => {
 
   const handleWhatsAppPress = () => {
-    const phoneNumber = '+543794681650'; // Reemplaza con el número de teléfono de WhatsApp al que deseas enviar el mensaje
-
-    // Construye la URL de WhatsApp con el número de teléfono
-    const whatsappUrl = `whatsapp://send?phone=${phoneNumber}&text=${wppMsg}`;
-
-    const wppMsg = 'Tengo un inconveniente con la app';
-
+    const phoneNumber = '+543794077764'; // Reemplaza con el número de teléfono de WhatsApp al que deseas enviar el mensaje
+    const customMessage = 'Hola Alize Viajes y Turismo, necesito hacer una consulta';
+  
+    // Codifica el mensaje personalizado para que se pueda incluir en la URL
+    const encodedMessage = encodeURIComponent(customMessage);
+  
+    // Construye la URL de WhatsApp con el número de teléfono y el mensaje personalizado
+    const whatsappUrl = `whatsapp://send?phone=${phoneNumber}&text=${encodedMessage}`;
+  
     // Intenta abrir la URL en la aplicación de WhatsApp
     Linking.openURL(whatsappUrl)
       .catch(err => console.error('Error al abrir WhatsApp:', err));
