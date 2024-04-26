@@ -1,42 +1,60 @@
-import React, { useState, useRef, useContext } from 'react';
-import { View, TextInput, Text, Button, StyleSheet } from 'react-native';
+import React, { useState, useRef } from 'react';
+import { View, TextInput, Text, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
+
 import { useAuthContext } from '../contexts/AuthContext';
 import { useLoadingContext } from '../contexts/LoadingContext';
-import { TouchableOpacity } from 'react-native';
+import { useVerificationContext } from '../contexts/VerificationContext';
+import { useRegisterContext } from '../contexts/RegisterContext';
 
-const VerificationCodeScreen = () => {
-  
+const VerificationCodeScreen = ({ navigation, route }) => {
   const [code, setCode] = useState(['', '', '', '', '', '']);
+  const userCode = code.join('');
   const inputRefs = useRef([]);
-  const { authData, verifyCode, registerUser } = useAuthContext();
-  const { startLoading, endLoading } = useLoadingContext();
-  const emailCode = code.join('');
+
+  const { loginData } = useAuthContext();
+  const { registerData } = useRegisterContext();
+  const { verifyCode, verifyUser } = useVerificationContext();
+  const { loginLoading, startLoginLoading, endLoginLoading } = useLoadingContext();
+  const { navigate } = route.params;
 
   const handleTextChange = (text, index) => {
-
-    // Si el texto es un número y hay un siguiente cuadro de texto, mover el foco
     if (!isNaN(text) && index < code.length - 1) {
       inputRefs.current[index + 1].focus();
     }
-
-    // Actualizar el estado con el nuevo código
     const newCode = [...code];
     newCode[index] = text;
     setCode(newCode);
   };
 
-  const handleRegisterUser = async () => {
+  const handleVerifyCode = async (data) => {
 
     try {
 
-        startLoading();
-        registerUser(authData, emailCode, verifyCode );
-        endLoading();
+      startLoginLoading();
+      const success = await verifyCode(data);
 
-    }catch (error){
+      if (success && navigate === "fromRegister") {
 
-      console.log(error.message)
-      endLoading();
+        await verifyUser(registerData);
+
+        navigation.navigate("LoginScreen");
+
+      } else if (success && navigate === "fromPreRecoveryPassword") {
+
+        navigation.navigate("UpdateRecoveryPasswordScreen", { navigate: "fromRecoveryPassword" });
+
+      } else if (success && navigate === "fromLogin") {
+
+        await verifyUser(loginData);
+        navigation.navigate("LoginScreen", { navigate: "fromLogin" });
+
+      };
+      endLoginLoading();
+
+    } catch (error) {
+
+      console.log(error.message);
+      endLoginLoading();
 
     }
   };
@@ -58,14 +76,18 @@ const VerificationCodeScreen = () => {
           />
         ))}
       </View>
-    <View style={styles.buttonsContainer}>
-      <TouchableOpacity onPress={ handleRegisterUser }>
-        <Text>Enviar</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={ () => navigation.goBack() }>
-        <Text>Cerrar</Text>
-      </TouchableOpacity>
-    </View>
+      <View style={styles.buttonsContainer}>
+        {loginLoading ? (
+          <ActivityIndicator size={100} color="#FC3232"/>
+        ) : (
+          <TouchableOpacity onPress={() => handleVerifyCode({ userCode: userCode })} style={styles.primaryButton}>
+            <Text style={styles.buttonText}>Enviar</Text>
+          </TouchableOpacity>
+        )}
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.secondaryButton}>
+          <Text style={styles.buttonText}>Atrás</Text>
+        </TouchableOpacity> 
+      </View>
     </View>
   );
 };
@@ -99,6 +121,24 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     flexDirection: 'row',
     marginTop: 20,
+  },
+  primaryButton: {
+    backgroundColor: '#FC3232',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginHorizontal: 5,
+  },
+  secondaryButton: {
+    backgroundColor: '#DDDDDD',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginHorizontal: 5,
+  },
+  buttonText: {
+    fontSize: 16,
+    color: 'white', // Cambia el color del texto para los botones
   },
 });
 

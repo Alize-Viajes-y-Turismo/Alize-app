@@ -1,54 +1,57 @@
-import React from 'react'
-import { View} from 'react-native'
-import BotonPrimario from '../componentes/BotonPrimario'
+import React from 'react';
+import { View, Alert } from 'react-native';
+
 import { useAuthContext } from '../contexts/AuthContext';
-import { useLoadingContext } from '../contexts/LoadingContext';
-import { ActivityIndicator } from 'react-native';
+import { useUserContext } from '../contexts/UserContext';
+import { usePassengerContext } from '../contexts/PassengerContext';
 
+import PrimaryButton from '../components/PrimaryButton';
 
-function HomeScreen() {
+import HomeScreenStyles from './styles/HomeScreenStyles';
 
-  const {logout} = useAuthContext();
+const HomeScreen = ({ navigation }) => {
+  const { logout } = useAuthContext();
+  const { getProfileData } = useUserContext();
+  const { getUserPassengers } = usePassengerContext();
 
-  const {loginLoading, startLoginLoading, endLoginLoading} = useLoadingContext()
-
-
-  const handlerLogout = async () => {
-
+  const handleLogout = async () => {
     try {
-
-      startLoginLoading()
       await logout();
-      endLoginLoading()
-      
-    } catch(error) {
-
-      alert(error);
-      endLoginLoading()
+    } catch (error) {
+      Alert.alert('Error', 'Hubo un problema al cerrar sesión. Inténtalo de nuevo más tarde.');
     }
-
   };
 
+  const handleNavigateToMyTravels = async () => {
+    try {
+      const success = await getUserPassengers();
 
+      if (success) {
+        navigation.navigate('MyTravelsScreen');
+      } else {
+        Alert.alert('Error', 'No se pudieron obtener los datos de los pasajeros. Inténtalo de nuevo más tarde.');
+      }
+    } catch (error) {
+      Alert.alert('Error', 'Hubo un problema al obtener los datos de los pasajeros. Inténtalo de nuevo más tarde.');
+    }
+  };
+
+  const handleNavigateToProfile = async () => {
+    try {
+      await getProfileData();
+      navigation.navigate('ProfileScreen');
+    } catch (error) {
+      Alert.alert('Error', 'Hubo un problema al obtener los datos del perfil. Inténtalo de nuevo más tarde.');
+    }
+  };
 
   return (
-    <View style={{flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "white"}}>
-      <BotonPrimario text='Mis datos'></BotonPrimario>
-      <BotonPrimario text='Mis pasajes' style={{marginTop: "5%", marginBottom: "5%"}}></BotonPrimario>
-      {
-
-        loginLoading ?
-
-        <ActivityIndicator size={100} color="#FC3232"/>
-        
-        :
-
-        <BotonPrimario  onPress={handlerLogout} text='Cerrar Sesion'></BotonPrimario>
-        
-      }
-      
+    <View style={HomeScreenStyles.container}>
+      <PrimaryButton style={HomeScreenStyles.button} onPress={handleNavigateToMyTravels} text="Mis viajes" />
+      <PrimaryButton style={HomeScreenStyles.button} onPress={handleNavigateToProfile} text="Mis datos" />
+      <PrimaryButton style={HomeScreenStyles.button} onPress={handleLogout} text="Cerrar Sesión" />
     </View>
-  )
-}
+  );
+};
 
-export default HomeScreen
+export default HomeScreen;

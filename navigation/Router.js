@@ -1,43 +1,28 @@
-import AuthTabNavigator from "./navigators/AuthTabNavigatior";
-import AppTabNAvigator from "./navigators/AppTabNavigator";
+import AuthTabNavigator from "./navigators/AuthTabNavigator";
+import NotAuthTabNavigator from "./navigators/NotAuthTabNavigatior"; 
 import { useAuthContext } from "../contexts/AuthContext";
 import { NavigationContainer } from "@react-navigation/native";
 import { useLoadingContext } from "../contexts/LoadingContext";
-import LoadingScreen from "../screens/LoadingScreen"
-import { useEffect } from "react"
-import Layout from "../componentes/LayoutComponent";
+import LoadingScreen from "../screens/LoadingScreen";
+import Layout from "../components/LayoutComponent";
 
 function Router() {
-
-    const { navigate } = useAuthContext()
-    const { loading, endLoading } = useLoadingContext()
-
-    useEffect(() => {
-        setTimeout(() => {
-            endLoading()
-        }, 5000);
-    })
+    const { navigateVerify } = useAuthContext();
+    const { loading } = useLoadingContext();
 
     return (
-
         <>
-        {
-            loading ? 
-
-            <LoadingScreen />
-
-            :
-
-            <NavigationContainer>
-                <Layout>
-                    {navigate ? <AppTabNAvigator /> : <AuthTabNavigator />}
-                </Layout>
-            </NavigationContainer>
-            }
-
+            {loading ? (
+                <LoadingScreen />
+            ) : (
+                <NavigationContainer>
+                    <Layout>
+                        {navigateVerify ? <AuthTabNavigator /> : <NotAuthTabNavigator />}
+                    </Layout>
+                </NavigationContainer>
+            )}
         </>
-
-    )
+    );
 }
 
 export default Router;

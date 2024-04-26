@@ -1,15 +1,10 @@
-import React from 'react'
-import { Text } from 'react-native-paper'
-import { Image } from 'react-native'
-import SimulacionCarga from '../componentes/SimulacionCarga'
+import React from 'react';
+import LoadSimulation from '../components/LoadSimulationComponent';
 
 function LoadingScreen() {
-
   return (
-    
-    <SimulacionCarga />
-
-  )
+    <LoadSimulation />
+  );
 }
 
-export default LoadingScreen
+export default LoadingScreen;

@@ -1,164 +1,75 @@
-import { createContext, useContext, useState, useEffect} from 'react';
-import { loginRequest, logoutRequest, registerUserRequest, resetPasswordRequest, sendEmailCodeRequest, verifyCodeRequest, verifyDataRegisterRequest, verifyTokenNavigationRequest } from '../api/usersRequests';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { loginRequest, logoutRequest, verifyTokenNavigationRequest } from '../api/usersRequests';
 
 const AuthContext = createContext();
 
 export const useAuthContext = () => {
-
-  return useContext(AuthContext)
-
+  return useContext(AuthContext);
 };
 
 export const AuthProvider = ({ children }) => {
+  const [loginData, setLoginData] = useState(undefined);
+  const [navigateVerify, setNavigateVerify] = useState(undefined);
 
-
-  const [authData, setAuthData] = useState(undefined);
-
-  const [verifyCode, setVerifyCode] = useState(undefined);
-
-  const [navigate, setNavigate] = useState(undefined);
-
-  const [authLoginErrors, setAuthLoginErrors] = useState(undefined);
-
-  const preRegisterUser = async (user) => {
-
-    try {
-
-      const res = await verifyDataRegisterRequest(user);
-      const code = await sendEmailCodeRequest(res.data.data);
-
-      setAuthData(res.data.data);
-      setVerifyCode(code.data.code);
-      
-    } catch (error) {
-
-        setAuthLoginErrors(error);
-        alert(error.message);
-
-    }
-
+  const handleAuthError = (error) => {
+    console.log(error.message);
+    // Aquí podrías agregar lógica adicional para manejar el error de manera específica
   };
 
-  const registerUser = async (user, emailCode, verifyCode) => {
-
+  const login = async (data) => {
     try {
-
-      if (emailCode === verifyCode) {
-
-        const res = await registerUserRequest(user);
+      const res = await loginRequest(data);
+      
+      if (res.data.success && res.data.verified ){
         await AsyncStorage.setItem('token', res.data.token);
-        
-        setAuthData(res.data.data);
-        setNavigate(true);
-
-      } else{
-
-        console.log("Código inválido")
-
+        setNavigateVerify(res.data.success);
+      } else if (res.data.success && !res.data.verified) {
+        setLoginData(res.data.data);
+        return { success: res.data.success, verified: res.data.verified };
       }
-
     } catch (error) {
-
-        setAuthLoginErrors(error);
-        console.log(error.message);
-
+      handleAuthError(error);
     }
-
-  };
-
-  const login = async (user) => {
-  
-    try {
-
-      const res = await loginRequest(user);
-      await AsyncStorage.setItem('token', res.data.token); 
-
-      setAuthData(res.data.data);
-      setNavigate(true);
-    
-    } catch (error) {
-      
-        setAuthLoginErrors(error);
-        console.log(error.message);
-
-    }
-
   };
 
   const logout = async () => {
-
     try {
-
       await logoutRequest();
       await AsyncStorage.removeItem("token");
-      
-      setAuthData(undefined);
-      setNavigate(false);
-
-    } catch (error){
-
-      alert(error.message);
-
+      setLoginData(undefined);
+      setNavigateVerify(false);
+    } catch (error) {
+      handleAuthError(error);
     }
-
   };
 
-    const checkLogin = async () => {
-    
+  const checkLogin = async () => {
+    try {
       const token = await AsyncStorage.getItem('token');
-
       if (!token) {
-
-        setAuthData(undefined)
-        setNavigate(false)
-
+        setNavigateVerify(false);
       } else {
-
-        try {
-
-          const res = await verifyTokenNavigationRequest({ token: token })
-
-          if (!res.data.data) {
-
-            setAuthData(undefined)
-            setNavigate(false)
-
-          } else {
-
-            setAuthData(res.data.data)
-            setNavigate(true)
-
-
-          }
-
-        } catch (error) {
-          
-          setAuthData(undefined)
-          setNavigate(false)
-
-          console.log(error.message)
-
+        const res = await verifyTokenNavigationRequest({ token });
+        if (!res.data.data) {
+          setNavigateVerify(false);
+        } else {
+          setNavigateVerify(true);
+          setLoginData(res.data.data);
         }
-        
       }
-
+    } catch (error) {
+      handleAuthError(error);
+    }
   };
 
-  useEffect( () => {
-
+  useEffect(() => {
     checkLogin();
-    console.log("checking Login")
-
-  }, [navigate]);
-
-
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ authLoginErrors, authData, navigate, verifyCode, login, logout, registerUser, checkLogin, preRegisterUser}}>
+    <AuthContext.Provider value={{ loginData, navigateVerify, login, logout, checkLogin }}>
       {children}
     </AuthContext.Provider>
   );
 };
-
-
