@@ -7,7 +7,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // Importa las pantallas que se mostrarán en las pestañas
 import NotAuthHomeScreen from '../../screens/NotAuthHomeScreen';
 import SupportScreen from '../../screens/SupportScreen.jsx';
-import TripDetailsScreen from '../../screens/TripDetailsScreen.jsx'; // Cambiado aquí
 import LoginScreen from '../../screens/LoginScreen.jsx';
 import RegisterScreen from '../../screens/RegisterScreen.jsx';
 import VerificationCodeScreen from '../../screens/VerificationCodeScreen.jsx';
@@ -30,11 +29,6 @@ function NotAuthTabNavigator() {
                 name="SupportScreen" 
                 component={SupportScreen} 
                 options={screenOptions.SupportScreen} 
-            />
-            <Tab.Screen 
-                name="TripDetailsScreen" // Cambiado aquí
-                component={TripDetailsScreen} // Cambiado aquí
-                options={screenOptions.TripDetailsScreen} // Cambiado aquí
             />
             <Tab.Screen 
                 name="LoginScreen" 

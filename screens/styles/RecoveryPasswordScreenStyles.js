@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const UpdateRecoveryPasswordScreenStyles = StyleSheet.create({
+const RecoveryPasswordScreenStyles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -38,4 +38,4 @@ const UpdateRecoveryPasswordScreenStyles = StyleSheet.create({
   },
 });
 
-export default UpdateRecoveryPasswordScreenStyles;
+export default RecoveryPasswordScreenStyles;

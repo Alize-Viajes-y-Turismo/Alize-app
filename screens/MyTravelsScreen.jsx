@@ -56,6 +56,6 @@ const MyTravelsScreen = ({ navigation }) => {
       </Modal>
     </View>
   );
-};
+}
 
 export default MyTravelsScreen;
